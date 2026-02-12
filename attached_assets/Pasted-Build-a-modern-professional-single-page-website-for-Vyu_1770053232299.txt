@@ -1,0 +1,633 @@
+Build a modern, professional single-page website for VyuhX Technology, a technology solutions company. The website should showcase their services, portfolio, expertise, and company journey with a polished, corporate design.
+Core Features
+1. Navigation & Layout
+1.1 Header
+
+Fixed navigation bar with white background and subtle shadow
+VyuhX logo (coding brackets icon) on the left
+Navigation links: Home, About, Services, Our Journey, Portfolio, Technologies, Contact
+"Get Started" call-to-action button on the right (cyan background, rounded)
+Smooth scroll to respective sections on click
+
+1.2 Scroll Behavior
+
+Floating "Back to Top" button in bottom-right corner (cyan circular button with up arrow)
+Auto-hide when at top of page
+Smooth scroll animation when navigating between sections
+
+2. Hero Section (Homepage)
+2.1 Visual Design
+
+Full-width hero section with background video
+Hero Video: Looping background video showing tech startup environments, such as:
+
+Modern office spaces with developers collaborating
+Digital transformation concepts
+Technology solutions in action
+Clean, professional footage of software development
+
+
+Dark overlay (40% opacity) over video for text readability
+Centered VyuhX logo with tagline "From Vision to Execution"
+Badge: "✨ Innovative Technology Solutions"
+
+2.2 Content
+
+Main heading: "From Vision to Execution"
+
+"Execution" in cyan (#4dd0e1) with animated underline
+White text for "From Vision to"
+
+
+Subheading: "Transforming ambitious ideas into powerful digital solutions. We specialize in cutting-edge web applications, mobile apps, cloud solutions, and AI-powered systems."
+Two CTA buttons:
+
+"Explore Our Work →" (cyan solid background)
+"Contact Us" (white outline, transparent background)
+
+
+Technology badges at bottom: React | Node.js | AWS | AI/ML | Mobile
+
+2.3 Video Implementation
+
+Auto-play video on page load (muted)
+Loop continuously
+No controls visible
+Responsive video sizing
+Fallback gradient background if video fails to load
+
+3. About Section
+3.1 Layout
+
+White background with generous padding
+Two-column layout (60/40 split on desktop, stacked on mobile)
+
+3.2 Left Column - Company Description
+
+Heading: "About VyuhX"
+Subheading: "We are a passionate team of developers, designers, and strategists dedicated to transforming your digital vision into reality."
+Feature heading: "Turning Complex Challenges into Elegant Solutions"
+Description paragraphs with professional tone
+Four feature pills:
+
+"Agile Development"
+"Cloud Native"
+"AI-Powered"
+"User Centric"
+
+
+
+3.3 Right Column - Statistics
+
+Four animated statistic cards in 2x2 grid:
+
+5+ Projects Completed (briefcase icon, light blue background)
+4+ Happy Clients (users icon, light blue background)
+15+ Technologies (chip icon, light blue background)
+5+ Years Experience (award icon, light blue background)
+
+
+Counter animation when cards come into viewport
+Each card has icon, large number, and label
+
+4. Services Section
+4.1 Layout
+
+Light gray background (#f5f7fa)
+Heading: "Our Services"
+Subheading: "Comprehensive technology solutions tailored to accelerate your business growth and digital transformation journey."
+
+4.2 Service Cards Grid
+Six service cards in responsive grid (3 columns desktop, 2 tablet, 1 mobile):
+
+Web Development (globe icon)
+
+React & Next.js
+Progressive Web Apps
+E-commerce Solutions
+
+
+Mobile Apps (smartphone icon)
+
+React Native
+Flutter
+iOS & Android Native
+
+
+Cloud Solutions (cloud icon)
+
+AWS & Azure
+Kubernetes
+Serverless Architecture
+
+
+AI & Automation (robot icon)
+
+Machine Learning
+NLP Chatbots
+Process Automation
+
+
+Digital Strategy (lightbulb icon)
+
+Tech Consulting
+Product Strategy
+Digital Transformation
+
+
+Digital Marketing (megaphone/bullhorn icon)
+
+In Collaboration
+SEO & Content Marketing
+Social Media Strategy
+Brand Development
+
+
+
+4.3 Card Design
+
+White background with subtle shadow
+Hover effect: slight lift and shadow increase
+Icon in light blue circle at top
+Service title in bold
+Bullet points for features
+Special styling for Digital Marketing card:
+
+Small "In Collaboration" badge at top-right corner (orange/gold color)
+Subtle border or different accent color to distinguish it
+Icon has additional small partnership/handshake symbol overlay
+
+
+
+5. Our Journey Section (NEW)
+5.1 Layout
+
+White background with centered content
+Heading: "Our Journey"
+Subheading: "Milestones that define our growth, innovation, and commitment to excellence"
+Design Style: Interactive vertical timeline with alternating content
+
+5.2 Timeline Design Concept
+
+Vertical timeline line running through center (cyan color)
+Milestone cards alternate left and right
+Timeline dots/nodes at each milestone (larger for major achievements)
+Cards appear with fade-in animation on scroll
+Connecting lines between timeline and cards
+
+5.3 Milestone Cards
+Milestone 1: Foundation (Left Side)
+
+Timeline Marker: Building/Rocket icon, filled cyan circle
+Date Badge: "Q1 2020" (small pill above card)
+Title: "Foundation & Vision"
+Icon: Lightbulb or rocket in gradient circle
+Description: "Established with a clear mission to revolutionize enterprise technology solutions through innovative approaches and strategic partnerships."
+Visual Accent: Subtle gradient border (blue to cyan)
+Background: White card with soft shadow
+
+Milestone 2: SIH Victory (Right Side)
+
+Timeline Marker: Trophy/Award icon, filled gold circle (larger than others)
+Date Badge: "Q2 2024" (small pill above card)
+Title: "SIH 2024 Victory & Recognition"
+Achievement Badge: "🏆 National Winner" (prominent badge at top of card)
+Category: "Ministry of Power"
+Icon: Trophy or medal in gradient circle (gold to orange)
+Description: "Achieved national recognition by winning Smart India Hackathon 2024, demonstrating our innovative problem-solving capabilities and technical excellence at the national level."
+Visual Accent: Gold/orange gradient border
+Background: White card with golden glow shadow
+Additional Element: Small "SIH 2024" logo/badge
+
+Milestone 3: Live Projects (Left Side)
+
+Timeline Marker: Pulse/Activity icon, filled green circle
+Date Badge: "Q4 2024 - Present" (small pill above card)
+Title: "Live Project Portfolio"
+Status Badge: "💡 Active & Growing" (green accent badge)
+Icon: Code/Terminal in gradient circle (green to cyan)
+Description: "Deployed and actively maintaining live projects across various domains, showcasing real-world impact and continuous innovation in enterprise solutions."
+Stats Bar inside card:
+
+"5+ Active Projects"
+"Multiple Domains"
+"Real-time Impact"
+
+
+Visual Accent: Green gradient border
+Background: White card with soft shadow
+Pulse Animation: Subtle pulsing effect on the timeline node
+
+5.4 Timeline Visual Elements
+
+Central Timeline Line: 4px solid cyan line running vertically
+Timeline Nodes:
+
+Regular milestones: 20px circles
+Major achievements (SIH): 30px circles with glow effect
+Current/ongoing: Pulsing animation
+
+
+Connecting Paths: Curved lines from timeline to cards (smooth bezier curves)
+Year Labels: Along timeline at key intervals
+
+5.5 Animations
+
+Cards fade in and slide from sides as user scrolls
+Timeline line draws/extends progressively on scroll
+Nodes appear with scale-in animation
+Hover on cards: slight lift, increased shadow, subtle scale
+Pulsing animation on "Live Projects" node
+
+5.6 Mobile Responsive Design
+
+Single column layout
+Timeline moves to left side
+All cards align to right of timeline
+Reduced card padding
+Smaller timeline nodes
+Simplified animations
+
+5.7 Visual Hierarchy
+
+Use color coding:
+
+Foundation: Blue tones (brand colors)
+SIH Victory: Gold/Orange tones (achievement)
+Live Projects: Green tones (growth/active)
+
+
+Typography:
+
+Timeline dates: Small, uppercase, medium gray
+Card titles: Large, bold, dark blue
+Descriptions: Regular weight, readable line height
+
+
+Iconography: Consistent style, gradient fills matching card theme
+
+6. Portfolio Section
+6.1 Layout
+
+Light gray background (#f5f7fa)
+Heading: "Our Portfolio"
+Subheading: "Discover the innovative solutions we've crafted for our clients. VyuhX Technology transforms ideas into digital excellence."
+
+6.2 Filter Tabs
+
+Pill-style tabs: All Projects | Web Apps | Mobile Apps | Digital Solutions | Restaurant Tech
+Active tab has cyan background
+Smooth transition when switching
+
+6.3 Project Cards
+Four featured projects in responsive grid (2x2):
+
+Bomb Rolls and Bowls - Feedback System
+
+Category badge: "Web"
+Image: Food bowl/restaurant interface screenshot
+Description: "Interactive customer feedback system for Bomb Rolls and Bowls with real-time reviews and ratings management"
+Tech stack badges: React | Node.js | MongoDB | Express | +2 more
+"View Details →" link
+
+
+Shreerath Restaurant - Feedback Portal
+
+Category badge: "Web"
+Image: Restaurant feedback interface
+Description: "Comprehensive feedback collection platform for Shreerath Restaurant enabling customer satisfaction tracking"
+Tech stack badges: React | Python | PostgreSQL | Docker | +1 more
+"View Details →" link
+
+
+Bomb Rolls and Bowls - Digital Menu
+
+Category badge: "Mobile"
+Image: Digital menu interface on tablet/mobile
+Description: "Modern digital menu system with stunning food photography, nutritional information, and seamless ordering"
+Tech stack badges: React Native | Firebase | Stripe | +2 more
+"View Details →" link
+
+
+Cafe Twenty Twenty - Queue Management
+
+Category badge: "Web"
+Image: Queue management dashboard
+Description: "Smart queue management system using QR codes for Cafe Twenty Twenty with real-time customer tracking and analytics"
+Tech stack badges: React | Node.js | MongoDB | Socket.io | +1 more
+"View Details →" link
+
+
+
+6.4 Card Design
+
+Rounded corners (rounded-2xl)
+Image with overlay gradient on hover
+Category badge in top-left corner
+Shadow on hover
+Tech stack as small pills at bottom
+
+7. Technology Stack Section
+7.1 Layout
+
+White background
+Heading: "Technology Stack"
+Subheading: "We leverage cutting-edge technologies to build robust, scalable, and future-proof solutions."
+
+7.2 Infinite Horizontal Scrolling Carousel
+
+Implement smooth, continuous auto-scrolling technology showcase
+Similar to marquee effect shown in Image 4
+Technologies scroll from right to left continuously
+Pause animation on hover
+Seamless loop without gaps
+
+7.3 Technology Pills/Cards in Carousel
+Display technologies as pill-shaped badges with icons:
+Technologies (in scrolling order):
+
+Python (green snake icon)
+AWS (orange cloud icon)
+Docker (blue whale icon)
+MongoDB (green leaf icon)
+PostgreSQL (blue elephant icon)
+Kubernetes (blue hexagon icon)
+TensorFlow (orange icon)
+React (cyan atom icon)
+Node.js (green icon)
+TypeScript (blue icon)
+Next.js (black icon)
+GraphQL (pink icon)
+Redis (red icon)
+Flutter (blue icon)
+Go (cyan gopher icon)
+Firebase (yellow/orange icon)
+
+7.4 Carousel Design
+
+White/light gray pill-shaped containers
+Icon on left, technology name on right
+Consistent height for all pills
+Smooth, slow continuous scroll
+Duplicate set for seamless infinite loop
+Subtle shadow on each pill
+Responsive sizing (smaller on mobile)
+
+7.5 Implementation Details
+
+Use CSS animations or Framer Motion for smooth scrolling
+Calculate scroll speed for optimal viewing
+Ensure no jump when loop restarts
+Add hover state to pause and highlight individual technology
+Mobile: Single row, slower speed
+Desktop: Potentially double row for more visual impact
+
+8. Contact Section
+8.1 Layout
+
+Light gray background (#f5f7fa)
+Heading: "Get In Touch"
+Subheading: "Have a project in mind? Let's discuss how we can help bring your vision to life."
+Two-column layout (40/60 split)
+
+8.2 Left Column - Contact Info
+Contact cards with icons:
+
+Email: hello@vyuhx.com (mail icon)
+Phone: +91 9876543210 (phone icon)
+Location: Bangalore, India (location pin icon)
+
+Social media links:
+
+LinkedIn (icon button)
+Twitter (icon button)
+GitHub (icon button)
+
+CTA Card:
+
+Dark blue to cyan gradient background
+"Ready to Start?"
+"Let's build something amazing together"
+
+8.3 Right Column - Contact Form
+Form fields with floating labels:
+
+Name input (full width)
+Phone input (10 digits validation)
+Email input (full width)
+Subject input (full width)
+Message textarea (multiline)
+"Send Message →" button (cyan background)
+
+Form validation and success/error states
+9. Footer
+9.1 Layout
+
+Dark blue background (#1e3a5f)
+White text
+
+9.2 Top Section
+
+VyuhX logo
+Company tagline: "Transforming visions into digital reality. We build innovative solutions that drive business growth and create lasting impact."
+Social media buttons: LinkedIn | Twitter | GitHub
+
+9.3 Footer Links
+Three columns:
+Company:
+
+About Us
+Services
+Our Journey
+Portfolio
+Contact
+
+Services:
+
+Web Development
+Mobile Apps
+Cloud Solutions
+AI & Automation
+Digital Marketing
+
+Resources:
+
+Blog
+Case Studies
+Technologies
+Careers
+
+9.4 Bottom Bar
+
+Copyright: "© 2026 VyuhX Technology. All rights reserved."
+Privacy Policy | Terms of Service links
+
+Technical Requirements
+10.1 Frontend Stack
+
+Framework: React 18+ with Vite
+Styling: Tailwind CSS
+UI Components: Shadcn/ui
+Icons: Lucide React
+Animations: Framer Motion
+
+10.2 Features to Implement
+
+Background video in hero section with auto-play
+Smooth scroll behavior between sections
+Intersection Observer for scroll animations (especially for Journey timeline)
+Counter animation for statistics
+Vertical timeline with progressive drawing animation
+Infinite horizontal scrolling carousel for technologies
+Lazy loading for images and video
+Responsive design (mobile-first)
+Hover effects and transitions
+Form validation
+Scroll-to-top button with auto-hide
+
+10.3 Animations
+
+Fade-in on scroll for sections
+Slide-in animations for cards
+Counter increment animation
+Timeline line progressive drawing
+Timeline nodes scale-in appearance
+Journey cards alternate slide-in (left/right)
+Pulse animation on active milestone
+Button hover effects
+Card lift on hover
+Smooth continuous scroll for technology carousel
+Pause on hover for carousel items
+Smooth transitions between states
+
+Design Guidelines
+11.1 Color Palette
+
+Primary: Dark Blue (#1e3a5f, #2d4a6b)
+Accent: Cyan (#4dd0e1, #00bcd4)
+Achievement: Gold/Orange (#f59e0b, #ea580c)
+Success/Active: Green (#10b981, #059669)
+Background: White (#ffffff), Light Gray (#f5f7fa)
+Text: Dark Gray (#333333), Medium Gray (#666666)
+
+11.2 Typography
+
+Headings: Bold, large scale (text-4xl to text-6xl)
+Subheadings: Medium weight (text-xl to text-2xl)
+Body: Regular weight (text-base to text-lg)
+Timeline Dates: Small, uppercase, semibold
+Font: Modern sans-serif (Inter, Poppins, or similar)
+
+11.3 Spacing & Layout
+
+Generous padding (py-16 to py-24 for sections)
+Consistent margin between elements
+Max-width container (max-w-7xl) for content
+Border radius: rounded-xl for cards, rounded-full for buttons and technology pills
+Timeline: 100px spacing between milestones (desktop), 60px (mobile)
+
+11.4 Component Styles
+
+Cards: White background, subtle shadow, hover lift effect
+Buttons: Rounded (rounded-lg), padding (px-6 py-3), smooth transitions
+Inputs: Border on focus, floating labels, proper spacing
+Icons: Consistent size, proper spacing, gradient backgrounds
+Technology Pills: Rounded-full, white/light background, icon + text layout
+Timeline Cards: Extra padding, colored accent borders, icons with gradients
+Badges: Small, rounded-full, colored backgrounds with white text
+
+11.5 Responsive Breakpoints
+
+Mobile: < 768px (single column, stacked layout, left-aligned timeline)
+Tablet: 768px - 1024px (2-column grids)
+Desktop: > 1024px (multi-column grids, side-by-side layouts, center timeline)
+
+Assets Required
+12.1 Logo
+
+VyuhX logo with coding brackets (blue and cyan)
+SVG format for scalability
+Light version for dark backgrounds
+
+12.2 Video
+
+Hero background video: MP4 format, 1920x1080 resolution minimum
+Tech startup/software development themed
+Duration: 15-30 seconds (will loop)
+Optimized file size for web
+Muted audio
+
+12.3 Images
+
+Portfolio project screenshots (4 professional images):
+
+Feedback system interfaces (2)
+Digital menu interface (1)
+Queue management dashboard (1)
+
+
+
+12.4 Icons
+
+Service icons (6)
+Journey/Timeline icons (rocket, trophy, pulse/activity)
+Contact icons (3)
+Social media icons (3)
+Feature icons (4)
+Technology logos (16)
+Arrow icons for buttons
+
+12.5 Additional Graphics (Optional)
+
+SIH 2024 logo/badge for journey section
+Background patterns for timeline section
+Decorative elements for milestone cards
+
+Implementation Notes
+Video Hero Section
+
+Use HTML5 <video> element with autoplay, loop, muted attributes
+Add dark overlay using pseudo-element or div
+Ensure video is responsive (object-fit: cover)
+Implement lazy loading for better performance
+Provide poster image as fallback
+
+Journey Timeline Section
+
+Use SVG for timeline line and curved connectors
+Implement Intersection Observer for progressive animations
+Each milestone card triggers animation when 30% visible
+Timeline line extends as user scrolls down
+Store milestone data in array/JSON for easy maintenance
+Use Framer Motion for sophisticated animations:
+
+motion.div with variants for cards
+motion.path with pathLength animation for timeline
+staggerChildren for sequential card appearance
+
+
+Implement scroll-triggered progress indicator
+
+Infinite Scrolling Carousel
+
+Duplicate technology items for seamless loop
+Use CSS animation or Framer Motion for smooth scrolling
+Calculate animation duration based on content width
+Implement pause on hover functionality
+Ensure accessibility (reduced motion support)
+
+General
+
+Use semantic HTML5 tags
+Ensure accessibility (ARIA labels, keyboard navigation, alt texts)
+Optimize images and video (lazy loading, WebP format)
+Implement smooth scroll polyfill for cross-browser support
+Add meta tags for SEO
+Make all links functional or use smooth scroll
+Add loading states for form submission
+Implement mobile menu (hamburger) for navigation
+Test on multiple devices and browsers
+Performance optimization: code splitting, tree shaking
+Add error boundaries for robust error handling
+
+Build this as a production-ready, performant single-page application with clean, maintainable code, excellent user experience, and a compelling visual journey narrative.

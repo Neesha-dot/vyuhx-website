@@ -1,0 +1,81 @@
+Update the Services section ONLY with the following design and animations:
+
+COLOR THEME FOR SERVICES SECTION:
+- Section Background: Light gray to white gradient (#f5f7fa to #ffffff)
+- "OUR EXPERTISE" badge: Light cyan background (#e0f7fa) with cyan text (#00bcd4)
+- Section Title "Comprehensive Digital Solutions": Dark navy (#1a2b4a)
+- Subtitle text: Medium gray (#5a6c7d)
+- Service Cards: White background with subtle shadow
+- Card Icons: Cyan circular background (#00bcd4 or #17d4d9)
+- Card Titles: Dark navy (#1a2b4a)
+- Card Descriptions: Medium gray (#5a6c7d)
+- "Learn More" buttons: Cyan gradient (#00bcd4 to #0ea5e9)
+- Hover state for cards: Dark navy background (#1a2b4a) with white text
+
+ADVANCED ANIMATIONS TO ADD:
+
+1. Section Entry Animation:
+   - "OUR EXPERTISE" badge: Fade in + scale from 0.8 to 1
+   - Main title: Slide up from bottom + fade in (delay 0.2s)
+   - Subtitle: Slide up + fade in (delay 0.4s)
+   - Underline beneath title: Expand from center (delay 0.6s)
+
+2. Service Cards Animation:
+   - Cards appear with stagger effect (each card delays by 0.15s)
+   - Entry: Fade in + slide up from bottom + scale from 0.95 to 1
+   - Use: opacity 0 to 1, translateY(50px) to 0, scale(0.95) to 1
+   - Trigger: When cards enter viewport (Intersection Observer)
+
+3. Card Hover Animations:
+   - Smooth lift: translateY(-12px) over 0.5s
+   - Scale slightly: scale(1.03)
+   - Shadow enhancement: Larger cyan-tinted shadow
+   - Background transition: White to dark navy gradient (0.5s)
+   - Icon: Rotate 360deg + scale(1.2) + glow effect
+   - Icon pulse animation while hovered
+   - Title: Slide right 5px
+   - Text color transitions: All text to white
+   - Button: Enhanced glow and slight scale
+   - Shimmer effect: Light sweep across card
+
+4. Icon Animations:
+   - Initial state: Subtle floating animation (up/down 10px, 3s loop)
+   - On hover: Rotate 360deg over 0.6s + scale to 1.2
+   - Continuous pulse animation on hover
+   - Cyan glow shadow that intensifies
+
+5. Button Animations:
+   - Default: Gradient background with slight shadow
+   - Hover: Scale(1.05) + enhanced shadow + shimmer effect
+   - Arrow icon: Translate right 8px on hover
+   - Ripple effect on click
+
+6. Technology Tags (if visible):
+   - Fade in after card (stagger by 0.1s each)
+   - Hover: Slight bounce + color change
+
+7. Modal Animation (when Learn More is clicked):
+   - Backdrop: Fade in (0.3s)
+   - Modal: Scale from 0.9 to 1 + fade in (0.4s, ease-out)
+   - Modal content: Stagger animation (each section appears 0.1s after previous)
+   - Close: Reverse animation
+
+8. Scroll-Triggered Animations:
+   - Use Intersection Observer or CSS animation
+   - Cards only animate when 20% visible in viewport
+   - Add "animate-in" class when visible
+
+CSS PROPERTIES TO USE:
+- Transitions: all 0.5s cubic-bezier(0.4, 0, 0.2, 1)
+- Transform: translateY, scale, rotate
+- Box-shadow: Enhanced on hover with cyan tint
+- Background: Smooth gradient transitions
+- Opacity: 0 to 1 transitions
+
+KEEP EVERYTHING ELSE:
+- Keep existing 4 services: Web Development, Software Development, Mobile Apps, Digital Marketing
+- Keep modal functionality and structure
+- Keep responsive design
+- Keep grid layout
+
+Only update colors and add these advanced animations to the Services section. Do not modify other sections of the website.

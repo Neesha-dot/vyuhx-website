@@ -1,0 +1,217 @@
+3. TEXT HIERARCHY (Center-aligned):
+
+TOP BADGE:
+- Text: "PIONEERING DIGITAL EXCELLENCE"
+- Style: Small pill/badge with border
+- Background: rgba(0, 188, 212, 0.15)
+- Border: 1px solid cyan
+- Color: Cyan (#00bcd4)
+- Font size: 14px
+- Letter spacing: 2px
+- Padding: 10px 25px
+- Border radius: 25px
+- Margin bottom: 30px
+- Animation: Fade in + slight scale
+
+COMPANY NAME:
+- Text: "VyuhX Technologies"
+- Font size: 3.5rem (responsive)
+- Font weight: 700
+- Color: White (#ffffff)
+- Letter spacing: 1px
+- Margin bottom: 20px
+- Animation: Slide up + fade in (delay 0.2s)
+
+MAIN TAGLINE:
+- Line 1: "Vision to" (White color)
+- Line 2: "Execution" (Cyan color #00bcd4)
+- Font size: 6rem (responsive)
+- Font weight: 900
+- Line height: 1.1
+- Text transform: Capitalize
+- Margin bottom: 25px
+- Animation: 
+  * "Vision to" - Slide from left
+  * "Execution" - Slide from right with glow effect
+
+SUBTITLE:
+- Text: "Architecting next-generation digital ecosystems for ambitious global enterprises."
+- Font size: 1.3rem
+- Color: rgba(255, 255, 255, 0.85)
+- Max width: 800px
+- Line height: 1.7
+- Margin bottom: 40px
+- Animation: Fade in + slide up (delay 0.6s)
+
+4. BUTTONS (Centered, Side-by-side):
+
+Button 1 - "View Portfolio →":
+- Background: Cyan gradient (#00bcd4 to #0ea5e9)
+- Color: White
+- Padding: 18px 40px
+- Border radius: 50px
+- Font size: 1.1rem
+- Font weight: 600
+- Box shadow: 0 10px 30px rgba(0, 188, 212, 0.3)
+- Hover: Scale(1.05) + glow + arrow moves right
+- Icon: Arrow pointing right
+
+Button 2 - "Consult Us":
+- Background: Transparent
+- Border: 2px solid white
+- Color: White
+- Padding: 18px 40px
+- Border radius: 50px
+- Font size: 1.1rem
+- Font weight: 600
+- Hover: Background fills with white, text turns dark
+- Smooth transition
+
+Button Container:
+- Display: flex
+- Gap: 20px
+- Justify content: center
+
+5. SCROLL INDICATOR (Bottom center):
+- Animated mouse icon
+- Color: White with cyan accent
+- Small text: "Scroll down" or just icon
+- Bouncing animation (continuous)
+- Position: Bottom of hero, centered
+
+ADVANCED ANIMATIONS:
+
+1. VIDEO EFFECTS:
+   - Slow zoom in/out (Ken Burns effect)
+   - Slight parallax on scroll
+   - Overlay opacity changes on scroll
+
+2. TEXT ANIMATIONS (Staggered entrance):
+   - Badge: Fade + scale (0s delay)
+   - Company name: Slide up + fade (0.2s delay)
+   - "Vision to": Slide from left + fade (0.4s delay)
+   - "Execution": Slide from right + fade + glow (0.6s delay)
+   - Subtitle: Fade + slide up (0.8s delay)
+   - Buttons: Fade + slide up (1s delay)
+   - Mouse: Fade + bounce (1.2s delay)
+
+3. HOVER EFFECTS:
+   - Buttons: Scale, glow, transform
+   - Text: Subtle glow on "Execution"
+   - Interactive elements respond to cursor
+
+4. BACKGROUND ANIMATIONS:
+   - Floating particles overlay on video
+   - Animated gradient orbs (subtle)
+   - Network connection lines (very subtle)
+   - Pulsing dots at corners
+
+5. SCROLL ANIMATIONS:
+   - Hero content fades/scales on scroll
+   - Video zooms slightly on scroll
+   - Parallax effect between layers
+
+TECHNICAL IMPLEMENTATION:
+
+Video Background:
+```jsx
+<div className="hero-container">
+  <video className="hero-video" autoPlay loop muted playsInline>
+    <source src="/videos/tech-background.mp4" type="video/mp4" />
+  </video>
+  <div className="hero-overlay"></div>
+  <div className="hero-content">
+    {/* Content here */}
+  </div>
+</div>
+```
+
+CSS:
+```css
+.hero-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 35, 50, 0.6);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+```
+
+VIDEO SOURCES (Royalty-free):
+1. Pexels.com - Search: "technology network", "digital", "data"
+2. Coverr.co - Tech category
+3. Pixabay.com - Videos section
+4. Videvo.net - Technology videos
+
+Recommended videos:
+- "Digital network connections with particles"
+- "Abstract technology background loop"
+- "Corporate city skyline timelapse"
+- "Code and data visualization"
+- "Futuristic technology HUD"
+
+COLOR SCHEME:
+- Video overlay: rgba(26, 35, 50, 0.6) - Dark navy with transparency
+- Badge background: rgba(0, 188, 212, 0.15)
+- Badge border/text: #00bcd4 (Cyan)
+- Company name: #ffffff (White)
+- "Vision to": #ffffff (White)
+- "Execution": #00bcd4 (Cyan)
+- Subtitle: rgba(255, 255, 255, 0.85)
+- Primary button: Gradient #00bcd4 to #0ea5e9
+- Secondary button border: #ffffff
+
+RESPONSIVE DESIGN:
+- Desktop (>1200px): Full layout as described
+- Tablet (768-1200px): 
+  * Font sizes: 80% of desktop
+  * Buttons stack if needed
+- Mobile (<768px):
+  * Font sizes: 60% of desktop
+  * Buttons stack vertically
+  * Badge text smaller
+  * Video still covers background
+
+PERFORMANCE OPTIMIZATION:
+- Lazy load video
+- Compress video (under 5MB)
+- Provide fallback image for slow connections
+- Use poster image while loading
+- Optimize for mobile (smaller video version)
+
+Keep: Cyan color theme, professional look, smooth animations
+Add: Video background, centered layout, advanced effects
+Remove: Static background, left-aligned layout
+Make it: Modern, impactful, enterprise-level professional
