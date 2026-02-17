@@ -63,11 +63,21 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-lg mb-6 text-white">Services</h4>
             <ul className="space-y-4">
-              {['Web Development', 'Mobile Apps', 'Cloud Solutions', 'AI & Machine Learning', 'Digital Strategy'].map((item) => (
-                <li key={item}>
-                  <span className="text-slate-400 hover:text-cyan-400 cursor-pointer transition-colors inline-block">
-                    {item}
-                  </span>
+              {[
+                { name: 'Web Development', id: 'services' },
+                { name: 'Software Development', id: 'services' },
+                { name: 'Mobile Apps', id: 'services' },
+                { name: 'Digital Marketing', id: 'services' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link 
+                    to={item.id} 
+                    smooth={true} 
+                    duration={500}
+                    className="text-slate-400 hover:text-cyan-400 cursor-pointer transition-colors inline-block"
+                  >
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>

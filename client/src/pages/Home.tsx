@@ -348,7 +348,7 @@ export default function Home() {
               initial={{ opacity: 1, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="section-main-heading company-name mt-[25px] !text-white !opacity-100"
+              className="mt-[25px] !text-white !opacity-100 font-extrabold text-[52px] lg:text-[96px] leading-tight text-center"
               style={{ color: '#FFFFFF', opacity: 1 }}
             >
               VyuhX Technologies
@@ -1008,7 +1008,7 @@ export default function Home() {
       </section>
 
       {/* --- TECHNOLOGY STACK --- */}
-      <section id="technologies" className="bg-slate-900 text-white overflow-hidden">
+      <section id="technologies" className="bg-[#0D1B2A] text-white overflow-hidden">
         <div className="container mx-auto mb-8 text-center">
           <h2 className="text-xl md:text-2xl font-display font-bold mb-1">Tools That Power Our Work</h2>
           <p className="text-slate-400 text-sm">Handpicked technologies for performance, scale and reliability.</p>
