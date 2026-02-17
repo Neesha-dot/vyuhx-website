@@ -1,0 +1,286 @@
+Fix the About Section right side - video/image is not showing. 
+The problem is CORS blocking external video URLs.
+
+SOLUTION - Use these methods instead:
+
+METHOD 1 - Use Unsplash Image (Most Reliable):
+Replace the empty right side container with this exact code:
+```jsx
+<div className="about-media-container">
+  <img 
+    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop" 
+    alt="VyuhX Technologies Team at Work"
+    className="about-media-image"
+    onError={(e) => {
+      e.target.src = "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80";
+    }}
+  />
+  <div className="about-media-caption">
+    Innovation in Motion • VyuhX Technologies
+  </div>
+</div>
+```
+
+METHOD 2 - Use YouTube Embed (For Video):
+```jsx
+<div className="about-media-container">
+  <div className="about-video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&rel=0&modestbranding=1"
+      title="VyuhX Technologies"
+      frameBorder="0"
+      allow="autoplay; encrypted-media"
+      allowFullScreen
+      className="about-iframe"
+    />
+  </div>
+  <div className="about-media-caption">
+    Innovation in Motion • VyuhX Technologies
+  </div>
+</div>
+```
+
+METHOD 3 - Animated CSS Visual (No External URL needed):
+If images also fail, create a beautiful animated tech visual with pure CSS:
+```jsx
+<div className="about-media-container">
+  <div className="about-animated-visual">
+    
+    {/* Animated circles */}
+    <div className="visual-ring ring-1"></div>
+    <div className="visual-ring ring-2"></div>
+    <div className="visual-ring ring-3"></div>
+    
+    {/* Center icon */}
+    <div className="visual-center">
+      <svg width="80" height="80" viewBox="0 0 24 24" 
+           fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 18L22 12L16 6M8 6L2 12L8 18" 
+              stroke="#00bcd4" strokeWidth="2" 
+              strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </div>
+
+    {/* Floating tech words */}
+    <div className="floating-tag tag-1">React</div>
+    <div className="floating-tag tag-2">Node.js</div>
+    <div className="floating-tag tag-3">Flutter</div>
+    <div className="floating-tag tag-4">Python</div>
+    <div className="floating-tag tag-5">AWS</div>
+    <div className="floating-tag tag-6">MongoDB</div>
+
+    {/* Connecting dots */}
+    <div className="dot dot-1"></div>
+    <div className="dot dot-2"></div>
+    <div className="dot dot-3"></div>
+    <div className="dot dot-4"></div>
+    <div className="dot dot-5"></div>
+    
+  </div>
+  <div className="about-media-caption">
+    Innovation in Motion • VyuhX Technologies
+  </div>
+</div>
+```
+
+CSS FOR METHOD 3:
+```css
+.about-media-container {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a1628 0%, #1a2b4a 50%, #0d1f35 100%);
+  box-shadow: 
+    0 20px 60px rgba(0, 188, 212, 0.15),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.about-animated-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animated Rings */
+.visual-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 188, 212, 0.3);
+  animation: ringRotate 8s linear infinite;
+}
+
+.ring-1 {
+  width: 180px;
+  height: 180px;
+  border-color: rgba(0, 188, 212, 0.5);
+  animation-duration: 6s;
+}
+
+.ring-2 {
+  width: 280px;
+  height: 280px;
+  border-color: rgba(0, 188, 212, 0.3);
+  animation-duration: 10s;
+  animation-direction: reverse;
+}
+
+.ring-3 {
+  width: 380px;
+  height: 380px;
+  border-color: rgba(0, 188, 212, 0.15);
+  animation-duration: 15s;
+}
+
+@keyframes ringRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Center Icon */
+.visual-center {
+  position: relative;
+  z-index: 10;
+  width: 100px;
+  height: 100px;
+  background: rgba(0, 188, 212, 0.1);
+  border: 2px solid rgba(0, 188, 212, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: centerPulse 3s ease-in-out infinite;
+  box-shadow: 
+    0 0 30px rgba(0, 188, 212, 0.3),
+    0 0 60px rgba(0, 188, 212, 0.1);
+}
+
+@keyframes centerPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+  }
+  50% { 
+    transform: scale(1.1); 
+    box-shadow: 0 0 50px rgba(0, 188, 212, 0.5);
+  }
+}
+
+/* Floating Technology Tags */
+.floating-tag {
+  position: absolute;
+  background: rgba(0, 188, 212, 0.12);
+  border: 1px solid rgba(0, 188, 212, 0.4);
+  color: #00bcd4;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+  animation: floatTag 4s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+.tag-1 { top: 15%; left: 10%; animation-delay: 0s; }
+.tag-2 { top: 10%; right: 10%; animation-delay: 0.5s; }
+.tag-3 { top: 40%; left: 5%; animation-delay: 1s; }
+.tag-4 { top: 40%; right: 5%; animation-delay: 1.5s; }
+.tag-5 { bottom: 20%; left: 12%; animation-delay: 2s; }
+.tag-6 { bottom: 20%; right: 12%; animation-delay: 2.5s; }
+
+@keyframes floatTag {
+  0%, 100% { 
+    transform: translateY(0px); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-12px); 
+    opacity: 1;
+  }
+}
+
+/* Dots */
+.dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #00bcd4;
+  border-radius: 50%;
+  animation: dotPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+}
+
+.dot-1 { top: 25%; left: 35%; animation-delay: 0s; }
+.dot-2 { top: 60%; left: 25%; animation-delay: 0.6s; }
+.dot-3 { top: 30%; right: 30%; animation-delay: 1.2s; }
+.dot-4 { bottom: 35%; right: 20%; animation-delay: 1.8s; }
+.dot-5 { top: 70%; left: 55%; animation-delay: 2.4s; }
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.8); opacity: 1; }
+}
+
+/* Caption */
+.about-media-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  color: rgba(255,255,255,0.9);
+  padding: 14px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  border-top: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+/* Image styles */
+.about-media-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about-media-container:hover .about-media-image {
+  transform: scale(1.05);
+}
+
+/* iframe */
+.about-video-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.about-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+```
+
+INSTRUCTION FOR AI:
+Try in this ORDER:
+1. FIRST try METHOD 1 (Unsplash image) - most reliable
+2. If that fails, use METHOD 3 (CSS Animation) - works 100% guaranteed, no external URLs needed, looks very professional
+3. METHOD 3 is actually the BEST option as it is:
+   - Unique and custom
+   - Shows technology stack
+   - Animated and impressive
+   - No loading issues
+   - Matches dark navy color theme perfectly
+
+USE METHOD 3 (CSS Animation) as the PRIMARY solution since it requires no external URLs and will always work perfectly.
+
+KEEP UNCHANGED:
+- All left side content
+- Section heading and colors
+- All other sections
