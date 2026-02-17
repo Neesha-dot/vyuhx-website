@@ -192,6 +192,115 @@
   gap: 5px;
 }
 
+/* Journey Section Styles */
+.journey-section {
+  background: #F0FAFA !important;
+}
+
+.journey-card {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.journey-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 40px rgba(0, 188, 212, 0.2) !important;
+}
+
+.journey-card::before {
+  content: attr(data-year);
+  position: absolute;
+  right: 10px;
+  bottom: -10px;
+  font-size: 80px;
+  color: rgba(0, 188, 212, 0.06);
+  font-weight: 900;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes goldPulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+  50% { box-shadow: 0 0 20px 8px rgba(255, 215, 0, 0.2); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+}
+
+.sih-victory-card {
+  animation: goldPulse 2s infinite !important;
+}
+
+.journey-line {
+  background: linear-gradient(to bottom, #00BCD4, #0097A7) !important;
+}
+
+@keyframes ripple {
+  0% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.4); }
+  100% { box-shadow: 0 0 0 12px rgba(0, 188, 212, 0); }
+}
+
+.journey-dot {
+  animation: ripple 1.5s infinite !important;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 188, 212, 0.6); }
+  50% { box-shadow: 0 0 15px rgba(0, 188, 212, 0.9); }
+}
+
+.journey-badge {
+  animation: pulse-glow 2s infinite !important;
+}
+
+/* Scroll Animations */
+.journey-card-wrapper {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.journey-card-wrapper.visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+/* Stats Strip */
+.stats-strip {
+  background: white;
+  border-top: 3px solid #00BCD4;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #00BCD4;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
 .section-padding {
   @apply py-20 lg:py-32 px-4 sm:px-6 lg:px-8;
 }

@@ -69,6 +69,31 @@ export default function Home() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  // --- Journey Intersection Observer ---
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const delay = parseInt(target.getAttribute('data-index') || '0') * 200;
+          setTimeout(() => {
+            target.classList.add('visible');
+          }, delay);
+        }
+      });
+    }, observerOptions);
+
+    const cards = document.querySelectorAll('.journey-card-wrapper');
+    cards.forEach(card => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -858,52 +883,74 @@ export default function Home() {
       </AnimatePresence>
 
       {/* --- JOURNEY SECTION --- */}
-      <section id="journey" className="py-20 bg-white overflow-hidden">
+      <section id="journey" className="py-20 journey-section overflow-hidden">
         <div className="container mx-auto px-6 md:px-8">
           <SectionHeading 
             subtitle="Milestones" 
-            title="Our Growth Journey" 
+            title={<>Our <span className="text-[#00BCD4]">Growth</span> Journey</>}
             description="From a small idea to a thriving tech ecosystem."
           />
 
           <div className="relative max-w-4xl mx-auto mt-10">
             {/* Center Line */}
-            <div className="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-200 via-blue-200 to-slate-200 -translate-x-1/2 md:translate-x-0"></div>
+            <div className="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-0.5 journey-line -translate-x-1/2 md:translate-x-0"></div>
 
             <div className="space-y-10">
               {[
-                { year: "2020", title: "The Foundation", desc: "VyuhX Technologies was born out of a dorm room with a vision to simplify tech for non-tech founders.", align: "right" },
-                { year: "2022", title: "First Major Enterprise Client", desc: "Successfully delivered a complex logistics platform for a national transport fleet.", align: "left" },
-                { year: "2024", title: "SIH Victory", desc: "Secured Gold at Smart India Hackathon, validating our innovative approach to problem solving.", align: "right" },
-                { year: "Present", title: "Global Expansion", desc: "Serving clients across 3 continents with a growing team of passionate engineers.", align: "left" }
+                { year: "2025", title: "The Foundation", icon: "🚀", tag: "Milestone", desc: "VyuhX Technologies was born with a vision to simplify tech for non-tech founders. 1 Vision, Infinite Possibilities.", align: "right" },
+                { year: "Dec 2025", title: "SIH Victory", icon: "🏆", tag: "Achievement", desc: "Secured Gold at Smart India Hackathon — Top 5 out of 500+ Teams, validating our innovative approach to problem solving.", align: "left", special: "sih-victory" },
+                { year: "Jan 2026", title: "First Major Client", icon: "🤝", tag: "Victory", desc: "Successfully delivered our first client project with 100% client satisfaction.", align: "right" },
+                { year: "Present", title: "Expansion", icon: "🌍", tag: "Present", desc: "We are actively working with new clients, taking on exciting projects and expanding our reach every single day.", align: "left" },
+                { year: "2026 & Beyond", title: "The Next Chapter", icon: "✨", tag: "Coming Soon", desc: "The next chapter is being written. Bigger projects, global clients, new horizons.", align: "right", special: "next-chapter" }
               ].map((item, idx) => (
-                <motion.div 
+                <div 
                   key={idx}
-                  initial={{ opacity: 0, x: item.align === "left" ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className={`relative flex items-center md:justify-between ${item.align === "left" ? "flex-row-reverse" : ""}`}
+                  data-index={idx}
+                  className={`journey-card-wrapper opacity-0 relative flex items-center md:justify-between ${item.align === "left" ? "flex-row-reverse" : ""} ${item.align === "left" ? "translate-x-[-60px]" : "translate-x-[60px]"}`}
                 >
                   <div className="hidden md:block w-5/12"></div>
                   
                   {/* Dot */}
-                  <div className="absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-white border-4 border-cyan-500 flex items-center justify-center z-10 -translate-x-1/2 md:translate-x-1/2 shadow-lg">
-                    <div className="w-2 h-2 rounded-full bg-cyan-500"></div>
+                  <div className="absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-white border-4 border-[#00BCD4] flex items-center justify-center z-10 -translate-x-1/2 md:translate-x-1/2 shadow-lg journey-dot">
+                    <div className="w-2 h-2 rounded-full bg-[#00BCD4]"></div>
                   </div>
 
                   <div className="ml-12 md:ml-0 w-full md:w-5/12 pl-4 md:pl-0">
-                    <Card className="p-4 border-l-4 border-l-cyan-500 shadow-md hover:shadow-lg transition-shadow">
-                      <div className="flex items-center gap-2 mb-1 text-cyan-600 font-bold text-base">
+                    <Card className={`journey-card p-6 shadow-md transition-all ${item.special === 'next-chapter' ? 'border-dashed opacity-75' : 'border-l-4 border-l-[#00BCD4]'} ${item.special === 'sih-victory' ? 'sih-victory-card' : ''}`} data-year={item.year}>
+                      <div className="flex items-center justify-between mb-3">
+                        <Badge className="journey-badge bg-[#00BCD4]/10 text-[#00BCD4] border-[#00BCD4]/20">
+                          {item.tag}
+                        </Badge>
+                        <span className="text-2xl">{item.icon}</span>
+                      </div>
+                      <div className="flex items-center gap-2 mb-1 text-[#00BCD4] font-bold text-base">
                         <Calendar size={16} />
                         {item.year}
                       </div>
                       <h4 className="text-lg font-bold text-slate-900 mb-1">{item.title}</h4>
-                      <p className="text-slate-600 text-sm">{item.desc}</p>
+                      <p className="text-slate-600 text-sm relative z-10">{item.desc}</p>
                     </Card>
                   </div>
-                </motion.div>
+                </div>
               ))}
+            </div>
+          </div>
+
+          {/* Stats Strip */}
+          <div className="stats-strip mt-20">
+            <div className="stats-container">
+              <div className="stat-item">
+                <span className="stat-number"><CountUp end={1} duration={2} enableScrollSpy scrollSpyOnce /></span>
+                <span className="stat-label">🏆 Gold Medal</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number"><CountUp end={10} duration={2} enableScrollSpy scrollSpyOnce />+</span>
+                <span className="stat-label">Projects</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number"><CountUp end={4} duration={2} enableScrollSpy scrollSpyOnce /></span>
+                <span className="stat-label">Milestones</span>
+              </div>
             </div>
           </div>
         </div>
