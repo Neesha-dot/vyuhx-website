@@ -1,0 +1,115 @@
+Update the Hero Section with these EXACT changes only:
+
+CHANGE 1 - FONT SIZE HIERARCHY (Most Important):
+Make it look like Image 2 (Airavata Technologies reference):
+
+"VyuhX Technologies" → BIGGEST font (6rem-7rem)
+- Bold, white, title case
+- Most dominant element on page
+- Letter spacing: 2-3px
+
+"VISION TO" → Medium font (3.5rem-4rem) 
+- Smaller than company name
+- White color
+- Font weight: 700
+
+"EXECUTION" → Same size as "VISION TO" (3.5rem-4rem)
+- Cyan color (#00bcd4)
+- Font weight: 700
+
+CHANGE 2 - SPACING/LAYOUT:
+- "PIONEERING DIGITAL EXCELLENCE" badge: 
+  * Keep below header
+  * Clear gap from header (20px)
+  * Then gap before company name (25px)
+- Reduce gaps between all elements so everything fits without scrolling
+- No scroll needed - all content visible in one screen
+
+CHANGE 3 - REPLACE THIS SUBTITLE:
+❌ Remove: "Architecting next-generation digital ecosystems for ambitious global enterprises."
+
+✅ Replace with:
+"We build powerful websites, smart software, and digital marketing 
+strategies that grow your business from idea to impact."
+
+- Font size: 1.1rem
+- Color: rgba(255,255,255,0.85)
+- Max width: 750px centered
+
+CHANGE 4 - REMOVE SCROLL DOWN:
+- Remove "SCROLL DOWN" text completely
+- Remove mouse icon/animation
+
+EXACT CSS CHANGES:
+
+/* Company Name - LARGEST like Airavata reference */
+.hero-company-name, h1.company-name {
+  font-size: clamp(3.5rem, 6vw, 6.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-transform: none;
+}
+
+/* Vision To - MEDIUM */
+.tagline-vision {
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
+  line-height: 1.1;
+}
+
+/* Execution - SAME AS VISION TO */
+.tagline-execution {
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 700;
+  color: #00bcd4;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+/* New subtitle */
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 750px;
+  margin: 0 auto 30px;
+  line-height: 1.7;
+}
+
+/* Remove scroll */
+.scroll-down, 
+.scroll-indicator,
+[class*="scroll"] {
+  display: none !important;
+}
+
+/* Fit everything on screen */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 20px;
+  gap: 5px;
+}
+
+KEEP UNCHANGED:
+- Font family (same existing fonts)
+- Background network animation
+- Button styles and colors
+- Header/navbar design
+- Color theme (#00bcd4 cyan)
+- "PIONEERING DIGITAL EXCELLENCE" badge style
+- All other sections
+
+FINAL VISUAL RESULT SHOULD BE:
+[PIONEERING DIGITAL EXCELLENCE] ← small badge
+VyuhX Technologies               ← BIGGEST (6rem+)
+VISION TO                        ← Medium (3.8rem)
+EXECUTION                        ← Medium cyan (3.8rem)
+We build powerful websites...    ← Small subtitle
+[View Portfolio] [Consult Us]    ← Buttons

@@ -196,7 +196,7 @@ export default function Home() {
           <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[150px] animate-pulse pointer-events-none delay-1000"></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center">
+        <div className="container mx-auto px-6 relative z-10 hero-content">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -208,28 +208,28 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#00bcd4]/15 border border-[#00bcd4] backdrop-blur-md mb-8"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#00bcd4]/15 border border-[#00bcd4] backdrop-blur-md mb-[20px]"
             >
               <span className="text-[#00bcd4] text-sm font-bold tracking-[2px] uppercase">Pioneering Digital Excellence</span>
             </motion.div>
             
             {/* Company Name */}
-            <motion.h2
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-white text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-wider mb-6 leading-tight"
+              className="company-name mt-[25px]"
             >
               VyuhX Technologies
-            </motion.h2>
+            </motion.h1>
 
             {/* Main Tagline */}
-            <div className="flex flex-col items-center mb-10 overflow-hidden">
+            <div className="flex flex-col items-center overflow-hidden">
               <motion.span
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-                className="text-white text-5xl md:text-7xl lg:text-[6rem] font-black leading-[1.1] uppercase tracking-tighter"
+                className="tagline-vision"
               >
                 Vision to
               </motion.span>
@@ -237,7 +237,7 @@ export default function Home() {
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-                className="text-[#00bcd4] text-5xl md:text-7xl lg:text-[6rem] font-black leading-[1.1] uppercase tracking-tighter animate-[glow_3s_infinite]"
+                className="tagline-execution animate-[glow_3s_infinite]"
               >
                 Execution
               </motion.span>
@@ -248,9 +248,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="text-white/85 text-lg md:text-[1.3rem] max-w-[800px] mx-auto mb-12 leading-[1.7] font-light"
+              className="hero-subtitle"
             >
-              Architecting next-generation digital ecosystems for ambitious global enterprises.
+              We build powerful websites, smart software, and digital marketing 
+              strategies that grow your business from idea to impact.
             </motion.p>
 
             {/* Buttons Container */}
@@ -275,22 +276,7 @@ export default function Home() {
           </motion.div>
         </div>
         
-        {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white flex flex-col items-center gap-2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-7 h-11 border-2 border-white/40 rounded-full flex justify-center p-1.5"
-          >
-            <div className="w-1.5 h-1.5 bg-[#00bcd4] rounded-full animate-bounce"></div>
-          </motion.div>
-          <span className="text-[10px] uppercase tracking-[3px] font-bold text-white/60">Scroll Down</span>
-        </motion.div>
+        {/* Scroll Indicator removed based on EXACT changes */}
       </section>
 
       {/* --- ABOUT SECTION --- */}
