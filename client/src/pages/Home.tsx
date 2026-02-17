@@ -44,6 +44,15 @@ export default function Home() {
   const [selectedService, setSelectedService] = useState<any>(null);
   const [isClosing, setIsClosing] = useState(false);
   
+  useEffect(() => {
+    if (selectedService) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => { document.body.style.overflow = "auto"; };
+  }, [selectedService]);
+
   const closeServiceModal = () => {
     setIsClosing(true);
     setTimeout(() => {
@@ -132,10 +141,25 @@ export default function Home() {
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
       features: ["Responsive Design", "SEO Optimization", "Performance First", "Modern UI/UX"],
       overview: "We craft fast, modern websites and web apps that don't just look great — they perform, convert, and scale with your business goals.",
-      technologies: ["React/Next.js", "Node.js", "TypeScript", "GraphQL", "AWS/Azure"],
-      process: ["Discovery & Planning", "UI/UX Design", "Development & Testing", "Launch & Support"],
-      timeline: "3-10 weeks",
-      deliverables: ["Fully Responsive Website", "Clean Source Code", "SEO-Ready Structure", "Post-Launch Support Doc"]
+      challenges: [
+        { title: "Slow Loading Speeds", icon: "⚠️" },
+        { title: "Poor Mobile Experience", icon: "⚠️" },
+        { title: "Security Vulnerabilities", icon: "⚠️" },
+        { title: "Difficulty Scaling", icon: "⚠️" }
+      ],
+      technologies: [
+        { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+        { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+        { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+        { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" }
+      ],
+      deliverables: [
+        { text: "Fully Responsive Website", icon: "📱" },
+        { text: "Clean Source Code", icon: "💻" },
+        { text: "SEO-Ready Structure", icon: "🔍" },
+        { text: "Post-Launch Support", icon: "🛠️" }
+      ]
     },
     {
       title: "Software Development",
@@ -144,10 +168,25 @@ export default function Home() {
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
       features: ["Scalable Backend", "API Integration", "Secure Architecture", "Agile Process"],
       overview: "From idea to production-ready software — we build robust, scalable systems that solve real problems and streamline your operations.",
-      technologies: ["Python", "Java", "Node.js", "PostgreSQL", "Docker", "Redis"],
-      process: ["Requirement Gathering", "System Architecture", "Agile Development", "Testing & Deployment"],
-      timeline: "6-18 weeks",
-      deliverables: ["Production-Ready Software", "API & Technical Docs", "QA Test Reports", "Ongoing Maintenance Plan"]
+      challenges: [
+        { title: "Legacy System Integration", icon: "⚠️" },
+        { title: "Data Silos", icon: "⚠️" },
+        { title: "High Operational Costs", icon: "⚠️" },
+        { title: "Inefficient Workflows", icon: "⚠️" }
+      ],
+      technologies: [
+        { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+        { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+        { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+        { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+        { name: "Redis", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" }
+      ],
+      deliverables: [
+        { text: "Production-Ready Software", icon: "🚀" },
+        { text: "API & Technical Docs", icon: "📄" },
+        { text: "QA Test Reports", icon: "🧪" },
+        { text: "Maintenance Plan", icon: "📋" }
+      ]
     },
     {
       title: "Mobile Apps",
@@ -156,10 +195,25 @@ export default function Home() {
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800",
       features: ["iOS & Android", "Offline Support", "Smooth Animations", "App Store Ready"],
       overview: "We build smooth, intuitive mobile apps for iOS and Android that users actually enjoy using — from MVP to full product launch.",
-      technologies: ["Flutter", "React Native", "Firebase", "iOS SDK", "Android SDK"],
-      process: ["User Research & Wireframe", "Prototype & Feedback", "App Development", "Store Submission"],
-      timeline: "8-16 weeks",
-      deliverables: ["iOS & Android App", "Play Store / App Store Listing", "Push Notification Setup", "30-Day Post Launch Support"]
+      challenges: [
+        { title: "Fragmented User Experience", icon: "⚠️" },
+        { title: "Slow Performance", icon: "⚠️" },
+        { title: "Complex Store Guidelines", icon: "⚠️" },
+        { title: "Maintenance Overhead", icon: "⚠️" }
+      ],
+      technologies: [
+        { name: "Flutter", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
+        { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
+        { name: "Swift", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" },
+        { name: "Kotlin", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" }
+      ],
+      deliverables: [
+        { text: "iOS & Android App", icon: "📱" },
+        { text: "Store Listings", icon: "🏪" },
+        { text: "Push Notification Setup", icon: "🔔" },
+        { text: "Post-Launch Support", icon: "🛠️" }
+      ]
     },
     {
       title: "Digital Marketing",
@@ -168,10 +222,23 @@ export default function Home() {
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
       features: ["Growth Hacking", "Social Media", "Data Analytics", "Brand Strategy"],
       overview: "We grow your brand online with strategies built around data, not guesswork — more traffic, better leads, and real measurable results.",
-      technologies: ["Google Ads", "Meta Ads", "SEO Tools", "Analytics", "HubSpot"],
-      process: ["Brand & Market Audit", "Strategy Building", "Campaign Launch", "Track & Optimize"],
-      timeline: "Ongoing / 1-3 months to see results",
-      deliverables: ["Custom Marketing Strategy", "Weekly Campaign Reports", "SEO Audit & Fixes", "Monthly Growth Analysis"]
+      challenges: [
+        { title: "Low Conversion Rates", icon: "⚠️" },
+        { title: "Weak Brand Visibility", icon: "⚠️" },
+        { title: "Ineffective Ad Spend", icon: "⚠️" },
+        { title: "Lack of Data Insights", icon: "⚠️" }
+      ],
+      technologies: [
+        { name: "Google Ads", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+        { name: "Meta Ads", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" },
+        { name: "HubSpot", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hubspot/hubspot-original.svg" }
+      ],
+      deliverables: [
+        { text: "Marketing Strategy", icon: "📈" },
+        { text: "Weekly Reports", icon: "📊" },
+        { text: "SEO Audit & Fixes", icon: "🔍" },
+        { text: "Growth Analysis", icon: "🚀" }
+      ]
     },
   ];
 
@@ -687,50 +754,91 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="modal-section">
-                    <h3 className="modal-section-title">Our Process</h3>
-                    <div className="modal-process">
-                      {selectedService.process.map((step: string, i: number) => (
-                        <div key={i} className="process-step">
-                          <div className="step-number">{i + 1}</div>
-                          <span className="step-text">{step}</span>
+                  <div className="challenges-section">
+                    <h3 className="section-heading-modal">Challenges We Solve</h3>
+                    <div className="challenges-list">
+                      {selectedService.challenges.map((challenge: any, i: number) => (
+                        <div key={i} className="challenge-item">
+                          <div className="challenge-icon">{challenge.icon}</div>
+                          <div className="challenge-content">
+                            <span className="challenge-title">{challenge.title}</span>
+                          </div>
                         </div>
                       ))}
+                    </div>
+                  </div>
+
+                  <div className="engagement-section">
+                    <h3 className="section-heading-modal">Engagement Models</h3>
+                    <div className="engagement-cards">
+                      <div className="engagement-card">
+                        <div className="engagement-icon">🔲</div>
+                        <div className="engagement-title">Fixed Price</div>
+                        <div className="engagement-desc">
+                          Best for defined scope projects
+                        </div>
+                      </div>
+                      <div className="engagement-card">
+                        <div className="engagement-icon">👥</div>
+                        <div className="engagement-title">Dedicated Team</div>
+                        <div className="engagement-desc">
+                          Full-time team for your project
+                        </div>
+                      </div>
+                      <div className="engagement-card">
+                        <div className="engagement-icon">⏱️</div>
+                        <div className="engagement-title">Hourly Basis</div>
+                        <div className="engagement-desc">
+                          Flexible hours as needed
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* RIGHT COLUMN */}
                 <div className="modal-right">
-                  <div className="modal-section mb-6 tech-section">
-                    <h3 className="modal-section-title">Technologies</h3>
-                    <div className="tech-tags">
-                      {selectedService.technologies.map((tech: string, i: number) => (
-                        <span key={i} className="tech-tag">{tech}</span>
+                  <div className="tech-logos-section">
+                    <h3 className="section-heading-modal">Technologies</h3>
+                    <div className="tech-logos-grid">
+                      {selectedService.technologies.map((tech: any, i: number) => (
+                        <div key={i} className="tech-logo-item">
+                          <div className="tech-logo-wrapper">
+                            <img 
+                              src={tech.logo} 
+                              alt={tech.name}
+                              className="tech-logo-img"
+                              onError={(e: any) => {
+                                e.target.style.display = 'none';
+                                e.target.nextSibling.style.display = 'flex';
+                              }}
+                            />
+                            <div 
+                              className="tech-logo-fallback"
+                              style={{display: 'none'}}
+                            >
+                              {tech.name.charAt(0)}
+                            </div>
+                          </div>
+                          <span className="tech-logo-name">{tech.name}</span>
+                        </div>
                       ))}
-                    </div>
-                  </div>
-
-                  <div className="timeline-box">
-                    <div className="timeline-icon">🕐</div>
-                    <div>
-                      <div className="timeline-label">Timeline</div>
-                      <div className="timeline-value">
-                        {selectedService.timeline}
-                      </div>
                     </div>
                   </div>
 
                   <div className="deliverables-box">
                     <div className="deliverables-header">
-                      <span className="deliverables-icon">✅</span>
+                      <span className="deliverables-icon-main">✅</span>
                       <span className="deliverables-title">Deliverables</span>
                     </div>
-                    <ul className="deliverables-list">
-                      {selectedService.deliverables.map((item: string, i: number) => (
-                        <li key={i}>{item}</li>
+                    <div className="deliverables-grid">
+                      {selectedService.deliverables.map((item: any, i: number) => (
+                        <div key={i} className="deliverable-item">
+                          <span className="deliverable-icon">{item.icon}</span>
+                          <span className="deliverable-text">{item.text}</span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               </div>

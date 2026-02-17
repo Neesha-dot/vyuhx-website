@@ -1,0 +1,718 @@
+Update the Service Modals with completely redesigned sections.
+Apply these changes to ALL 4 service modals.
+
+REMOVE THESE SECTIONS FROM ALL MODALS:
+❌ Remove: "Our Process" (4 numbered steps)
+❌ Remove: "Timeline" box (weeks duration)
+❌ Remove: Plain text deliverables (without icons)
+❌ Remove: Plain pill technology badges (text only)
+
+ADD THESE NEW SECTIONS TO ALL MODALS:
+
+═══════════════════════════════════════
+SECTION 1 - "Challenges We Solve"
+(Replaces "Our Process")
+═══════════════════════════════════════
+
+Design:
+- Section heading: "Challenges We Solve" (cyan color)
+- 4 items with warning/problem icons
+- Each item has icon + bold problem title + small description
+- Cards with light red/orange tint background
+- Icon: ⚠️ or custom SVG warning icons
+```jsx
+<div className="challenges-section">
+  <h3 className="section-heading">Challenges We Solve</h3>
+  <div className="challenges-list">
+    {service.challenges.map((challenge, i) => (
+      <div key={i} className="challenge-item">
+        <div className="challenge-icon">{challenge.icon}</div>
+        <div className="challenge-content">
+          <span className="challenge-title">{challenge.title}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+```
+```css
+.challenges-section {
+  margin-bottom: 24px;
+}
+
+.challenges-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.challenge-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  animation: challengeSlideIn 0.4s ease backwards;
+}
+
+.challenge-item:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: translateX(5px);
+}
+
+.challenge-item:nth-child(1) { animation-delay: 0.25s; }
+.challenge-item:nth-child(2) { animation-delay: 0.32s; }
+.challenge-item:nth-child(3) { animation-delay: 0.39s; }
+.challenge-item:nth-child(4) { animation-delay: 0.46s; }
+
+@keyframes challengeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.challenge-icon {
+  font-size: 1.2rem;
+  min-width: 28px;
+  text-align: center;
+}
+
+.challenge-title {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: #dc2626;
+}
+```
+
+═══════════════════════════════════════
+SECTION 2 - "Engagement Models"
+(Replaces "Timeline")
+═══════════════════════════════════════
+
+Design:
+- Section heading: "Engagement Models" (cyan color)
+- 3 cards side by side
+- Each card: icon + title + short description
+- Clean minimal cards with hover effect
+```jsx
+<div className="engagement-section">
+  <h3 className="section-heading">Engagement Models</h3>
+  <div className="engagement-cards">
+    <div className="engagement-card">
+      <div className="engagement-icon">🔲</div>
+      <div className="engagement-title">Fixed Price</div>
+      <div className="engagement-desc">
+        Best for defined scope projects
+      </div>
+    </div>
+    <div className="engagement-card">
+      <div className="engagement-icon">👥</div>
+      <div className="engagement-title">Dedicated Team</div>
+      <div className="engagement-desc">
+        Full-time team for your project
+      </div>
+    </div>
+    <div className="engagement-card">
+      <div className="engagement-icon">⏱️</div>
+      <div className="engagement-title">Hourly Basis</div>
+      <div className="engagement-desc">
+        Flexible hours as needed
+      </div>
+    </div>
+  </div>
+</div>
+```
+```css
+.engagement-section {
+  margin-bottom: 20px;
+  animation: contentSlideIn 0.4s ease 0.35s backwards;
+}
+
+.engagement-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.engagement-card {
+  padding: 16px 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 188, 212, 0.06),
+    rgba(14, 165, 233, 0.06)
+  );
+  border: 1.5px solid rgba(0, 188, 212, 0.2);
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
+  animation: engagementPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.engagement-card:nth-child(1) { animation-delay: 0.38s; }
+.engagement-card:nth-child(2) { animation-delay: 0.44s; }
+.engagement-card:nth-child(3) { animation-delay: 0.50s; }
+
+@keyframes engagementPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.engagement-card:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 188, 212, 0.12),
+    rgba(14, 165, 233, 0.12)
+  );
+  border-color: rgba(0, 188, 212, 0.5);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.15);
+}
+
+.engagement-icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.engagement-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a2b4a;
+  margin-bottom: 5px;
+}
+
+.engagement-desc {
+  font-size: 0.78rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+```
+
+═══════════════════════════════════════
+SECTION 3 - "Deliverables" WITH ICONS
+(Replaces plain text deliverables)
+═══════════════════════════════════════
+
+Design:
+- Same green background box
+- Each item now has emoji icon + text
+- Icons make it visually rich
+- Smooth stagger animation
+```jsx
+<div className="deliverables-box">
+  <div className="deliverables-header">
+    <span className="deliverables-icon-main">✅</span>
+    <span className="deliverables-title">Deliverables</span>
+  </div>
+  <div className="deliverables-grid">
+    {service.deliverables.map((item, i) => (
+      <div key={i} className="deliverable-item">
+        <span className="deliverable-icon">{item.icon}</span>
+        <span className="deliverable-text">{item.text}</span>
+      </div>
+    ))}
+  </div>
+</div>
+```
+```css
+.deliverables-box {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.06),
+    rgba(5, 150, 105, 0.04)
+  );
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  animation: contentSlideIn 0.4s ease 0.45s backwards;
+}
+
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.deliverable-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.12);
+  transition: all 0.3s ease;
+  animation: deliverablePopIn 0.35s 
+    cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.deliverable-item:nth-child(1) { animation-delay: 0.50s; }
+.deliverable-item:nth-child(2) { animation-delay: 0.56s; }
+.deliverable-item:nth-child(3) { animation-delay: 0.62s; }
+.deliverable-item:nth-child(4) { animation-delay: 0.68s; }
+
+@keyframes deliverablePopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.deliverable-item:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.deliverable-icon {
+  font-size: 1.2rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+.deliverable-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #065f46;
+  line-height: 1.3;
+}
+```
+
+═══════════════════════════════════════
+SECTION 4 - TECHNOLOGY LOGOS WITH NAMES
+(Replaces plain pill badges)
+═══════════════════════════════════════
+
+Design:
+- Each tech shown as: Logo image + Name below
+- Grid layout (4-5 per row)
+- Hover: lift + glow effect
+- Use CDN logo URLs (no download needed)
+```jsx
+<div className="tech-logos-section">
+  <h3 className="section-heading">Technologies</h3>
+  <div className="tech-logos-grid">
+    {service.technologies.map((tech, i) => (
+      <div key={i} className="tech-logo-item">
+        <div className="tech-logo-wrapper">
+          <img 
+            src={tech.logo} 
+            alt={tech.name}
+            className="tech-logo-img"
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'flex';
+            }}
+          />
+          <div 
+            className="tech-logo-fallback"
+            style={{display: 'none'}}
+          >
+            {tech.name.charAt(0)}
+          </div>
+        </div>
+        <span className="tech-logo-name">{tech.name}</span>
+      </div>
+    ))}
+  </div>
+</div>
+```
+```css
+.tech-logos-section {
+  margin-bottom: 20px;
+}
+
+.tech-logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.tech-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: default;
+  animation: logoPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.tech-logo-item:nth-child(1) { animation-delay: 0.28s; }
+.tech-logo-item:nth-child(2) { animation-delay: 0.33s; }
+.tech-logo-item:nth-child(3) { animation-delay: 0.38s; }
+.tech-logo-item:nth-child(4) { animation-delay: 0.43s; }
+.tech-logo-item:nth-child(5) { animation-delay: 0.48s; }
+.tech-logo-item:nth-child(6) { animation-delay: 0.53s; }
+
+@keyframes logoPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.tech-logo-wrapper {
+  width: 52px;
+  height: 52px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tech-logo-item:hover .tech-logo-wrapper {
+  transform: translateY(-6px) scale(1.1);
+  border-color: rgba(0, 188, 212, 0.4);
+  box-shadow: 
+    0 8px 20px rgba(0, 188, 212, 0.2),
+    0 0 0 3px rgba(0, 188, 212, 0.1);
+  background: white;
+}
+
+.tech-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tech-logo-fallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #00bcd4, #0ea5e9);
+  border-radius: 8px;
+  color: white;
+  font-weight: 800;
+  font-size: 1.1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-logo-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #475569;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.tech-logo-item:hover .tech-logo-name {
+  color: #00bcd4;
+}
+```
+
+═══════════════════════════════════════
+BONUS - "Tools & Platforms" section
+═══════════════════════════════════════
+```jsx
+<div className="tools-section">
+  <h3 className="section-heading-small">Tools & Platforms</h3>
+  <div className="tools-grid">
+    {service.tools.map((tool, i) => (
+      <div key={i} className="tool-item">
+        <img src={tool.logo} alt={tool.name} className="tool-logo"/>
+        <span className="tool-name">{tool.name}</span>
+      </div>
+    ))}
+  </div>
+</div>
+```
+```css
+.tools-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(0, 188, 212, 0.2);
+  animation: contentSlideIn 0.4s ease 0.55s backwards;
+}
+
+.section-heading-small {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tool-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #f1f5f9;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.tool-item:hover {
+  background: rgba(0, 188, 212, 0.08);
+  border-color: rgba(0, 188, 212, 0.3);
+  transform: translateY(-2px);
+}
+
+.tool-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.tool-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+}
+```
+
+═══════════════════════════════════════
+COMPLETE DATA FOR ALL 4 MODALS:
+═══════════════════════════════════════
+```javascript
+const servicesData = [
+
+  // 1. WEB DEVELOPMENT
+  {
+    id: 1,
+    title: "Web Development",
+    overview: "We craft fast, modern websites that don't just look great — they perform, convert, and scale with your business goals.",
+    
+    challenges: [
+      { icon: "🐌", title: "Slow Performance Issues" },
+      { icon: "📱", title: "Poor Mobile Experience" },
+      { icon: "🔍", title: "Low Search Engine Visibility" },
+      { icon: "🔒", title: "Security Vulnerabilities" }
+    ],
+    
+    technologies: [
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+      { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" }
+    ],
+    
+    tools: [
+      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+      { name: "Jira", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" },
+      { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" }
+    ],
+    
+    deliverables: [
+      { icon: "🌐", text: "Fully Responsive Website" },
+      { icon: "💻", text: "Clean Source Code" },
+      { icon: "🔍", text: "SEO-Ready Structure" },
+      { icon: "🛡️", text: "Post-Launch Support" }
+    ]
+  },
+
+  // 2. SOFTWARE DEVELOPMENT
+  {
+    id: 2,
+    title: "Software Development",
+    overview: "From idea to production-ready product — we engineer robust systems that solve real problems and streamline your operations.",
+    
+    challenges: [
+      { icon: "🐢", title: "Slow Performance Issues" },
+      { icon: "🔄", title: "Legacy System Migration" },
+      { icon: "📈", title: "Scalability Problems" },
+      { icon: "🔓", title: "Security Vulnerabilities" }
+    ],
+    
+    technologies: [
+      { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+      { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+      { name: "Redis", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" }
+    ],
+    
+    tools: [
+      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Jira", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" },
+      { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+      { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" }
+    ],
+    
+    deliverables: [
+      { icon: "📦", text: "Production-Ready Software" },
+      { icon: "📄", text: "API & Technical Docs" },
+      { icon: "✅", text: "QA Test Reports" },
+      { icon: "🔧", text: "Ongoing Maintenance Plan" }
+    ]
+  },
+
+  // 3. MOBILE APPS
+  {
+    id: 3,
+    title: "Mobile Apps",
+    overview: "We build smooth, intuitive apps for iOS & Android that users enjoy — from MVP to full product launch.",
+    
+    challenges: [
+      { icon: "💥", title: "Frequent App Crashes" },
+      { icon: "🔋", title: "High Battery Drain" },
+      { icon: "⏳", title: "Slow App Loading Time" },
+      { icon: "🏪", title: "App Store Rejection Issues" }
+    ],
+    
+    technologies: [
+      { name: "Flutter", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
+      { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
+      { name: "Swift", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" },
+      { name: "Kotlin", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" },
+      { name: "GraphQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" }
+    ],
+    
+    tools: [
+      { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Xcode", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xcode/xcode-original.svg" },
+      { name: "Android Studio", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" }
+    ],
+    
+    deliverables: [
+      { icon: "📱", text: "iOS & Android App" },
+      { icon: "🏪", text: "Store Listing Setup" },
+      { icon: "🔔", text: "Push Notification Setup" },
+      { icon: "🛠️", text: "30-Day Post Launch Support" }
+    ]
+  },
+
+  // 4. DIGITAL MARKETING
+  {
+    id: 4,
+    title: "Digital Marketing",
+    overview: "We grow your brand online with data-driven strategies — more traffic, better leads, and real measurable results.",
+    
+    challenges: [
+      { icon: "👻", title: "Low Online Visibility" },
+      { icon: "📉", title: "Poor Lead Conversion Rate" },
+      { icon: "💸", title: "High Ad Spend, Low Returns" },
+      { icon: "😶", title: "No Clear Brand Identity" }
+    ],
+    
+    technologies: [
+      { name: "Google Ads", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+      { name: "Analytics", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+      { name: "WordPress", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" }
+    ],
+    
+    tools: [
+      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+      { name: "Google", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
+      { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" }
+    ],
+    
+    deliverables: [
+      { icon: "📊", text: "Custom Marketing Strategy" },
+      { icon: "📈", text: "Weekly Campaign Reports" },
+      { icon: "🔍", text: "SEO Audit & Fixes" },
+      { icon: "🚀", text: "Monthly Growth Analysis" }
+    ]
+  }
+];
+```
+
+BONUS - POST LAUNCH SUPPORT BLOCK:
+```jsx
+<div className="post-launch-block">
+  <div className="post-launch-icon">🚀</div>
+  <div className="post-launch-content">
+    <div className="post-launch-title">Post-Launch Support</div>
+    <div className="post-launch-desc">
+      We stay with you after delivery — bug fixes, 
+      updates & dedicated support included.
+    </div>
+  </div>
+</div>
+```
+```css
+.post-launch-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.08),
+    rgba(168, 85, 247, 0.06)
+  );
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  margin-top: 14px;
+  animation: contentSlideIn 0.4s ease 0.6s backwards;
+  transition: all 0.3s ease;
+}
+
+.post-launch-block:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.12),
+    rgba(168, 85, 247, 0.1)
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.15);
+}
+
+.post-launch-icon {
+  font-size: 1.8rem;
+}
+
+.post-launch-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #4f46e5;
+  margin-bottom: 3px;
+}
+
+.post-launch-desc {
+  font-size: 0.82rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+```
+
+FINAL MODAL LAYOUT:
