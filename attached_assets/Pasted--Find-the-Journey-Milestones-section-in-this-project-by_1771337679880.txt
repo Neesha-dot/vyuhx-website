@@ -1,0 +1,70 @@
+"Find the Journey/Milestones section in this project by searching all .jsx .tsx .js .html .css files. Do NOT create any new files or new sections. Do NOT touch any other section. Only edit the existing journey/milestones section code in place. Make these exact changes:
+PART 1 — UPDATE TIMELINE CONTENT ONLY (find existing milestone array or list and update these values in place):
+
+Entry 1: year="2025" title="The Foundation" icon="🚀" tag="Milestone" description="VyuhX Technologies was born with a vision to simplify tech for non-tech founders. 1 Vision, Infinite Possibilities."
+Entry 2: year="Dec 2025" title="SIH Victory" icon="🏆" tag="Achievement" description="Secured Gold at Smart India Hackathon — Top 5 out of 500+ Teams, validating our innovative approach to problem solving."
+Entry 3: year="Jan 2026" title="First Major Client" icon="🤝" tag="Victory" description="Successfully delivered our first client project with 100% client satisfaction."
+Entry 4: year="Present" title="Expansion" icon="🌍" tag="Present" description="We are actively working with new clients, taking on exciting projects and expanding our reach every single day."
+Entry 5: year="2026 & Beyond" title="The Next Chapter" icon="✨" tag="Coming Soon" description="The next chapter is being written. Bigger projects, global clients, new horizons." — give this card a dashed border style and slightly faded opacity 0.75
+
+PART 2 — UPDATE EXISTING CSS/STYLES for journey section only:
+Section:
+
+background: #F0FAFA
+
+Cards (find existing card CSS class and update):
+
+background: rgba(255,255,255,0.7)
+backdrop-filter: blur(10px)
+position: relative
+overflow: hidden
+transition: transform 0.3s ease, box-shadow 0.3s ease
+Add hover effect: transform translateY(-8px) and box-shadow 0 20px 40px rgba(0,188,212,0.2)
+Add ::before pseudo element on each card: content is the year text, font-size 80px, color rgba(0,188,212,0.06), position absolute, right 10px, bottom -10px, font-weight 900, z-index 0, pointer-events none
+
+SIH Victory card specifically:
+
+Add CSS keyframe animation called goldPulse: 0% box-shadow 0 0 0 0 rgba(255,215,0,0.4), 50% box-shadow 0 0 20px 8px rgba(255,215,0,0.2), 100% box-shadow 0 0 0 0 rgba(255,215,0,0.4)
+Apply animation: goldPulse 2s infinite
+
+Timeline vertical line:
+
+background: linear-gradient(to bottom, #00BCD4, #0097A7)
+
+Dots:
+
+Add CSS keyframe animation called ripple: 0% box-shadow 0 0 0 0 rgba(0,188,212,0.4), 100% box-shadow 0 0 0 12px rgba(0,188,212,0)
+Apply animation: ripple 1.5s infinite
+
+Heading:
+
+Find the word "Growth" in "Our Growth Journey" and wrap it in a span with color #00BCD4
+
+MILESTONES badge:
+
+Add animation: pulse glow using box-shadow 0 0 8px rgba(0,188,212,0.6) keyframe 2s infinite
+
+PART 3 — ADD SCROLL ANIMATIONS using Intersection Observer (add this JS inside the existing journey component or at bottom of existing JS file):
+
+All timeline cards start with opacity 0
+Left side cards start with transform translateX(-60px)
+Right side cards start with transform translateX(60px)
+When card enters viewport via Intersection Observer, add class "visible" which sets opacity 1 and translateX(0)
+Transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+Each card gets 200ms extra delay based on its index
+
+PART 4 — ADD STATS STRIP inside the journey section div at the bottom (do not create a new section, append it inside the existing journey section container div):
+Add a div with 3 stats in a horizontal row:
+
+🏆 Gold Medal
+10+ Projects
+4 Milestones
+
+Style: white background, teal top-border 3px, padding 30px, display flex, justify-content space-around, each stat has a large teal number and small grey label below it.
+Add count-up JS animation triggered by Intersection Observer.
+STRICT RULES:
+
+Only edit journey/milestones section — zero changes anywhere else
+Do not create new components or new sections
+Do not rename any existing classes that other sections might use — create new specific class names like .journey-card, .journey-line, .journey-dot
+Tell me exactly which files you edited after completing"**
