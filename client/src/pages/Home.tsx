@@ -348,7 +348,7 @@ export default function Home() {
               initial={{ opacity: 1, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="mt-[25px] !text-white !opacity-100 font-extrabold text-[52px] lg:text-[96px] leading-tight text-center"
+              className="mt-[25px] !text-white !opacity-100 font-extrabold text-[42px] lg:text-[80px] leading-tight text-center"
               style={{ color: '#FFFFFF', opacity: 1 }}
             >
               VyuhX Technologies
@@ -578,12 +578,12 @@ export default function Home() {
       </section>
 
       {/* --- VIDEO CTA SECTION --- */}
-      <section className="relative overflow-hidden bg-slate-900 !py-[20px] !my-[10px]" style={{ paddingTop: '20px', paddingBottom: '20px', marginTop: '10px', marginBottom: '10px' }}>
+      <section className="relative overflow-hidden bg-[#151f2e] !py-[20px] !my-[10px]" style={{ paddingTop: '20px', paddingBottom: '20px', marginTop: '10px', marginBottom: '10px' }}>
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline className="absolute w-full h-full object-cover opacity-30 grayscale brightness-50">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-technological-and-futuristic-digital-background-40781-large.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/40 to-slate-900"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#151f2e] via-[#151f2e]/40 to-[#151f2e]"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
@@ -591,7 +591,7 @@ export default function Home() {
               initial={{ opacity: 1, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 md:p-16 rounded-[3rem] text-center md:text-left"
+              className="bg-[#1a2535] backdrop-blur-xl border border-white/10 p-10 md:p-16 rounded-[3rem] text-center md:text-left"
             >
               <h2 className="section-main-heading !text-white !opacity-100 mb-6" style={{ color: '#FFFFFF', opacity: 1 }}>
                 Ready to redefine <br/>
