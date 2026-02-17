@@ -346,23 +346,33 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/10 border border-slate-100 aspect-video group bg-slate-100"
+              className="about-media-container"
             >
-              <video
-                autoPlay
-                loop
-                muted
+              <video 
+                autoPlay 
+                loop 
+                muted 
                 playsInline
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="about-video"
+                onError={(e: any) => {
+                  e.target.style.display = 'none';
+                  const fallback = e.target.parentElement.querySelector('.about-fallback-img');
+                  if (fallback) fallback.style.display = 'block';
+                }}
               >
                 <source 
-                  src="https://player.vimeo.com/external/494163967.sd.mp4?s=6a2b53c5f4d89a66d0e6b5a37497d0c75c88d8b4&profile_id=164&oauth2_token_id=57447761" 
+                  src="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4" 
                   type="video/mp4" 
                 />
               </video>
-              <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/40 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 p-4 backdrop-blur-md bg-white/10 rounded-2xl border border-white/20">
-                <p className="text-white text-sm font-medium">Innovation in Motion • VyuhX Technologies</p>
+              <img 
+                className="about-fallback-img about-image" 
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop" 
+                alt="VyuhX Technologies Team"
+                style={{display: 'none'}}
+              />
+              <div className="about-video-caption">
+                Innovation in Motion • VyuhX Technologies
               </div>
             </motion.div>
           </div>

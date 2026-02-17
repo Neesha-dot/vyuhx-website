@@ -1,0 +1,173 @@
+In the About Section, the right side is completely empty/blank. 
+Fix it by automatically finding and adding a professional image or video.
+
+CURRENT PROBLEM:
+- Right side of About section shows empty gray box
+- Text "Innovation in Motion • VyuhX Technologies" is there but no media
+
+TASK:
+Automatically search and integrate ONE of these options (choose best fit):
+
+OPTION 1 - VIDEO (Most Impressive):
+Use one of these direct embed links - pick the most professional looking one:
+
+From Pexels (direct video URLs):
+- https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4
+(Digital technology, people working)
+
+- https://videos.pexels.com/video-files/7988079/7988079-uhd_3840_2160_25fps.mp4  
+(Tech/coding workspace)
+
+- https://videos.pexels.com/video-files/3257828/3257828-uhd_2560_1440_25fps.mp4
+(Business team working with technology)
+
+- https://videos.pexels.com/video-files/6804080/6804080-hd_1920_1080_25fps.mp4
+(Developer coding on laptop)
+
+OPTION 2 - IMAGE (Clean Professional):
+Use one of these direct Unsplash image URLs:
+
+- https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800
+(Team collaboration/tech workspace)
+
+- https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800
+(Team working on laptops - startup feel)
+
+- https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800
+(Laptop with code - tech aesthetic)
+
+- https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800
+(Developer coding closeup)
+
+- https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800
+(Code on monitor - professional)
+
+IMPLEMENTATION:
+
+For VIDEO - use this code:
+```jsx
+<div className="about-media-container">
+  <video 
+    autoPlay 
+    loop 
+    muted 
+    playsInline
+    className="about-video"
+  >
+    <source 
+      src="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4" 
+      type="video/mp4" 
+    />
+  </video>
+  <div className="about-video-caption">
+    Innovation in Motion • VyuhX Technologies
+  </div>
+</div>
+```
+
+For IMAGE - use this code:
+```jsx
+<div className="about-media-container">
+  <img 
+    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop" 
+    alt="VyuhX Technologies Team"
+    className="about-image"
+  />
+  <div className="about-image-caption">
+    Innovation in Motion • VyuhX Technologies
+  </div>
+</div>
+```
+
+CSS FOR MEDIA:
+```css
+.about-media-container {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 188, 212, 0.15);
+}
+
+.about-video,
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.about-video-caption,
+.about-image-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.about-media-container:hover .about-video,
+.about-media-container:hover .about-image {
+  transform: scale(1.03);
+  transition: transform 0.5s ease;
+}
+
+/* Glow border effect */
+.about-media-container::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 188, 212, 0.3), 
+    transparent 50%,
+    rgba(0, 188, 212, 0.1)
+  );
+  border-radius: 22px;
+  z-index: -1;
+}
+```
+
+PRIORITY ORDER:
+1. Try VIDEO first (more impressive and dynamic)
+2. If video doesn't load, fallback to IMAGE
+3. Choose media that shows: team working, coding, technology, or startup workspace
+
+FALLBACK IMAGE TAG:
+```jsx
+<video autoPlay loop muted playsInline className="about-video"
+  onError={(e) => {
+    e.target.style.display = 'none';
+    document.querySelector('.about-fallback-img').style.display = 'block';
+  }}
+>
+  <source src="VIDEO_URL" type="video/mp4" />
+</video>
+<img 
+  className="about-fallback-img" 
+  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" 
+  alt="VyuhX Team"
+  style={{display: 'none'}}
+/>
+```
+
+KEEP UNCHANGED:
+- All left side content (text, points, heading)
+- Section layout and colors
+- All other sections
+- Existing styling
+
+RESULT:
+- Right side should show dynamic video OR professional image
+- Media should have rounded corners (20px)
+- Caption "Innovation in Motion • VyuhX Technologies" stays at bottom
+- Subtle cyan glow border around media
+- Hover zoom effect on media

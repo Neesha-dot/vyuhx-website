@@ -195,3 +195,57 @@
 .section-padding {
   @apply py-20 lg:py-32 px-4 sm:px-6 lg:px-8;
 }
+
+/* About Section Media Styles */
+.about-media-container {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 188, 212, 0.15);
+}
+
+.about-video,
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.about-video-caption,
+.about-image-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  z-index: 2;
+}
+
+.about-media-container:hover .about-video,
+.about-media-container:hover .about-image {
+  transform: scale(1.03);
+}
+
+.about-media-container::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 188, 212, 0.3), 
+    transparent 50%,
+    rgba(0, 188, 212, 0.1)
+  );
+  border-radius: 22px;
+  z-index: -1;
+}
