@@ -887,7 +887,7 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-8">
           <SectionHeading 
             subtitle="Milestones" 
-            title={<>Our <span className="text-[#00BCD4]">Growth</span> Journey</>}
+            title="Our Growth Journey"
             description="From a small idea to a thriving tech ecosystem."
           />
 
@@ -1009,8 +1009,8 @@ export default function Home() {
       {/* --- TECHNOLOGY STACK --- */}
       <section id="technologies" className="py-16 bg-slate-900 text-white overflow-hidden">
         <div className="container mx-auto mb-8 text-center">
-          <h2 className="text-xl md:text-2xl font-display font-bold mb-1">Powered by Modern Tech</h2>
-          <p className="text-slate-400 text-sm">We use the best tools to build robust solutions.</p>
+          <h2 className="text-xl md:text-2xl font-display font-bold mb-1">Tools That Power Our Work</h2>
+          <p className="text-slate-400 text-sm">Handpicked technologies for performance, scale and reliability.</p>
         </div>
         
         <div className="relative" ref={emblaRef}>
