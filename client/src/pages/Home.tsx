@@ -41,7 +41,25 @@ const formSchema = insertContactMessageSchema.extend({
 
 export default function Home() {
   const contactMutation = useContactForm();
+  const [selectedService, setSelectedService] = useState<any>(null);
+  const [isClosing, setIsClosing] = useState(false);
   
+  const closeServiceModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setSelectedService(null);
+      setIsClosing(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeServiceModal();
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -109,31 +127,51 @@ export default function Home() {
   const services = [
     {
       title: "Web Development",
-      icon: Monitor,
+      icon: <Code2 />,
       desc: "High-performance, scalable web applications using modern frameworks like React and Next.js.",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
-      features: ["Responsive Design", "SEO Optimization", "Performance First", "Modern UI/UX"]
+      features: ["Responsive Design", "SEO Optimization", "Performance First", "Modern UI/UX"],
+      overview: "We craft fast, modern websites and web apps that don't just look great — they perform, convert, and scale with your business goals.",
+      technologies: ["React/Next.js", "Node.js", "TypeScript", "GraphQL", "AWS/Azure"],
+      process: ["Discovery & Planning", "UI/UX Design", "Development & Testing", "Launch & Support"],
+      timeline: "3-10 weeks",
+      deliverables: ["Fully Responsive Website", "Clean Source Code", "SEO-Ready Structure", "Post-Launch Support Doc"]
     },
     {
       title: "Software Development",
-      icon: Code2,
+      icon: <Cpu />,
       desc: "Custom software solutions engineered to solve complex business challenges with efficiency and scale.",
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
-      features: ["Scalable Backend", "API Integration", "Secure Architecture", "Agile Process"]
+      features: ["Scalable Backend", "API Integration", "Secure Architecture", "Agile Process"],
+      overview: "From idea to production-ready software — we build robust, scalable systems that solve real problems and streamline your operations.",
+      technologies: ["Python", "Java", "Node.js", "PostgreSQL", "Docker", "Redis"],
+      process: ["Requirement Gathering", "System Architecture", "Agile Development", "Testing & Deployment"],
+      timeline: "6-18 weeks",
+      deliverables: ["Production-Ready Software", "API & Technical Docs", "QA Test Reports", "Ongoing Maintenance Plan"]
     },
     {
       title: "Mobile Apps",
-      icon: Smartphone,
+      icon: <Smartphone />,
       desc: "Native and cross-platform mobile experiences that users love, built with Flutter and React Native.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800",
-      features: ["iOS & Android", "Offline Support", "Smooth Animations", "App Store Ready"]
+      features: ["iOS & Android", "Offline Support", "Smooth Animations", "App Store Ready"],
+      overview: "We build smooth, intuitive mobile apps for iOS and Android that users actually enjoy using — from MVP to full product launch.",
+      technologies: ["Flutter", "React Native", "Firebase", "iOS SDK", "Android SDK"],
+      process: ["User Research & Wireframe", "Prototype & Feedback", "App Development", "Store Submission"],
+      timeline: "8-16 weeks",
+      deliverables: ["iOS & Android App", "Play Store / App Store Listing", "Push Notification Setup", "30-Day Post Launch Support"]
     },
     {
       title: "Digital Marketing",
-      icon: Globe,
+      icon: <Globe />,
       desc: "Comprehensive marketing campaigns that drive traffic, engagement, and conversion.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-      features: ["Growth Hacking", "Social Media", "Data Analytics", "Brand Strategy"]
+      features: ["Growth Hacking", "Social Media", "Data Analytics", "Brand Strategy"],
+      overview: "We grow your brand online with strategies built around data, not guesswork — more traffic, better leads, and real measurable results.",
+      technologies: ["Google Ads", "Meta Ads", "SEO Tools", "Analytics", "HubSpot"],
+      process: ["Brand & Market Audit", "Strategy Building", "Campaign Launch", "Track & Optimize"],
+      timeline: "Ongoing / 1-3 months to see results",
+      deliverables: ["Custom Marketing Strategy", "Weekly Campaign Reports", "SEO Audit & Fixes", "Monthly Growth Analysis"]
     },
   ];
 
@@ -529,7 +567,7 @@ export default function Home() {
             </motion.p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
             {services.map((service, idx) => (
               <motion.div
                 key={idx}
@@ -544,10 +582,11 @@ export default function Home() {
                   stiffness: 100,
                   damping: 15
                 }}
-                className="group relative flex flex-col bg-white rounded-[2rem] border-2 border-cyan-500/10 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_rgba(0,188,212,0.2)] transition-all duration-500 overflow-hidden"
+                onClick={() => setSelectedService(service)}
+                className="service-card group relative flex flex-col bg-white rounded-[2rem] border-2 border-cyan-500/10 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_rgba(0,188,212,0.2)] transition-all duration-500 overflow-hidden"
               >
                 {/* Image Section */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden card-image">
                   <motion.img 
                     src={service.image} 
                     alt={service.title}
@@ -558,13 +597,15 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent group-hover:from-[#1a2b4a]/80 transition-all duration-500" />
                   
                   {/* Icon Badge */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70px] h-[70px] rounded-full bg-gradient-to-br from-[#00bcd4] to-[#0ea5e9] shadow-[0_8px_25px_rgba(0,188,212,0.4)] flex items-center justify-center animate-bounce group-hover:animate-none group-hover:rotate-[360deg] group-hover:scale-125 group-hover:shadow-[0_0_30px_rgba(0,188,212,0.8)] transition-all duration-500">
-                    <service.icon size={35} className="text-white" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70px] h-[70px] rounded-full bg-gradient-to-br from-[#00bcd4] to-[#0ea5e9] shadow-[0_8px_25px_rgba(0,188,212,0.4)] flex items-center justify-center animate-bounce group-hover:animate-none group-hover:rotate-[360deg] group-hover:scale-125 group-hover:shadow-[0_0_30px_rgba(0,188,212,0.8)] transition-all duration-500 card-icon">
+                    <div className="text-white">
+                      {service.icon}
+                    </div>
                   </div>
                 </div>
 
                 <div className="p-8 flex flex-col flex-1">
-                  <h3 className="text-2xl font-bold text-[#1a2b4a] mb-4 group-hover:translate-y-[-5px] transition-transform duration-500">
+                  <h3 className="text-2xl font-bold text-[#1a2b4a] mb-4 group-hover:translate-y-[-5px] transition-transform duration-500 card-title">
                     {service.title}
                   </h3>
                   <p className="text-[#5a6c7d] text-sm leading-relaxed mb-6 flex-1">
@@ -572,13 +613,13 @@ export default function Home() {
                   </p>
 
                   <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, i) => (
+                    {service.features.map((feature: string, i: number) => (
                       <motion.li 
                         key={i}
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: (idx * 0.2) + (i * 0.1) }}
-                        className="flex items-center gap-2 text-sm text-[#5a6c7d]"
+                        className="flex items-center gap-2 text-sm text-[#5a6c7d] feature-item"
                       >
                         <CheckCircle2 size={16} className="text-[#00bcd4] animate-pulse" />
                         {feature}
@@ -587,11 +628,11 @@ export default function Home() {
                   </ul>
 
                   <Button 
-                    className="w-full h-[50px] rounded-full bg-gradient-to-r from-[#00bcd4] to-[#0ea5e9] hover:from-[#0ea5e9] hover:to-[#00bcd4] text-white font-semibold shadow-lg hover:scale-105 hover:shadow-[0_10px_25px_rgba(0,188,212,0.4)] transition-all duration-500 relative overflow-hidden group/btn"
+                    className="w-full h-[50px] rounded-full bg-gradient-to-r from-[#00bcd4] to-[#0ea5e9] hover:from-[#0ea5e9] hover:to-[#00bcd4] text-white font-semibold shadow-lg hover:scale-105 hover:shadow-[0_10px_25px_rgba(0,188,212,0.4)] transition-all duration-500 relative overflow-hidden group/btn learn-more-btn"
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2">
                       Learn More
-                      <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
+                      <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300 btn-arrow" />
                     </span>
                     <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
                   </Button>
@@ -604,6 +645,109 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Service Detail Modal */}
+      <AnimatePresence>
+        {selectedService && (
+          <div 
+            className={`modal-backdrop ${isClosing ? 'closing' : ''}`}
+            onClick={closeServiceModal}
+          >
+            <div 
+              className={`modal-box ${isClosing ? 'closing' : ''}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* HEADER */}
+              <div className="modal-header">
+                <div className="modal-icon-title">
+                  <div className="modal-icon">
+                    {selectedService.icon}
+                  </div>
+                  <h2 className="modal-title">
+                    {selectedService.title}
+                  </h2>
+                </div>
+                <button 
+                  className="modal-close" 
+                  onClick={closeServiceModal}
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* BODY - TWO COLUMNS */}
+              <div className="modal-body">
+                
+                {/* LEFT COLUMN */}
+                <div className="modal-left">
+                  <div className="modal-section mb-8">
+                    <h3 className="modal-section-title">Overview</h3>
+                    <p className="modal-overview">
+                      {selectedService.overview}
+                    </p>
+                  </div>
+
+                  <div className="modal-section">
+                    <h3 className="modal-section-title">Our Process</h3>
+                    <div className="modal-process">
+                      {selectedService.process.map((step: string, i: number) => (
+                        <div key={i} className="process-step">
+                          <div className="step-number">{i + 1}</div>
+                          <span className="step-text">{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* RIGHT COLUMN */}
+                <div className="modal-right">
+                  <div className="modal-section mb-6 tech-section">
+                    <h3 className="modal-section-title">Technologies</h3>
+                    <div className="tech-tags">
+                      {selectedService.technologies.map((tech: string, i: number) => (
+                        <span key={i} className="tech-tag">{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="timeline-box">
+                    <div className="timeline-icon">🕐</div>
+                    <div>
+                      <div className="timeline-label">Timeline</div>
+                      <div className="timeline-value">
+                        {selectedService.timeline}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="deliverables-box">
+                    <div className="deliverables-header">
+                      <span className="deliverables-icon">✅</span>
+                      <span className="deliverables-title">Deliverables</span>
+                    </div>
+                    <ul className="deliverables-list">
+                      {selectedService.deliverables.map((item: string, i: number) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* FOOTER BUTTONS */}
+              <div className="modal-footer">
+                <button className="btn-start-project" onClick={closeServiceModal}>
+                  Start Project Discussion
+                </button>
+                <button className="btn-request-quote" onClick={closeServiceModal}>
+                  Request Quote
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* --- JOURNEY SECTION --- */}
       <section id="journey" className="py-20 bg-white overflow-hidden">

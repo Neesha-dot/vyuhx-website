@@ -1,0 +1,607 @@
+Add modal popup functionality to the Services section.
+When user clicks on ANY card OR "Learn More" button, 
+open a detailed modal for that specific service.
+
+TRIGGER:
+- Clicking anywhere on the card → opens modal
+- Clicking "Learn More" button → opens modal
+- Clicking X button → closes modal
+- Clicking outside modal (backdrop) → closes modal
+- ESC key → closes modal
+
+MODAL DESIGN (exactly like reference images):
+- White background
+- Rounded corners (16px)
+- Two column layout inside
+- Scrollable content
+- Dark backdrop overlay
+- Smooth open/close animation
+
+UNIQUE CONTENT FOR EACH SERVICE:
+
+═══════════════════════════════════════
+1. WEB DEVELOPMENT MODAL:
+═══════════════════════════════════════
+Icon: </> in cyan rounded square
+Title: Web Development
+
+Overview:
+"We craft fast, modern websites and web apps that 
+don't just look great — they perform, convert, and scale 
+with your business goals."
+
+Technologies:
+[React/Next.js] [Node.js] [TypeScript] [GraphQL] [AWS/Azure]
+
+Our Process:
+1. Discovery & Planning
+2. UI/UX Design
+3. Development & Testing
+4. Launch & Support
+
+Timeline: 3-10 weeks
+
+Deliverables:
+- Fully Responsive Website
+- Clean Source Code
+- SEO-Ready Structure
+- Post-Launch Support Doc
+
+═══════════════════════════════════════
+2. SOFTWARE DEVELOPMENT MODAL:
+═══════════════════════════════════════
+Icon: ⚙️ gear/settings in cyan rounded square
+Title: Software Development
+
+Overview:
+"From idea to production-ready software — we build 
+robust, scalable systems that solve real problems 
+and streamline your operations."
+
+Technologies:
+[Python] [Java] [Node.js] [PostgreSQL] [Docker] [Redis]
+
+Our Process:
+1. Requirement Gathering
+2. System Architecture
+3. Agile Development
+4. Testing & Deployment
+
+Timeline: 6-18 weeks
+
+Deliverables:
+- Production-Ready Software
+- API & Technical Docs
+- QA Test Reports
+- Ongoing Maintenance Plan
+
+═══════════════════════════════════════
+3. MOBILE APPS MODAL:
+═══════════════════════════════════════
+Icon: 📱 mobile in cyan rounded square
+Title: Mobile Apps
+
+Overview:
+"We build smooth, intuitive mobile apps for iOS and Android 
+that users actually enjoy using — from MVP to full 
+product launch."
+
+Technologies:
+[Flutter] [React Native] [Firebase] [iOS SDK] [Android SDK]
+
+Our Process:
+1. User Research & Wireframe
+2. Prototype & Feedback
+3. App Development
+4. Store Submission
+
+Timeline: 8-16 weeks
+
+Deliverables:
+- iOS & Android App
+- Play Store / App Store Listing
+- Push Notification Setup
+- 30-Day Post Launch Support
+
+═══════════════════════════════════════
+4. DIGITAL MARKETING MODAL:
+═══════════════════════════════════════
+Icon: 🌐 globe in cyan rounded square
+Title: Digital Marketing
+
+Overview:
+"We grow your brand online with strategies built around 
+data, not guesswork — more traffic, better leads, 
+and real measurable results."
+
+Technologies:
+[Google Ads] [Meta Ads] [SEO Tools] [Analytics] [HubSpot]
+
+Our Process:
+1. Brand & Market Audit
+2. Strategy Building
+3. Campaign Launch
+4. Track & Optimize
+
+Timeline: Ongoing / 1-3 months to see results
+
+Deliverables:
+- Custom Marketing Strategy
+- Weekly Campaign Reports
+- SEO Audit & Fixes
+- Monthly Growth Analysis
+
+MODAL IMPLEMENTATION:
+```jsx
+// Add this state to your Services component
+const [selectedService, setSelectedService] = useState(null);
+
+// Add onClick to each card
+<div 
+  className="service-card" 
+  onClick={() => setSelectedService(service)}
+>
+
+// Modal Component
+{selectedService && (
+  <div 
+    className="modal-backdrop" 
+    onClick={() => setSelectedService(null)}
+  >
+    <div 
+      className="modal-box" 
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* HEADER */}
+      <div className="modal-header">
+        <div className="modal-icon-title">
+          <div className="modal-icon">
+            {selectedService.icon}
+          </div>
+          <h2 className="modal-title">
+            {selectedService.title}
+          </h2>
+        </div>
+        <button 
+          className="modal-close" 
+          onClick={() => setSelectedService(null)}
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* BODY - TWO COLUMNS */}
+      <div className="modal-body">
+        
+        {/* LEFT COLUMN */}
+        <div className="modal-left">
+          <div className="modal-section">
+            <h3 className="modal-section-title">Overview</h3>
+            <p className="modal-overview">
+              {selectedService.overview}
+            </p>
+          </div>
+
+          <div className="modal-section">
+            <h3 className="modal-section-title">Our Process</h3>
+            <div className="modal-process">
+              {selectedService.process.map((step, i) => (
+                <div key={i} className="process-step">
+                  <div className="step-number">{i + 1}</div>
+                  <span className="step-text">{step}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT COLUMN */}
+        <div className="modal-right">
+          <div className="modal-section">
+            <h3 className="modal-section-title">Technologies</h3>
+            <div className="tech-tags">
+              {selectedService.technologies.map((tech, i) => (
+                <span key={i} className="tech-tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="timeline-box">
+            <div className="timeline-icon">🕐</div>
+            <div>
+              <div className="timeline-label">Timeline</div>
+              <div className="timeline-value">
+                {selectedService.timeline}
+              </div>
+            </div>
+          </div>
+
+          <div className="deliverables-box">
+            <div className="deliverables-header">
+              <span className="deliverables-icon">✅</span>
+              <span className="deliverables-title">Deliverables</span>
+            </div>
+            <ul className="deliverables-list">
+              {selectedService.deliverables.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* FOOTER BUTTONS */}
+      <div className="modal-footer">
+        <button className="btn-start-project">
+          Start Project Discussion
+        </button>
+        <button className="btn-request-quote">
+          Request Quote
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+```
+
+MODAL CSS:
+```css
+/* Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: backdropFade 0.3s ease;
+}
+
+@keyframes backdropFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal Box */
+.modal-box {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px;
+  position: relative;
+  animation: modalSlideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes modalSlideUp {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9) translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.modal-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.modal-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #00bcd4, #0ea5e9);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+.modal-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a2b4a;
+}
+
+.modal-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #e0e0e0;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+/* Body Two Columns */
+.modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 35px;
+}
+
+/* Section headings */
+.modal-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0ea5e9;
+  margin-bottom: 14px;
+}
+
+/* Overview */
+.modal-overview {
+  font-size: 0.97rem;
+  color: #5a6c7d;
+  line-height: 1.8;
+}
+
+/* Process Steps */
+.modal-process {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: linear-gradient(135deg, #00bcd4, #0ea5e9);
+  border-radius: 50%;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-text {
+  font-size: 0.97rem;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* Tech Tags */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tech-tag {
+  padding: 8px 18px;
+  border: 1.5px solid #cbd5e0;
+  border-radius: 25px;
+  font-size: 0.88rem;
+  color: #2c3e50;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+  border-color: #00bcd4;
+  color: #00bcd4;
+  background: rgba(0, 188, 212, 0.05);
+}
+
+/* Timeline Box */
+.timeline-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #f0f9ff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(0, 188, 212, 0.15);
+}
+
+.timeline-icon {
+  font-size: 1.5rem;
+}
+
+.timeline-label {
+  font-weight: 700;
+  color: #1a2b4a;
+  font-size: 1rem;
+}
+
+.timeline-value {
+  font-size: 0.92rem;
+  color: #5a6c7d;
+  margin-top: 2px;
+}
+
+/* Deliverables Box */
+.deliverables-box {
+  background: #f0fff4;
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid rgba(0, 200, 100, 0.15);
+}
+
+.deliverables-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.deliverables-icon {
+  font-size: 1.2rem;
+}
+
+.deliverables-title {
+  font-weight: 700;
+  color: #1a2b4a;
+  font-size: 1rem;
+}
+
+.deliverables-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.deliverables-list li {
+  font-size: 0.92rem;
+  color: #2d8a5e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.deliverables-list li::before {
+  content: '•';
+  color: #2d8a5e;
+  font-weight: 700;
+}
+
+/* Footer Buttons */
+.modal-footer {
+  display: flex;
+  gap: 16px;
+  padding-top: 25px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.btn-start-project {
+  flex: 1;
+  padding: 16px;
+  background: linear-gradient(135deg, #00bcd4, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-start-project:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.35);
+}
+
+.btn-request-quote {
+  flex: 1;
+  padding: 16px;
+  background: transparent;
+  color: #1a2b4a;
+  border: 2px solid #1a2b4a;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-request-quote:hover {
+  background: #1a2b4a;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modal-box {
+    padding: 25px 20px;
+  }
+  
+  .modal-body {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+  }
+}
+
+/* Scrollbar styling */
+.modal-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modal-box::-webkit-scrollbar-thumb {
+  background: #00bcd4;
+  border-radius: 10px;
+}
+```
+
+ESC KEY HANDLER:
+```jsx
+useEffect(() => {
+  const handleEsc = (e) => {
+    if (e.key === 'Escape') setSelectedService(null);
+  };
+  window.addEventListener('keydown', handleEsc);
+  return () => window.removeEventListener('keydown', handleEsc);
+}, []);
+```
+
+KEEP UNCHANGED:
+- All 4 service card designs
+- Images on cards
+- Card layout and styling
+- Color theme
+- All other sections
+
+ADD:
+- Modal popup for each card
+- Unique content per service
+- Smooth animations
+- Close on backdrop/ESC/X button

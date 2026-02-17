@@ -1,0 +1,635 @@
+Add modal popup with ADVANCED ANIMATIONS to the Services section.
+When user clicks on ANY card OR "Learn More" button, open animated modal.
+
+CARD ANIMATIONS (Before Modal Opens):
+
+1. CARD HOVER EFFECTS:
+```css
+.service-card {
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer sweep effect on hover */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 188, 212, 0.08),
+    transparent
+  );
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+/* Glowing border on hover */
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    rgba(0, 188, 212, 0.5),
+    transparent
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 20px 60px rgba(0, 188, 212, 0.2),
+    0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Card click animation */
+.service-card:active {
+  transform: translateY(-8px) scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+/* Icon animation on card hover */
+.service-card:hover .card-icon {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
+  animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 188, 212, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(0, 188, 212, 0.7); }
+}
+
+/* Image zoom on card hover */
+.service-card:hover .card-image img {
+  transform: scale(1.08);
+}
+
+/* Title color change on hover */
+.service-card:hover .card-title {
+  color: #00bcd4;
+  transition: color 0.3s ease;
+}
+
+/* Feature bullets slide on hover */
+.service-card:hover .feature-item {
+  transform: translateX(6px);
+}
+
+.feature-item {
+  transition: transform 0.3s ease;
+}
+
+.feature-item:nth-child(1) { transition-delay: 0s; }
+.feature-item:nth-child(2) { transition-delay: 0.05s; }
+.feature-item:nth-child(3) { transition-delay: 0.1s; }
+.feature-item:nth-child(4) { transition-delay: 0.15s; }
+
+/* Learn More button animation */
+.service-card:hover .learn-more-btn {
+  background: linear-gradient(135deg, #00bcd4, #0ea5e9);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
+  gap: 16px;
+}
+
+.learn-more-btn .btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .learn-more-btn .btn-arrow {
+  transform: translateX(6px);
+}
+```
+
+MODAL OPEN/CLOSE ANIMATIONS:
+```css
+/* Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: backdropIn 0.4s ease forwards;
+}
+
+@keyframes backdropIn {
+  to {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+  }
+}
+
+.modal-backdrop.closing {
+  animation: backdropOut 0.3s ease forwards;
+}
+
+@keyframes backdropOut {
+  to {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+}
+
+/* Modal Box - Bounce entrance */
+.modal-box {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px;
+  position: relative;
+  animation: modalBounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 30px 100px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255,255,255,0.1);
+}
+
+@keyframes modalBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(60px);
+  }
+  60% {
+    transform: scale(1.03) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-box.closing {
+  animation: modalBounceOut 0.3s ease forwards;
+}
+
+@keyframes modalBounceOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(40px);
+  }
+}
+```
+
+MODAL CONTENT STAGGER ANIMATIONS:
+```css
+/* Each section fades in one by one */
+.modal-header {
+  animation: contentSlideIn 0.4s ease 0.1s backwards;
+}
+
+.modal-left .modal-section:first-child {
+  animation: contentSlideIn 0.4s ease 0.2s backwards;
+}
+
+.modal-left .modal-section:last-child {
+  animation: contentSlideIn 0.4s ease 0.3s backwards;
+}
+
+.modal-right .tech-section {
+  animation: contentSlideIn 0.4s ease 0.25s backwards;
+}
+
+.timeline-box {
+  animation: contentSlideIn 0.4s ease 0.35s backwards;
+}
+
+.deliverables-box {
+  animation: contentSlideIn 0.4s ease 0.45s backwards;
+}
+
+.modal-footer {
+  animation: contentSlideIn 0.4s ease 0.5s backwards;
+}
+
+@keyframes contentSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tech tags pop in one by one */
+.tech-tag {
+  animation: tagPopIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.tech-tag:nth-child(1) { animation-delay: 0.3s; }
+.tech-tag:nth-child(2) { animation-delay: 0.36s; }
+.tech-tag:nth-child(3) { animation-delay: 0.42s; }
+.tech-tag:nth-child(4) { animation-delay: 0.48s; }
+.tech-tag:nth-child(5) { animation-delay: 0.54s; }
+
+@keyframes tagPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Process steps slide in from left */
+.process-step {
+  animation: stepSlideIn 0.4s ease backwards;
+}
+
+.process-step:nth-child(1) { animation-delay: 0.3s; }
+.process-step:nth-child(2) { animation-delay: 0.38s; }
+.process-step:nth-child(3) { animation-delay: 0.46s; }
+.process-step:nth-child(4) { animation-delay: 0.54s; }
+
+@keyframes stepSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Step numbers spin in */
+.step-number {
+  animation: stepSpin 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.process-step:nth-child(1) .step-number { animation-delay: 0.3s; }
+.process-step:nth-child(2) .step-number { animation-delay: 0.38s; }
+.process-step:nth-child(3) .step-number { animation-delay: 0.46s; }
+.process-step:nth-child(4) .step-number { animation-delay: 0.54s; }
+
+@keyframes stepSpin {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Deliverables slide in from right */
+.deliverables-list li {
+  animation: deliverableIn 0.35s ease backwards;
+}
+
+.deliverables-list li:nth-child(1) { animation-delay: 0.5s; }
+.deliverables-list li:nth-child(2) { animation-delay: 0.58s; }
+.deliverables-list li:nth-child(3) { animation-delay: 0.66s; }
+.deliverables-list li:nth-child(4) { animation-delay: 0.74s; }
+
+@keyframes deliverableIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Timeline box pulse animation */
+.timeline-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 188, 212, 0.1),
+    transparent
+  );
+  animation: timelineShimmer 2.5s ease 0.5s infinite;
+}
+
+@keyframes timelineShimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Modal icon spinning entrance */
+.modal-icon {
+  animation: iconSpin 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s backwards;
+}
+
+@keyframes iconSpin {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Modal title typewriter feel */
+.modal-title {
+  animation: titleReveal 0.5s ease 0.15s backwards;
+  overflow: hidden;
+}
+
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+/* Close button rotate on hover */
+.modal-close {
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #ef4444;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Footer buttons animations */
+.btn-start-project {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.btn-start-project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-start-project:hover::before {
+  left: 100%;
+}
+
+.btn-start-project:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 188, 212, 0.4);
+}
+
+.btn-start-project:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.btn-request-quote {
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-request-quote::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(26, 43, 74, 0.05);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-request-quote:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-request-quote:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(26, 43, 74, 0.15);
+}
+
+/* Scrollbar */
+.modal-box::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modal-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modal-box::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00bcd4, #0ea5e9);
+  border-radius: 10px;
+}
+
+/* Tech tag hover */
+.tech-tag {
+  cursor: default;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tech-tag:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: #00bcd4;
+  color: #00bcd4;
+  background: rgba(0, 188, 212, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
+}
+```
+
+JAVASCRIPT FOR CLOSE ANIMATION:
+```jsx
+// Add closing animation before removing modal
+const handleClose = () => {
+  const backdrop = document.querySelector('.modal-backdrop');
+  const modalBox = document.querySelector('.modal-box');
+  
+  if (backdrop && modalBox) {
+    backdrop.classList.add('closing');
+    modalBox.classList.add('closing');
+    
+    setTimeout(() => {
+      setSelectedService(null);
+    }, 280);
+  } else {
+    setSelectedService(null);
+  }
+};
+
+// ESC key handler
+useEffect(() => {
+  const handleEsc = (e) => {
+    if (e.key === 'Escape') handleClose();
+  };
+  if (selectedService) {
+    window.addEventListener('keydown', handleEsc);
+    document.body.style.overflow = 'hidden'; // Prevent scroll behind modal
+  }
+  return () => {
+    window.removeEventListener('keydown', handleEsc);
+    document.body.style.overflow = '';
+  };
+}, [selectedService]);
+
+// Ripple effect on card click
+const handleCardClick = (service, e) => {
+  const card = e.currentTarget;
+  const ripple = document.createElement('div');
+  const rect = card.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  const x = e.clientX - rect.left - size / 2;
+  const y = e.clientY - rect.top - size / 2;
+  
+  ripple.style.cssText = `
+    position: absolute;
+    width: ${size}px;
+    height: ${size}px;
+    left: ${x}px;
+    top: ${y}px;
+    background: rgba(0, 188, 212, 0.15);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleEffect 0.6s ease-out forwards;
+    pointer-events: none;
+    z-index: 0;
+  `;
+  
+  card.style.position = 'relative';
+  card.style.overflow = 'hidden';
+  card.appendChild(ripple);
+  
+  setTimeout(() => ripple.remove(), 600);
+  
+  setTimeout(() => setSelectedService(service), 150);
+};
+```
+
+ADD THIS RIPPLE KEYFRAME TO CSS:
+```css
+@keyframes rippleEffect {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+```
+
+UNIQUE CONTENT FOR ALL 4 MODALS:
+
+1. WEB DEVELOPMENT:
+Overview: "We craft fast, modern websites that don't just look great — they perform, convert, and scale with your business."
+Technologies: [React/Next.js] [Node.js] [TypeScript] [GraphQL] [AWS/Azure]
+Process: Discovery & Planning → UI/UX Design → Development & Testing → Launch & Support
+Timeline: 3-10 weeks
+Deliverables: Fully Responsive Website, Clean Source Code, SEO-Ready Structure, Post-Launch Support
+
+2. SOFTWARE DEVELOPMENT:
+Overview: "From idea to production-ready product — we engineer robust systems that solve real problems and streamline your operations."
+Technologies: [Python] [Java] [Node.js] [PostgreSQL] [Docker] [Redis]
+Process: Requirement Gathering → System Architecture → Agile Development → Testing & Deployment
+Timeline: 6-18 weeks
+Deliverables: Production-Ready Software, API & Technical Docs, QA Test Reports, Maintenance Plan
+
+3. MOBILE APPS:
+Overview: "We build smooth, intuitive apps for iOS & Android that users enjoy — from MVP to full product launch."
+Technologies: [Flutter] [React Native] [Firebase] [iOS SDK] [Android SDK]
+Process: User Research & Wireframe → Prototype & Feedback → App Development → Store Submission
+Timeline: 8-16 weeks
+Deliverables: iOS & Android App, Store Listing Setup, Push Notification Setup, 30-Day Post Launch Support
+
+4. DIGITAL MARKETING:
+Overview: "We grow your brand online with data-driven strategies — more traffic, better leads, real measurable results."
+Technologies: [Google Ads] [Meta Ads] [SEO Tools] [Analytics] [HubSpot]
+Process: Brand & Market Audit → Strategy Building → Campaign Launch → Track & Optimize
+Timeline: Ongoing / 1-3 months
+Deliverables: Custom Marketing Strategy, Weekly Reports, SEO Audit & Fixes, Monthly Growth Analysis
+
+KEEP UNCHANGED:
+- All 4 card designs and images
+- Color theme (#00bcd4 cyan)
+- All other sections
+- Existing card layout
+
+ADD:
+- Ripple click effect on cards
+- Bounce modal entrance
+- Stagger content animations
+- Smooth close animation
+- All hover micro-interactions
+- Tech tag hover effects
+- Button shine effects
+- Icon spin animation
+- Step number spin
+- Shimmer on timeline box
