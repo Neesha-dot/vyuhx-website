@@ -1,0 +1,442 @@
+Update the About Section with these EXACT changes:
+
+═══════════════════════════════════════
+CHANGE 1 - REDUCE HEADING FONT SIZE
+═══════════════════════════════════════
+
+Target text: "We turn complex challenges into elegant solutions through code and creativity."
+
+Change font size to: 1.85rem
+Keep EVERYTHING else same (font family, weight, colors)
+```css
+.about-tagline,
+.about-highlight-text,
+[class containing this heading] {
+  font-size: 1.85rem;
+  line-height: 1.4;
+  font-weight: 800;
+}
+```
+
+"elegant solutions" MUST stay cyan (#00bcd4)
+Rest of text MUST stay dark navy
+
+═══════════════════════════════════════
+CHANGE 2 - COMPLETE ORBIT VISUAL REBUILD
+WITH ALL TECHNOLOGIES + LOGOS
+═══════════════════════════════════════
+
+FULL TECH STACK (all 3 rings):
+```javascript
+const techWithLogos = {
+
+  inner: [
+    { name: 'React',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+    { name: 'Next.js',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+    { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { name: 'CSS3',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  ],
+
+  middle: [
+    { name: 'Node.js',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+    { name: 'Flutter',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
+    { name: 'Docker',     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+    { name: 'Firebase',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
+    { name: 'Java',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+    { name: 'Bootstrap',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+  ],
+
+  outer: [
+    { name: 'Python',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'AWS',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
+    { name: 'MongoDB',     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+    { name: 'PostgreSQL',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+    { name: 'GraphQL',     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
+    { name: 'Kotlin',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg' },
+    { name: 'HTML5',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    { name: 'MySQL',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+    { name: 'Redux',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg' },
+    { name: 'Tailwind',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg' },
+  ]
+};
+```
+
+FULL ORBIT COMPONENT CODE:
+```jsx
+const OrbitVisual = () => {
+  return (
+    <div className="orbit-container">
+
+      {/* Center icon */}
+      <div className="orbit-center">
+        <span className="orbit-center-icon">&lt;/&gt;</span>
+      </div>
+
+      {/* Inner Ring - 5 items */}
+      <div className="orbit-ring orbit-ring-inner">
+        {techWithLogos.inner.map((tech, i) => (
+          <div
+            key={tech.name}
+            className="orbit-item"
+            style={{
+              '--angle': `${(360 / techWithLogos.inner.length) * i}deg`,
+              '--count': techWithLogos.inner.length
+            }}
+          >
+            <span className="tech-label">
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                className="tech-label-logo"
+                onError={(e) => e.target.style.display = 'none'}
+              />
+              {tech.name}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Middle Ring - 6 items */}
+      <div className="orbit-ring orbit-ring-middle">
+        {techWithLogos.middle.map((tech, i) => (
+          <div
+            key={tech.name}
+            className="orbit-item orbit-item-middle"
+            style={{
+              '--angle': `${(360 / techWithLogos.middle.length) * i}deg`,
+              '--count': techWithLogos.middle.length
+            }}
+          >
+            <span className="tech-label">
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                className="tech-label-logo"
+                onError={(e) => e.target.style.display = 'none'}
+              />
+              {tech.name}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Outer Ring - 10 items */}
+      <div className="orbit-ring orbit-ring-outer">
+        {techWithLogos.outer.map((tech, i) => (
+          <div
+            key={tech.name}
+            className="orbit-item"
+            style={{
+              '--angle': `${(360 / techWithLogos.outer.length) * i}deg`,
+              '--count': techWithLogos.outer.length
+            }}
+          >
+            <span className="tech-label">
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                className="tech-label-logo"
+                onError={(e) => e.target.style.display = 'none'}
+              />
+              {tech.name}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Glowing dots on each ring */}
+      <div className="orbit-dot dot-inner"></div>
+      <div className="orbit-dot dot-middle"></div>
+      <div className="orbit-dot dot-outer"></div>
+
+      {/* Caption */}
+      <div className="orbit-caption">
+        Innovation in Motion • VyuhX Technologies
+      </div>
+
+    </div>
+  );
+};
+```
+
+COMPLETE CSS:
+```css
+/* Orbit Container */
+.orbit-container {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background: linear-gradient(135deg, #0a1628, #1a2b4a);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 188, 212, 0.15);
+}
+
+/* Subtle background glow */
+.orbit-container::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 188, 212, 0.08) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Center Icon */
+.orbit-center {
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  background: rgba(0, 188, 212, 0.1);
+  border: 2px solid rgba(0, 188, 212, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: centerPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(0, 188, 212, 0.2);
+}
+
+.orbit-center-icon {
+  color: #00bcd4;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+@keyframes centerPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0,188,212,0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(0,188,212,0.6);
+    transform: scale(1.08);
+  }
+}
+
+/* Rings base */
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 188, 212, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inner Ring - 5 items - clockwise 10s */
+.orbit-ring-inner {
+  width: 190px;
+  height: 190px;
+  animation: rotateClockwise 10s linear infinite;
+  border-color: rgba(0, 188, 212, 0.25);
+}
+
+/* Middle Ring - 6 items - counter 15s */
+.orbit-ring-middle {
+  width: 300px;
+  height: 300px;
+  animation: rotateCounter 15s linear infinite;
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+/* Outer Ring - 10 items - clockwise 22s */
+.orbit-ring-outer {
+  width: 420px;
+  height: 420px;
+  animation: rotateClockwise 22s linear infinite;
+  border-color: rgba(0, 188, 212, 0.12);
+}
+
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rotateCounter {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* Orbit items - positioned on ring edge */
+.orbit-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:
+    rotate(var(--angle))
+    translateX(95px)
+    rotate(calc(-1 * var(--angle)))
+    translate(-50%, -50%);
+}
+
+.orbit-ring-middle .orbit-item {
+  transform:
+    rotate(var(--angle))
+    translateX(150px)
+    rotate(calc(-1 * var(--angle)))
+    translate(-50%, -50%);
+}
+
+.orbit-ring-outer .orbit-item {
+  transform:
+    rotate(var(--angle))
+    translateX(210px)
+    rotate(calc(-1 * var(--angle)))
+    translate(-50%, -50%);
+}
+
+/* Counter-rotate text in middle ring so labels stay upright */
+.orbit-ring-middle .orbit-item {
+  animation: keepUpright 15s linear infinite;
+}
+
+@keyframes keepUpright {
+  from {
+    transform:
+      rotate(var(--angle))
+      translateX(150px)
+      rotate(0deg)
+      translate(-50%, -50%);
+  }
+  to {
+    transform:
+      rotate(var(--angle))
+      translateX(150px)
+      rotate(360deg)
+      translate(-50%, -50%);
+  }
+}
+
+/* Tech Labels with logo */
+.tech-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 188, 212, 0.08);
+  border: 1.5px solid rgba(0, 188, 212, 0.35);
+  color: #00bcd4;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.tech-label-logo {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.75;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.tech-label:hover {
+  background: rgba(0, 188, 212, 0.2);
+  border-color: rgba(0, 188, 212, 0.7);
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.35);
+  transform: scale(1.08);
+}
+
+.tech-label:hover .tech-label-logo {
+  filter: none;
+  opacity: 1;
+}
+
+/* Glowing Moving Dots */
+.orbit-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+}
+
+.dot-inner {
+  background: #00bcd4;
+  box-shadow: 0 0 12px rgba(0, 188, 212, 0.9);
+  animation: dotOrbitInner 10s linear infinite;
+}
+
+.dot-middle {
+  background: #6366f1;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.9);
+  animation: dotOrbitMiddle 15s linear infinite;
+}
+
+.dot-outer {
+  background: #00bcd4;
+  box-shadow: 0 0 12px rgba(0, 188, 212, 0.9);
+  animation: dotOrbitOuter 22s linear infinite;
+}
+
+@keyframes dotOrbitInner {
+  from { transform: translate(-50%,-50%) rotate(0deg) translateX(95px); }
+  to   { transform: translate(-50%,-50%) rotate(360deg) translateX(95px); }
+}
+
+@keyframes dotOrbitMiddle {
+  from { transform: translate(-50%,-50%) rotate(0deg) translateX(150px); }
+  to   { transform: translate(-50%,-50%) rotate(-360deg) translateX(150px); }
+}
+
+@keyframes dotOrbitOuter {
+  from { transform: translate(-50%,-50%) rotate(30deg) translateX(210px); }
+  to   { transform: translate(-50%,-50%) rotate(390deg) translateX(210px); }
+}
+
+/* Caption */
+.orbit-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 14px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  border-top: 1px solid rgba(0, 188, 212, 0.15);
+  letter-spacing: 0.5px;
+}
+```
+
+FINAL SUMMARY:
+✅ Heading font size reduced to 1.85rem
+✅ "elegant solutions" stays cyan
+✅ Inner ring: React, TypeScript, Next.js, JavaScript, CSS3 (5 items)
+✅ Middle ring: Node.js, Flutter, Docker, Firebase, Java, Bootstrap (6 items)
+✅ Outer ring: Python, AWS, MongoDB, PostgreSQL, GraphQL, Kotlin, HTML5, MySQL, Redux, Tailwind (10 items)
+✅ Each tech label shows logo + name
+✅ Logo fallback if image fails to load
+✅ Inner: clockwise 10s
+✅ Middle: counter-clockwise 15s
+✅ Outer: clockwise 22s
+✅ 3 glowing dots (one per ring)
+✅ Center pulse animation
+✅ Hover effect on tech labels
+
+KEEP UNCHANGED:
+- Left side content (text, description, feature points)
+- Section background and colors
+- All other website sections
+- Navigation and header

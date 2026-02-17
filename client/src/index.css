@@ -345,162 +345,261 @@
   @apply py-20 lg:py-32 px-4 sm:px-6 lg:px-8;
 }
 
-/* About Section Media Styles */
-.about-media-container {
+/* Orbit Container */
+.orbit-container {
   position: relative;
   width: 100%;
-  height: 450px;
+  height: 480px;
+  background: linear-gradient(135deg, #0a1628, #1a2b4a);
   border-radius: 20px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #0a1628 0%, #1a2b4a 50%, #0d1f35 100%);
-  box-shadow: 
-    0 20px 60px rgba(0, 188, 212, 0.15),
-    inset 0 1px 0 rgba(255,255,255,0.1);
-  border: 1px solid rgba(0, 188, 212, 0.2);
-}
-
-.about-animated-visual {
-  position: relative;
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 188, 212, 0.15);
 }
 
-/* Animated Rings */
-.visual-ring {
+/* Subtle background glow */
+.orbit-container::before {
+  content: '';
   position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 188, 212, 0.08) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
-  border: 1.5px solid rgba(0, 188, 212, 0.3);
-  animation: ringRotate 8s linear infinite;
-}
-
-.ring-1 {
-  width: 180px;
-  height: 180px;
-  border-color: rgba(0, 188, 212, 0.5);
-  animation-duration: 6s;
-}
-
-.ring-2 {
-  width: 280px;
-  height: 280px;
-  border-color: rgba(0, 188, 212, 0.3);
-  animation-duration: 10s;
-  animation-direction: reverse;
-}
-
-.ring-3 {
-  width: 380px;
-  height: 380px;
-  border-color: rgba(0, 188, 212, 0.15);
-  animation-duration: 15s;
-}
-
-@keyframes ringRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  pointer-events: none;
 }
 
 /* Center Icon */
-.visual-center {
-  position: relative;
-  z-index: 10;
-  width: 100px;
-  height: 100px;
+.orbit-center {
+  position: absolute;
+  width: 85px;
+  height: 85px;
   background: rgba(0, 188, 212, 0.1);
   border: 2px solid rgba(0, 188, 212, 0.5);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
   animation: centerPulse 3s ease-in-out infinite;
-  box-shadow: 
-    0 0 30px rgba(0, 188, 212, 0.3),
-    0 0 60px rgba(0, 188, 212, 0.1);
+  box-shadow: 0 0 30px rgba(0, 188, 212, 0.2);
+}
+
+.orbit-center-icon {
+  color: #00bcd4;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: monospace;
 }
 
 @keyframes centerPulse {
-  0%, 100% { 
-    transform: scale(1); 
-    box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0,188,212,0.3);
+    transform: scale(1);
   }
-  50% { 
-    transform: scale(1.1); 
-    box-shadow: 0 0 50px rgba(0, 188, 212, 0.5);
+  50% {
+    box-shadow: 0 0 50px rgba(0,188,212,0.6);
+    transform: scale(1.08);
   }
 }
 
-/* Floating Technology Tags */
-.floating-tag {
+/* Rings base */
+.orbit-ring {
   position: absolute;
-  background: rgba(0, 188, 212, 0.12);
-  border: 1px solid rgba(0, 188, 212, 0.4);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 188, 212, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inner Ring - 5 items - clockwise 10s */
+.orbit-ring-inner {
+  width: 190px;
+  height: 190px;
+  animation: rotateClockwise 10s linear infinite;
+  border-color: rgba(0, 188, 212, 0.25);
+}
+
+/* Middle Ring - 6 items - counter 15s */
+.orbit-ring-middle {
+  width: 300px;
+  height: 300px;
+  animation: rotateCounter 15s linear infinite;
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+/* Outer Ring - 10 items - clockwise 22s */
+.orbit-ring-outer {
+  width: 420px;
+  height: 420px;
+  animation: rotateClockwise 22s linear infinite;
+  border-color: rgba(0, 188, 212, 0.12);
+}
+
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rotateCounter {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* Orbit items - positioned on ring edge */
+.orbit-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:
+    rotate(var(--angle))
+    translateX(95px)
+    rotate(calc(-1 * var(--angle)))
+    translate(-50%, -50%);
+}
+
+.orbit-ring-middle .orbit-item {
+  transform:
+    rotate(var(--angle))
+    translateX(150px)
+    rotate(calc(-1 * var(--angle)))
+    translate(-50%, -50%);
+}
+
+.orbit-ring-outer .orbit-item {
+  transform:
+    rotate(var(--angle))
+    translateX(210px)
+    rotate(calc(-1 * var(--angle)))
+    translate(-50%, -50%);
+}
+
+/* Counter-rotate text in middle ring so labels stay upright */
+.orbit-ring-middle .orbit-item {
+  animation: keepUpright 15s linear infinite;
+}
+
+@keyframes keepUpright {
+  from {
+    transform:
+      rotate(var(--angle))
+      translateX(150px)
+      rotate(0deg)
+      translate(-50%, -50%);
+  }
+  to {
+    transform:
+      rotate(var(--angle))
+      translateX(150px)
+      rotate(360deg)
+      translate(-50%, -50%);
+  }
+}
+
+/* Tech Labels with logo */
+.tech-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 188, 212, 0.08);
+  border: 1.5px solid rgba(0, 188, 212, 0.35);
   color: #00bcd4;
-  padding: 8px 16px;
+  padding: 5px 10px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  backdrop-filter: blur(5px);
-  animation: floatTag 4s ease-in-out infinite;
   white-space: nowrap;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  cursor: default;
 }
 
-.tag-1 { top: 15%; left: 10%; animation-delay: 0s; }
-.tag-2 { top: 10%; right: 10%; animation-delay: 0.5s; }
-.tag-3 { top: 40%; left: 5%; animation-delay: 1s; }
-.tag-4 { top: 40%; right: 5%; animation-delay: 1.5s; }
-.tag-5 { bottom: 20%; left: 12%; animation-delay: 2s; }
-.tag-6 { bottom: 20%; right: 12%; animation-delay: 2.5s; }
-
-@keyframes floatTag {
-  0%, 100% { 
-    transform: translateY(0px); 
-    opacity: 0.8;
-  }
-  50% { 
-    transform: translateY(-12px); 
-    opacity: 1;
-  }
+.tech-label-logo {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.75;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-/* Dots */
-.dot {
+.tech-label:hover {
+  background: rgba(0, 188, 212, 0.2);
+  border-color: rgba(0, 188, 212, 0.7);
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.35);
+  transform: scale(1.08);
+}
+
+.tech-label:hover .tech-label-logo {
+  filter: none;
+  opacity: 1;
+}
+
+/* Glowing Moving Dots */
+.orbit-dot {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: #00bcd4;
   border-radius: 50%;
-  animation: dotPulse 3s ease-in-out infinite;
-  box-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+  top: 50%;
+  left: 50%;
 }
 
-.dot-1 { top: 25%; left: 35%; animation-delay: 0s; }
-.dot-2 { top: 60%; left: 25%; animation-delay: 0.6s; }
-.dot-3 { top: 30%; right: 30%; animation-delay: 1.2s; }
-.dot-4 { bottom: 35%; right: 20%; animation-delay: 1.8s; }
-.dot-5 { top: 70%; left: 55%; animation-delay: 2.4s; }
+.dot-inner {
+  background: #00bcd4;
+  box-shadow: 0 0 12px rgba(0, 188, 212, 0.9);
+  animation: dotOrbitInner 10s linear infinite;
+}
 
-@keyframes dotPulse {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.8); opacity: 1; }
+.dot-middle {
+  background: #6366f1;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.9);
+  animation: dotOrbitMiddle 15s linear infinite;
+}
+
+.dot-outer {
+  background: #00bcd4;
+  box-shadow: 0 0 12px rgba(0, 188, 212, 0.9);
+  animation: dotOrbitOuter 22s linear infinite;
+}
+
+@keyframes dotOrbitInner {
+  from { transform: translate(-50%,-50%) rotate(0deg) translateX(95px); }
+  to   { transform: translate(-50%,-50%) rotate(360deg) translateX(95px); }
+}
+
+@keyframes dotOrbitMiddle {
+  from { transform: translate(-50%,-50%) rotate(0deg) translateX(150px); }
+  to   { transform: translate(-50%,-50%) rotate(-360deg) translateX(150px); }
+}
+
+@keyframes dotOrbitOuter {
+  from { transform: translate(-50%,-50%) rotate(30deg) translateX(210px); }
+  to   { transform: translate(-50%,-50%) rotate(390deg) translateX(210px); }
 }
 
 /* Caption */
-.about-media-caption {
+.orbit-caption {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
-  color: rgba(255,255,255,0.9);
+  color: rgba(255, 255, 255, 0.85);
   padding: 14px 20px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   text-align: center;
-  border-top: 1px solid rgba(0, 188, 212, 0.2);
+  border-top: 1px solid rgba(0, 188, 212, 0.15);
+  letter-spacing: 0.5px;
 }
 
 .about-media-image {

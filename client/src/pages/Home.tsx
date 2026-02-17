@@ -142,6 +142,129 @@ export default function Home() {
     { name: "Go", icon: SiGo, color: "#00ADD8" }
   ];
 
+const techWithLogos = {
+  inner: [
+    { name: 'React',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+    { name: 'Next.js',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+    { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { name: 'CSS3',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  ],
+  middle: [
+    { name: 'Node.js',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+    { name: 'Flutter',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
+    { name: 'Docker',     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+    { name: 'Firebase',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
+    { name: 'Java',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+    { name: 'Bootstrap',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+  ],
+  outer: [
+    { name: 'Python',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'AWS',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
+    { name: 'MongoDB',     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+    { name: 'PostgreSQL',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+    { name: 'GraphQL',     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
+    { name: 'Kotlin',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg' },
+    { name: 'HTML5',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    { name: 'MySQL',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+    { name: 'Redux',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg' },
+    { name: 'Tailwind',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg' },
+  ]
+};
+
+const OrbitVisual = () => {
+  return (
+    <div className="orbit-container">
+      {/* Center icon */}
+      <div className="orbit-center">
+        <span className="orbit-center-icon">&lt;/&gt;</span>
+      </div>
+
+      {/* Inner Ring - 5 items */}
+      <div className="orbit-ring orbit-ring-inner">
+        {techWithLogos.inner.map((tech, i) => (
+          <div
+            key={tech.name}
+            className="orbit-item"
+            style={{
+              '--angle': `${(360 / techWithLogos.inner.length) * i}deg`,
+              '--count': techWithLogos.inner.length
+            } as React.CSSProperties}
+          >
+            <span className="tech-label">
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                className="tech-label-logo"
+                onError={(e) => (e.currentTarget.style.display = 'none')}
+              />
+              {tech.name}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Middle Ring - 6 items */}
+      <div className="orbit-ring orbit-ring-middle">
+        {techWithLogos.middle.map((tech, i) => (
+          <div
+            key={tech.name}
+            className="orbit-item orbit-item-middle"
+            style={{
+              '--angle': `${(360 / techWithLogos.middle.length) * i}deg`,
+              '--count': techWithLogos.middle.length
+            } as React.CSSProperties}
+          >
+            <span className="tech-label">
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                className="tech-label-logo"
+                onError={(e) => (e.currentTarget.style.display = 'none')}
+              />
+              {tech.name}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Outer Ring - 10 items */}
+      <div className="orbit-ring orbit-ring-outer">
+        {techWithLogos.outer.map((tech, i) => (
+          <div
+            key={tech.name}
+            className="orbit-item"
+            style={{
+              '--angle': `${(360 / techWithLogos.outer.length) * i}deg`,
+              '--count': techWithLogos.outer.length
+            } as React.CSSProperties}
+          >
+            <span className="tech-label">
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                className="tech-label-logo"
+                onError={(e) => (e.currentTarget.style.display = 'none')}
+              />
+              {tech.name}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Glowing dots on each ring */}
+      <div className="orbit-dot dot-inner"></div>
+      <div className="orbit-dot dot-middle"></div>
+      <div className="orbit-dot dot-outer"></div>
+
+      {/* Caption */}
+      <div className="orbit-caption">
+        Innovation in Motion • VyuhX Technologies
+      </div>
+    </div>
+  );
+};
+
   const serviceTiltRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
@@ -430,8 +553,8 @@ export default function Home() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h3 className="section-main-heading text-slate-900 mb-6 leading-tight">
-                We turn complex challenges into <span className="text-cyan-600 relative inline-block">
+              <h3 className="about-tagline text-slate-900 mb-6 leading-[1.4] font-[800] text-[1.85rem]">
+                We turn complex challenges into <span className="text-[#00bcd4] relative inline-block">
                   elegant solutions
                   <motion.span 
                     initial={{ width: 0 }}
@@ -471,50 +594,14 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Video Column */}
+            {/* Orbit Visual Column */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="about-media-container"
             >
-              <div className="about-animated-visual">
-                
-                {/* Animated circles */}
-                <div className="visual-ring ring-1"></div>
-                <div className="visual-ring ring-2"></div>
-                <div className="visual-ring ring-3"></div>
-                
-                {/* Center icon */}
-                <div className="visual-center">
-                  <svg width="80" height="80" viewBox="0 0 24 24" 
-                       fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 18L22 12L16 6M8 6L2 12L8 18" 
-                          stroke="#00bcd4" strokeWidth="2" 
-                          strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-
-                {/* Floating tech words */}
-                <div className="floating-tag tag-1">React</div>
-                <div className="floating-tag tag-2">Node.js</div>
-                <div className="floating-tag tag-3">Flutter</div>
-                <div className="floating-tag tag-4">Python</div>
-                <div className="floating-tag tag-5">AWS</div>
-                <div className="floating-tag tag-6">MongoDB</div>
-
-                {/* Connecting dots */}
-                <div className="dot dot-1"></div>
-                <div className="dot dot-2"></div>
-                <div className="dot dot-3"></div>
-                <div className="dot dot-4"></div>
-                <div className="dot dot-5"></div>
-                
-              </div>
-              <div className="about-media-caption">
-                Innovation in Motion • VyuhX Technologies
-              </div>
+              <OrbitVisual />
             </motion.div>
           </div>
         </div>
