@@ -181,7 +181,7 @@ const OrbitVisual = () => {
         const ring = parseInt(el.getAttribute('data-ring') || '1');
         const startAngle = parseFloat(el.getAttribute('data-start-angle') || '0');
         const speed = ring === 2 ? -0.3 : 0.4;
-        const radius = ring === 1 ? 130 : ring === 2 ? 210 : 270;
+        const radius = ring === 1 ? 85 : ring === 2 ? 145 : 195;
         
         const angle = (startAngle + (time * speed * 57.2958)) % 360;
         const x = radius * Math.cos(angle * Math.PI / 180);
@@ -193,7 +193,7 @@ const OrbitVisual = () => {
       dots.forEach((el) => {
         const ring = parseInt(el.getAttribute('data-ring') || '1');
         const speed = ring === 2 ? -0.3 : 0.4;
-        const radius = ring === 1 ? 130 : ring === 2 ? 210 : 270;
+        const radius = ring === 1 ? 85 : ring === 2 ? 145 : 195;
         const angle = (time * speed * 57.2958) % 360;
         const x = radius * Math.cos(angle * Math.PI / 180);
         const y = radius * Math.sin(angle * Math.PI / 180);
