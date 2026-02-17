@@ -349,7 +349,7 @@
 .orbit-container {
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 600px;
   background: #0d1b2a;
   border-radius: 16px;
   display: flex;
@@ -381,123 +381,77 @@
   font-family: monospace;
 }
 
-/* Rings base */
-.orbit-ring {
+/* Orbit Rings Visible */
+.orbit-ring-svg-container {
   position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 188, 212, 0.2);
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 
-/* Inner Ring - clockwise */
-.orbit-ring-inner {
-  width: 200px;
-  height: 200px;
-  animation: rotateClockwise 20s linear infinite;
+.orbit-ring-visible {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
 }
 
-/* Outer Ring - counter-clockwise */
-.orbit-ring-outer {
-  width: 360px;
-  height: 360px;
-  animation: rotateCounter 30s linear infinite;
+.ring-1 {
+  width: 260px;
+  height: 260px;
+  border-width: 1px;
+  border-color: rgba(0, 188, 212, 0.4);
 }
 
-@keyframes rotateClockwise {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+.ring-2 {
+  width: 420px;
+  height: 420px;
+  border-width: 1px;
+  border-color: rgba(0, 188, 212, 0.25);
 }
 
-@keyframes rotateCounter {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
+.ring-3 {
+  width: 540px;
+  height: 540px;
+  border-width: 1px;
+  border-color: rgba(0, 188, 212, 0.15);
 }
 
-/* Orbit items - positioned on ring edge */
-.orbit-item {
+/* Labels positioned by JS */
+.orbit-label-js {
   position: absolute;
   top: 50%;
   left: 50%;
-}
-
-.tech-label-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.orbit-ring-inner .orbit-item {
-  transform: rotate(var(--angle)) translateX(100px);
-}
-
-.orbit-ring-inner .tech-label-wrapper {
-  animation: rotateCounter 20s linear infinite;
-}
-
-.orbit-ring-outer .orbit-item {
-  transform: rotate(var(--angle)) translateX(180px);
-}
-
-.orbit-ring-outer .tech-label-wrapper {
-  animation: rotateClockwise 30s linear infinite;
-}
-
-/* Floating Labels */
-.floating-tech-label {
-  position: absolute;
   z-index: 5;
+  pointer-events: none;
 }
 
-.floating-tech-0 { top: 15%; left: 15%; }
-.floating-tech-1 { top: 15%; right: 15%; }
-.floating-tech-2 { bottom: 25%; left: 15%; }
-.floating-tech-3 { bottom: 25%; right: 15%; }
-
-/* Tech Labels */
+/* Tech Labels Styling */
 .tech-label {
   display: inline-flex;
   align-items: center;
-  background: #0a1628;
-  border: 1.5px solid rgba(0, 188, 212, 0.3);
+  background: rgba(13, 27, 42, 0.9);
+  border: 1px solid rgba(0, 188, 212, 0.5);
   color: #00bcd4;
   padding: 4px 12px;
   border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   white-space: nowrap;
-  transform: translate(-50%, -50%);
 }
 
 /* Glowing Moving Dots */
-.orbit-dot {
+.orbit-dot-js {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background: #00bcd4;
   border-radius: 50%;
-  box-shadow: 0 0 10px #00bcd4;
+  box-shadow: 0 0 15px #00bcd4;
   top: 50%;
   left: 50%;
-}
-
-.dot-inner {
-  animation: dotOrbitInner 20s linear infinite;
-}
-
-.dot-outer {
-  animation: dotOrbitOuter 30s linear infinite;
-}
-
-@keyframes dotOrbitInner {
-  from { transform: translate(-50%,-50%) rotate(0deg) translateX(100px); }
-  to   { transform: translate(-50%,-50%) rotate(360deg) translateX(100px); }
-}
-
-@keyframes dotOrbitOuter {
-  from { transform: translate(-50%,-50%) rotate(45deg) translateX(180px); }
-  to   { transform: translate(-50%,-50%) rotate(-315deg) translateX(180px); }
+  z-index: 6;
 }
 
 /* Caption Bar */

@@ -1,0 +1,75 @@
+"Search through ALL files and find the About section orbital tech graphic. Completely rewrite the orbital graphic code to fix it properly. Do NOT touch anything else:
+COMPLETE REWRITE — ORBITAL GRAPHIC using JavaScript/CSS animation:
+The approach to use (this is the ONLY correct way to keep labels upright):
+
+Do NOT rotate the labels at all
+Instead, animate each label's position using JavaScript with Math.sin() and Math.cos() to calculate x and y coordinates along a circular path
+Use requestAnimationFrame or setInterval to update label positions every frame
+This way labels MOVE along the orbit path but never rotate — text always stays perfectly horizontal
+
+Exact structure to build:
+CENTER:
+
+Dark circle with < > symbol in teal color #00BCD4
+Size: 80px diameter
+
+ORBIT RING 1 (inner) — radius 130px from center:
+
+Visible teal circle border: 1px solid rgba(0,188,212,0.4)
+4 tech labels moving along this ring: React, Node.js, Flutter, Python
+Ring rotates clockwise — labels animate via JS position update every frame
+One glowing teal dot also moves along this ring
+
+ORBIT RING 2 (outer) — radius 210px from center:
+
+Visible teal circle border: 1px solid rgba(0,188,212,0.25)
+5 tech labels moving along this ring: AWS, MongoDB, TypeScript, Firebase, Java
+Ring counter-clockwise — labels animate via JS position update
+One glowing teal dot also moves along this ring
+
+ORBIT RING 3 (outermost) — radius 270px from center:
+
+Visible teal circle border: 1px solid rgba(0,188,212,0.15)
+4 tech labels moving along this ring: CSS3, Bootstrap, Tailwind, HTML5
+Clockwise rotation — labels animate via JS position update
+
+Label styling:
+
+Each label: background rgba(13,27,42,0.9), border 1px solid rgba(0,188,212,0.5), border-radius 20px, padding 4px 12px, color #00BCD4, font-size 12px, font-weight 500
+position: absolute, transform: translate(-50%, -50%) — NO rotation transform ever
+text always horizontal
+
+JavaScript animation logic:
+const labels = [
+  { text: 'React', ring: 1, startAngle: 0 },
+  { text: 'Node.js', ring: 1, startAngle: 90 },
+  ...
+]
+function animate() {
+  const time = Date.now() / 1000;
+  labels.forEach(label => {
+    const speed = label.ring === 2 ? -0.3 : 0.4;
+    const angle = label.startAngle + time * speed;
+    const radius = label.ring === 1 ? 130 : label.ring === 2 ? 210 : 270;
+    const x = centerX + radius * Math.cos(angle * Math.PI / 180);
+    const y = centerY + radius * Math.sin(angle * Math.PI / 180);
+    labelEl.style.left = x + 'px';
+    labelEl.style.top = y + 'px';
+  });
+  requestAnimationFrame(animate);
+}
+Overall graphic:
+
+Background: #0d1b2a
+Total size: same as current
+Border-radius: 16px
+Bottom bar: 'Innovation in Motion • VyuhX Technologies' in grey text
+Orbit rings must be clearly visible as circles
+
+STRICT RULES:
+
+Only change the right side graphic in About section
+Do not touch left side or any other section
+Labels must NEVER rotate — only their position changes
+Orbit rings must be clearly visible
+Tell me exactly which files you edited"**

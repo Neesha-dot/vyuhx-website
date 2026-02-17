@@ -144,87 +144,118 @@ export default function Home() {
 
 const techWithLogos = {
   inner: [
-    { name: 'React' },
-    { name: 'Node.js' },
-    { name: 'Flutter' },
-    { name: 'Python' },
+    { name: 'React', startAngle: 0 },
+    { name: 'Node.js', startAngle: 90 },
+    { name: 'Flutter', startAngle: 180 },
+    { name: 'Python', startAngle: 270 },
   ],
   outer: [
-    { name: 'AWS' },
-    { name: 'MongoDB' },
-    { name: 'TypeScript' },
-    { name: 'Firebase' },
-    { name: 'Java' },
+    { name: 'AWS', startAngle: 0 },
+    { name: 'MongoDB', startAngle: 72 },
+    { name: 'TypeScript', startAngle: 144 },
+    { name: 'Firebase', startAngle: 216 },
+    { name: 'Java', startAngle: 288 },
   ],
-  floating: [
-    { name: 'CSS3' },
-    { name: 'Bootstrap' },
-    { name: 'Tailwind' },
-    { name: 'HTML5' },
+  outermost: [
+    { name: 'CSS3', startAngle: 45 },
+    { name: 'Bootstrap', startAngle: 135 },
+    { name: 'Tailwind', startAngle: 225 },
+    { name: 'HTML5', startAngle: 315 },
   ]
 };
 
 const OrbitVisual = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let animationFrame: number;
+
+    const animate = () => {
+      if (!containerRef.current) return;
+
+      const time = Date.now() / 1000;
+      const labels = containerRef.current.querySelectorAll('.orbit-label-js');
+      const dots = containerRef.current.querySelectorAll('.orbit-dot-js');
+
+      labels.forEach((el) => {
+        const ring = parseInt(el.getAttribute('data-ring') || '1');
+        const startAngle = parseFloat(el.getAttribute('data-start-angle') || '0');
+        const speed = ring === 2 ? -0.3 : 0.4;
+        const radius = ring === 1 ? 130 : ring === 2 ? 210 : 270;
+        
+        const angle = (startAngle + (time * speed * 57.2958)) % 360;
+        const x = radius * Math.cos(angle * Math.PI / 180);
+        const y = radius * Math.sin(angle * Math.PI / 180);
+
+        (el as HTMLElement).style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+      });
+
+      dots.forEach((el) => {
+        const ring = parseInt(el.getAttribute('data-ring') || '1');
+        const speed = ring === 2 ? -0.3 : 0.4;
+        const radius = ring === 1 ? 130 : ring === 2 ? 210 : 270;
+        const angle = (time * speed * 57.2958) % 360;
+        const x = radius * Math.cos(angle * Math.PI / 180);
+        const y = radius * Math.sin(angle * Math.PI / 180);
+        (el as HTMLElement).style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+      });
+
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
+
   return (
-    <div className="orbit-container">
+    <div className="orbit-container" ref={containerRef}>
       {/* Center icon */}
       <div className="orbit-center">
         <span className="orbit-center-icon">&lt; &gt;</span>
       </div>
 
-      {/* Inner Ring - 4 items */}
-      <div className="orbit-ring orbit-ring-inner">
-        {techWithLogos.inner.map((tech, i) => (
-          <div
-            key={tech.name}
-            className="orbit-item"
-            style={{
-              '--angle': `${(360 / techWithLogos.inner.length) * i}deg`,
-            } as React.CSSProperties}
-          >
-            <div className="tech-label-wrapper tech-label-inner">
-              <span className="tech-label">
-                {tech.name}
-              </span>
-            </div>
-          </div>
-        ))}
+      {/* Orbit Rings */}
+      <div className="orbit-ring-svg-container">
+        <div className="orbit-ring-visible ring-1"></div>
+        <div className="orbit-ring-visible ring-2"></div>
+        <div className="orbit-ring-visible ring-3"></div>
       </div>
 
-      {/* Outer Ring - 5 items */}
-      <div className="orbit-ring orbit-ring-outer">
-        {techWithLogos.outer.map((tech, i) => (
-          <div
-            key={tech.name}
-            className="orbit-item"
-            style={{
-              '--angle': `${(360 / techWithLogos.outer.length) * i}deg`,
-            } as React.CSSProperties}
-          >
-            <div className="tech-label-wrapper tech-label-outer">
-              <span className="tech-label">
-                {tech.name}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Floating Labels - 4 items */}
-      {techWithLogos.floating.map((tech, i) => (
+      {/* Tech Labels */}
+      {techWithLogos.inner.map((tech) => (
         <div
           key={tech.name}
-          className={`floating-tech-label floating-tech-${i}`}
+          className="orbit-label-js"
+          data-ring="1"
+          data-start-angle={tech.startAngle}
         >
-          <span className="tech-label">
-            {tech.name}
-          </span>
+          <span className="tech-label">{tech.name}</span>
+        </div>
+      ))}
+      {techWithLogos.outer.map((tech) => (
+        <div
+          key={tech.name}
+          className="orbit-label-js"
+          data-ring="2"
+          data-start-angle={tech.startAngle}
+        >
+          <span className="tech-label">{tech.name}</span>
+        </div>
+      ))}
+      {techWithLogos.outermost.map((tech) => (
+        <div
+          key={tech.name}
+          className="orbit-label-js"
+          data-ring="3"
+          data-start-angle={tech.startAngle}
+        >
+          <span className="tech-label">{tech.name}</span>
         </div>
       ))}
 
-      {/* Glowing dots on each ring */}
-      <div className="orbit-dot dot-inner"></div>
-      <div className="orbit-dot dot-outer"></div>
+      {/* Glowing Dots */}
+      <div className="orbit-dot-js ring-1-dot" data-ring="1"></div>
+      <div className="orbit-dot-js ring-2-dot" data-ring="2"></div>
 
       {/* Caption Bar */}
       <div className="orbit-caption-bar">
