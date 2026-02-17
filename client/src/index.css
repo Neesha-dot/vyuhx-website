@@ -422,13 +422,38 @@
   left: 50%;
 }
 
+.tech-label-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 .orbit-ring-inner .orbit-item {
-  transform: rotate(var(--angle)) translateX(100px) rotate(calc(-1 * var(--angle)));
+  transform: rotate(var(--angle)) translateX(100px);
+}
+
+.orbit-ring-inner .tech-label-wrapper {
+  animation: rotateCounter 20s linear infinite;
 }
 
 .orbit-ring-outer .orbit-item {
-  transform: rotate(var(--angle)) translateX(180px) rotate(calc(-1 * var(--angle)));
+  transform: rotate(var(--angle)) translateX(180px);
 }
+
+.orbit-ring-outer .tech-label-wrapper {
+  animation: rotateClockwise 30s linear infinite;
+}
+
+/* Floating Labels */
+.floating-tech-label {
+  position: absolute;
+  z-index: 5;
+}
+
+.floating-tech-0 { top: 15%; left: 15%; }
+.floating-tech-1 { top: 15%; right: 15%; }
+.floating-tech-2 { bottom: 25%; left: 15%; }
+.floating-tech-3 { bottom: 25%; right: 15%; }
 
 /* Tech Labels */
 .tech-label {

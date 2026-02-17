@@ -147,11 +147,20 @@ const techWithLogos = {
     { name: 'React' },
     { name: 'Node.js' },
     { name: 'Flutter' },
+    { name: 'Python' },
   ],
   outer: [
-    { name: 'Python' },
     { name: 'AWS' },
     { name: 'MongoDB' },
+    { name: 'TypeScript' },
+    { name: 'Firebase' },
+    { name: 'Java' },
+  ],
+  floating: [
+    { name: 'CSS3' },
+    { name: 'Bootstrap' },
+    { name: 'Tailwind' },
+    { name: 'HTML5' },
   ]
 };
 
@@ -163,7 +172,7 @@ const OrbitVisual = () => {
         <span className="orbit-center-icon">&lt; &gt;</span>
       </div>
 
-      {/* Inner Ring - 3 items */}
+      {/* Inner Ring - 4 items */}
       <div className="orbit-ring orbit-ring-inner">
         {techWithLogos.inner.map((tech, i) => (
           <div
@@ -173,14 +182,16 @@ const OrbitVisual = () => {
               '--angle': `${(360 / techWithLogos.inner.length) * i}deg`,
             } as React.CSSProperties}
           >
-            <span className="tech-label">
-              {tech.name}
-            </span>
+            <div className="tech-label-wrapper tech-label-inner">
+              <span className="tech-label">
+                {tech.name}
+              </span>
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Outer Ring - 3 items */}
+      {/* Outer Ring - 5 items */}
       <div className="orbit-ring orbit-ring-outer">
         {techWithLogos.outer.map((tech, i) => (
           <div
@@ -190,12 +201,26 @@ const OrbitVisual = () => {
               '--angle': `${(360 / techWithLogos.outer.length) * i}deg`,
             } as React.CSSProperties}
           >
-            <span className="tech-label">
-              {tech.name}
-            </span>
+            <div className="tech-label-wrapper tech-label-outer">
+              <span className="tech-label">
+                {tech.name}
+              </span>
+            </div>
           </div>
         ))}
       </div>
+
+      {/* Floating Labels - 4 items */}
+      {techWithLogos.floating.map((tech, i) => (
+        <div
+          key={tech.name}
+          className={`floating-tech-label floating-tech-${i}`}
+        >
+          <span className="tech-label">
+            {tech.name}
+          </span>
+        </div>
+      ))}
 
       {/* Glowing dots on each ring */}
       <div className="orbit-dot dot-inner"></div>
