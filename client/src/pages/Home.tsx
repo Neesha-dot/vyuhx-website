@@ -348,30 +348,40 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="about-media-container"
             >
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                className="about-video"
-                onError={(e: any) => {
-                  e.target.style.display = 'none';
-                  const fallback = e.target.parentElement.querySelector('.about-fallback-img');
-                  if (fallback) fallback.style.display = 'block';
-                }}
-              >
-                <source 
-                  src="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4" 
-                  type="video/mp4" 
-                />
-              </video>
-              <img 
-                className="about-fallback-img about-image" 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop" 
-                alt="VyuhX Technologies Team"
-                style={{display: 'none'}}
-              />
-              <div className="about-video-caption">
+              <div className="about-animated-visual">
+                
+                {/* Animated circles */}
+                <div className="visual-ring ring-1"></div>
+                <div className="visual-ring ring-2"></div>
+                <div className="visual-ring ring-3"></div>
+                
+                {/* Center icon */}
+                <div className="visual-center">
+                  <svg width="80" height="80" viewBox="0 0 24 24" 
+                       fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 18L22 12L16 6M8 6L2 12L8 18" 
+                          stroke="#00bcd4" strokeWidth="2" 
+                          strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+
+                {/* Floating tech words */}
+                <div className="floating-tag tag-1">React</div>
+                <div className="floating-tag tag-2">Node.js</div>
+                <div className="floating-tag tag-3">Flutter</div>
+                <div className="floating-tag tag-4">Python</div>
+                <div className="floating-tag tag-5">AWS</div>
+                <div className="floating-tag tag-6">MongoDB</div>
+
+                {/* Connecting dots */}
+                <div className="dot dot-1"></div>
+                <div className="dot dot-2"></div>
+                <div className="dot dot-3"></div>
+                <div className="dot dot-4"></div>
+                <div className="dot dot-5"></div>
+                
+              </div>
+              <div className="about-media-caption">
                 Innovation in Motion • VyuhX Technologies
               </div>
             </motion.div>
