@@ -345,10 +345,11 @@ export default function Home() {
             
             {/* Company Name */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 1, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="section-main-heading company-name mt-[25px]"
+              className="section-main-heading company-name mt-[25px] !text-white !opacity-100"
+              style={{ color: '#FFFFFF', opacity: 1 }}
             >
               VyuhX Technologies
             </motion.h1>
@@ -577,7 +578,7 @@ export default function Home() {
       </section>
 
       {/* --- VIDEO CTA SECTION --- */}
-      <section className="relative overflow-hidden bg-slate-900">
+      <section className="relative overflow-hidden bg-slate-900 !py-[20px] !my-[10px]" style={{ paddingTop: '20px', paddingBottom: '20px', marginTop: '10px', marginBottom: '10px' }}>
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline className="absolute w-full h-full object-cover opacity-30 grayscale brightness-50">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-technological-and-futuristic-digital-background-40781-large.mp4" type="video/mp4" />
@@ -587,17 +588,17 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 1, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 md:p-16 rounded-[3rem] text-center md:text-left"
             >
-              <h2 className="section-main-heading text-white mb-6">
+              <h2 className="section-main-heading !text-white !opacity-100 mb-6" style={{ color: '#FFFFFF', opacity: 1 }}>
                 Ready to redefine <br/>
                 <span className="text-cyan-400 underline decoration-cyan-500/30 underline-offset-8">your digital limits?</span>
               </h2>
               <p className="text-lg text-slate-300 mb-8 max-w-xl">
-                Join 30+ forward-thinking brands that trust VyuhX Technologies for high-impact engineering.
+                Got a business idea? We turn it into a working digital product — fast, clean, and built to scale.
               </p>
               <Link to="contact" smooth={true} duration={500}>
                 <Button size="lg" className="h-14 px-10 text-lg rounded-full bg-white text-slate-900 hover:bg-cyan-500 hover:text-white transition-all duration-500 font-black tracking-tight">

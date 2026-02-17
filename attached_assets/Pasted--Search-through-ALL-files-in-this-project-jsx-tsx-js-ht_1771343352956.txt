@@ -1,0 +1,36 @@
+"Search through ALL files in this project (.jsx .tsx .js .html .css) and fix these 2 specific sections only. Do NOT touch anything else:
+FIX 1 — HERO SECTION (section with 'VyuhX Technologies' and 'Vision to Execution'):
+
+The text 'VyuhX Technologies' is currently appearing faded/dark/transparent — fix it so it is fully visible bright white color: #FFFFFF with opacity 1
+Make sure font-weight is 800 and color is white #FFFFFF on this heading
+Check if there is any animation, scroll effect, parallax, or Intersection Observer that is changing the opacity or color of this heading text and remove or fix it so the text stays fully white and visible at all times
+The overall look should match: bold white 'VyuhX Technologies' text clearly visible on the dark background at all times
+
+FIX 2 — CTA SECTION (section with 'Ready to redefine your digital limits?'):
+2A — FIX TEXT VISIBILITY:
+
+The text 'Ready to redefine' is currently appearing faded/dark/transparent — fix it so it is fully visible bright white color: #FFFFFF with opacity 1
+Check if there is any animation, scroll effect, or Intersection Observer affecting this text opacity and fix it so both lines stay fully white and visible always
+The overall look should be: bold white 'Ready to redefine' on first line, bold teal 'your digital limits?' on second line — both fully visible at all times
+
+2B — CHANGE SUBTITLE TEXT:
+
+Find this exact text: 'Join 30+ forward-thinking brands that trust VyuhX Technologies for high-impact engineering.'
+Replace it with: 'Got a business idea? We turn it into a working digital product — fast, clean, and built to scale.'
+
+2C — REDUCE OUTER SECTION HEIGHT/PADDING:
+
+The section/div that wraps the dark rounded box has too much padding or height on top and bottom — there is too much black empty space above and below the box
+Find that outer wrapper section and reduce its padding-top and padding-bottom to maximum 20px
+If it has a min-height or height set, remove it or reduce it to auto
+If there is margin-top or margin-bottom on the outer section, reduce it to maximum 10px
+The rounded dark box itself should stay exactly the same — do not change the box's internal padding, colors, border-radius or content
+Only reduce the empty black space OUTSIDE the box, above and below it
+
+STRICT RULES:
+
+Only fix these 2 sections — Hero and CTA
+Do not change any colors, layouts, images or other content anywhere else
+Do not touch any other section on the website
+If styles are in separate CSS files, update those too
+Tell me exactly which files you edited after completing"**
