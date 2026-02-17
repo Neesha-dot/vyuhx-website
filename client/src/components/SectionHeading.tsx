@@ -28,7 +28,7 @@ export function SectionHeading({
       )}
     >
       <span className={cn(
-        "inline-block text-sm font-bold tracking-wider uppercase mb-3 px-3 py-1 rounded-full",
+        "section-badge-label inline-block mb-3 px-3 py-1 rounded-full",
         light 
           ? "bg-white/10 text-cyan-300 border border-white/20" 
           : "bg-cyan-50 text-cyan-600 border border-cyan-100"
@@ -36,8 +36,8 @@ export function SectionHeading({
         {subtitle}
       </span>
       <h2 className={cn(
-        "text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 leading-tight",
-        light ? "text-white" : "text-slate-900"
+        "section-main-heading mb-6",
+        light ? "text-white !important" : ""
       )}>
         {title}
       </h2>

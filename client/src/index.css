@@ -124,6 +124,45 @@
     font-family: var(--font-display);
     @apply font-bold tracking-tight;
   }
+
+  /* Global Section Heading Styles */
+  .section-main-heading {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    color: hsl(var(--foreground)) !important;
+    font-family: var(--font-display) !important;
+  }
+
+  @media (min-width: 1024px) {
+    .section-main-heading {
+      font-size: 48px !important;
+    }
+  }
+
+  /* Global Section Badge Styles */
+  .section-badge-label {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    font-family: var(--font-body) !important;
+  }
+
+  /* Global Section Spacing */
+  section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  section[style*="margin-top"], section[class*="mt-"] {
+    margin-top: clamp(0px, var(--mt, 40px), 40px) !important;
+  }
+  section[style*="margin-bottom"], section[class*="mb-"] {
+    margin-bottom: clamp(0px, var(--mb, 40px), 40px) !important;
+  }
 }
 
 /* Custom Scrollbar */
