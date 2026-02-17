@@ -144,31 +144,14 @@ export default function Home() {
 
 const techWithLogos = {
   inner: [
-    { name: 'React',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-    { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-    { name: 'Next.js',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-    { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-    { name: 'CSS3',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-  ],
-  middle: [
-    { name: 'Node.js',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-    { name: 'Flutter',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
-    { name: 'Docker',     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-    { name: 'Firebase',   logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
-    { name: 'Java',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-    { name: 'Bootstrap',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+    { name: 'React' },
+    { name: 'Node.js' },
+    { name: 'Flutter' },
   ],
   outer: [
-    { name: 'Python',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-    { name: 'AWS',         logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
-    { name: 'MongoDB',     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-    { name: 'PostgreSQL',  logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-    { name: 'GraphQL',     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
-    { name: 'Kotlin',      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg' },
-    { name: 'HTML5',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-    { name: 'MySQL',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-    { name: 'Redux',       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg' },
-    { name: 'Tailwind',    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg' },
+    { name: 'Python' },
+    { name: 'AWS' },
+    { name: 'MongoDB' },
   ]
 };
 
@@ -177,10 +160,10 @@ const OrbitVisual = () => {
     <div className="orbit-container">
       {/* Center icon */}
       <div className="orbit-center">
-        <span className="orbit-center-icon">&lt;/&gt;</span>
+        <span className="orbit-center-icon">&lt; &gt;</span>
       </div>
 
-      {/* Inner Ring - 5 items */}
+      {/* Inner Ring - 3 items */}
       <div className="orbit-ring orbit-ring-inner">
         {techWithLogos.inner.map((tech, i) => (
           <div
@@ -188,47 +171,16 @@ const OrbitVisual = () => {
             className="orbit-item"
             style={{
               '--angle': `${(360 / techWithLogos.inner.length) * i}deg`,
-              '--count': techWithLogos.inner.length
             } as React.CSSProperties}
           >
             <span className="tech-label">
-              <img
-                src={tech.logo}
-                alt={tech.name}
-                className="tech-label-logo"
-                onError={(e) => (e.currentTarget.style.display = 'none')}
-              />
               {tech.name}
             </span>
           </div>
         ))}
       </div>
 
-      {/* Middle Ring - 6 items */}
-      <div className="orbit-ring orbit-ring-middle">
-        {techWithLogos.middle.map((tech, i) => (
-          <div
-            key={tech.name}
-            className="orbit-item orbit-item-middle"
-            style={{
-              '--angle': `${(360 / techWithLogos.middle.length) * i}deg`,
-              '--count': techWithLogos.middle.length
-            } as React.CSSProperties}
-          >
-            <span className="tech-label">
-              <img
-                src={tech.logo}
-                alt={tech.name}
-                className="tech-label-logo"
-                onError={(e) => (e.currentTarget.style.display = 'none')}
-              />
-              {tech.name}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {/* Outer Ring - 10 items */}
+      {/* Outer Ring - 3 items */}
       <div className="orbit-ring orbit-ring-outer">
         {techWithLogos.outer.map((tech, i) => (
           <div
@@ -236,16 +188,9 @@ const OrbitVisual = () => {
             className="orbit-item"
             style={{
               '--angle': `${(360 / techWithLogos.outer.length) * i}deg`,
-              '--count': techWithLogos.outer.length
             } as React.CSSProperties}
           >
             <span className="tech-label">
-              <img
-                src={tech.logo}
-                alt={tech.name}
-                className="tech-label-logo"
-                onError={(e) => (e.currentTarget.style.display = 'none')}
-              />
               {tech.name}
             </span>
           </div>
@@ -254,11 +199,10 @@ const OrbitVisual = () => {
 
       {/* Glowing dots on each ring */}
       <div className="orbit-dot dot-inner"></div>
-      <div className="orbit-dot dot-middle"></div>
       <div className="orbit-dot dot-outer"></div>
 
-      {/* Caption */}
-      <div className="orbit-caption">
+      {/* Caption Bar */}
+      <div className="orbit-caption-bar">
         Innovation in Motion • VyuhX Technologies
       </div>
     </div>
