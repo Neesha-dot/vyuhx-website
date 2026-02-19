@@ -87,15 +87,15 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-lg mb-6 text-white">Contact Us</h4>
             <ul className="space-y-6">
-              <li className="flex items-start gap-4">
+              <li className="contact-info flex items-start gap-4">
                 <Mail className="w-5 h-5 text-cyan-400 mt-1 shrink-0" />
                 <span className="text-slate-400">vyuhxtechnologies@gmail.com</span>
               </li>
-              <li className="flex items-start gap-4">
+              <li className="contact-info flex items-start gap-4">
                 <Phone className="w-5 h-5 text-cyan-400 mt-1 shrink-0" />
                 <span className="text-slate-400">+91 7977696462 / +91 7208125036</span>
               </li>
-              <li className="flex items-start gap-4">
+              <li className="contact-info flex items-start gap-4">
                 <MapPin className="w-5 h-5 text-cyan-400 mt-1 shrink-0" />
                 <span className="text-slate-400">Kalyan, Maharashtra, India</span>
               </li>
@@ -104,12 +104,12 @@ export function Footer() {
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">
+          <p className="footer-text text-slate-500 text-sm">
             © {currentYear} VyuhX Technologies. All rights reserved.
           </p>
           <div className="flex gap-8 text-sm text-slate-500">
-            <a href="#" className="hover:text-cyan-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-cyan-400 transition-colors">Terms of Service</a>
+            <a href="#" className="footer-link hover:text-cyan-400 transition-colors">Privacy Policy</a>
+            <a href="#" className="footer-link hover:text-cyan-400 transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

@@ -41,14 +41,12 @@ export function SectionHeading({
       )}>
         {title}
       </h2>
-      {description && (
-        <p className={cn(
-          "text-lg md:text-xl leading-relaxed",
-          light ? "text-slate-300" : "text-slate-600"
-        )}>
-          {description}
-        </p>
-      )}
+      <p className={cn(
+        "section-subtitle text-lg md:text-xl leading-relaxed",
+        light ? "text-slate-300" : "text-slate-600"
+      )}>
+        {description}
+      </p>
     </motion.div>
   );
 }

@@ -537,7 +537,7 @@ const OrbitVisual = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="hero-subtitle"
+              className="hero-subtitle mb-8"
             >
               We build powerful websites, smart software, and digital marketing 
               strategies that grow your business from idea to impact.

@@ -1,0 +1,390 @@
+Increase font sizes across the ENTIRE WEBSITE to improve readability.
+Many text elements are too small and not clearly visible.
+
+APPLY THESE FONT SIZE INCREASES TO ALL SECTIONS:
+
+═══════════════════════════════════════
+GENERAL TEXT ELEMENTS (ALL SECTIONS)
+═══════════════════════════════════════
+
+Paragraph/Body Text:
+Current: 0.9rem - 1rem
+Change to: 1.05rem - 1.15rem
+```css
+p, .body-text, .description-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+```
+
+Card Descriptions:
+Current: 0.85rem - 0.95rem
+Change to: 1rem - 1.05rem
+```css
+.card-description,
+.project-description,
+.service-description {
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+```
+
+Subtitles/Secondary Headings:
+Current: 1rem - 1.2rem
+Change to: 1.3rem - 1.5rem
+```css
+.subtitle,
+.section-subtitle,
+.hero-subtitle {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+```
+
+Small Text (tech tags, labels):
+Current: 0.7rem - 0.8rem
+Change to: 0.85rem - 0.9rem
+```css
+.tech-tag,
+.label-text,
+.small-text {
+  font-size: 0.88rem;
+}
+```
+
+═══════════════════════════════════════
+SECTION-SPECIFIC FONT INCREASES
+═══════════════════════════════════════
+
+HERO SECTION:
+```css
+.hero-subtitle {
+  font-size: 1.4rem; /* was ~1.1rem */
+  line-height: 1.7;
+}
+```
+
+SERVICES SECTION:
+```css
+/* Service card titles */
+.service-card-title {
+  font-size: 1.7rem; /* was ~1.4rem */
+  font-weight: 800;
+}
+
+/* Service card descriptions */
+.service-card-description {
+  font-size: 1.05rem; /* was ~0.9rem */
+  line-height: 1.7;
+}
+
+/* Feature list items */
+.service-feature-item {
+  font-size: 1rem; /* was ~0.85rem */
+}
+
+/* Service section subtitle */
+.services-subtitle {
+  font-size: 1.35rem; /* increase visibility */
+}
+```
+
+ABOUT SECTION:
+```css
+/* Main tagline */
+.about-tagline {
+  font-size: 1.85rem; /* already updated, keep this */
+  line-height: 1.4;
+}
+
+/* About description paragraph */
+.about-description {
+  font-size: 1.15rem; /* was ~0.95rem */
+  line-height: 1.75;
+}
+
+/* Feature points */
+.about-feature-title {
+  font-size: 1.05rem; /* was ~0.9rem */
+  font-weight: 700;
+}
+
+.about-feature-description {
+  font-size: 0.95rem; /* was ~0.8rem */
+}
+```
+
+PORTFOLIO SECTION:
+```css
+/* Project card titles */
+.project-title {
+  font-size: 1.65rem; /* was ~1.3rem */
+  font-weight: 800;
+}
+
+/* Project descriptions */
+.project-description {
+  font-size: 1.05rem; /* was ~0.9rem */
+  line-height: 1.7;
+}
+
+/* Tech tags */
+.tech-tag {
+  font-size: 0.85rem; /* was ~0.7rem */
+  font-weight: 600;
+}
+
+/* Section subtitle */
+.portfolio-subtitle {
+  font-size: 1.35rem; /* increase from ~1.1rem */
+  color: #6b7280;
+}
+```
+
+JOURNEY/TIMELINE SECTION:
+```css
+/* Card titles */
+.journey-card-title {
+  font-size: 1.6rem; /* was ~1.3rem */
+  font-weight: 800;
+}
+
+/* Card descriptions */
+.journey-card-description {
+  font-size: 1.05rem; /* was ~0.9rem */
+  line-height: 1.7;
+}
+
+/* Date text */
+.journey-date {
+  font-size: 1rem; /* was ~0.85rem */
+}
+
+/* Quote text */
+.card-quote {
+  font-size: 0.95rem; /* was ~0.8rem */
+  line-height: 1.6;
+}
+
+/* Stats */
+.card-stat {
+  font-size: 1rem; /* was ~0.85rem */
+}
+```
+
+TECHNOLOGIES SECTION (if you have one):
+```css
+/* Tech descriptions */
+.technology-description {
+  font-size: 1.05rem; /* was ~0.9rem */
+  line-height: 1.7;
+}
+```
+
+CONTACT/FOOTER SECTION:
+```css
+/* Contact info */
+.contact-info {
+  font-size: 1.05rem; /* was ~0.9rem */
+}
+
+/* Footer text */
+.footer-text {
+  font-size: 0.95rem; /* was ~0.8rem */
+}
+
+/* Footer links */
+.footer-link {
+  font-size: 1rem; /* was ~0.85rem */
+}
+```
+
+CTA SECTION:
+```css
+/* CTA heading */
+.cta-heading {
+  font-size: 2.5rem; /* ensure it's prominent */
+  font-weight: 900;
+}
+
+/* CTA subtitle */
+.cta-subtitle {
+  font-size: 1.3rem; /* was likely ~1rem */
+  line-height: 1.6;
+}
+
+/* Button text */
+.cta-button {
+  font-size: 1.1rem; /* was ~0.95rem */
+  font-weight: 700;
+}
+```
+
+MODAL/POPUP TEXT:
+```css
+/* Modal headings */
+.modal-title {
+  font-size: 2.2rem; /* increase prominence */
+}
+
+/* Modal section headings */
+.modal-section-title {
+  font-size: 1.2rem; /* was ~1rem */
+}
+
+/* Modal body text */
+.modal-body-text {
+  font-size: 1.05rem; /* was ~0.9rem */
+  line-height: 1.7;
+}
+
+/* Modal tech tags */
+.modal-tech-tag {
+  font-size: 0.85rem; /* was ~0.75rem */
+}
+```
+
+NAVIGATION:
+```css
+/* Nav links */
+.nav-link {
+  font-size: 1.05rem; /* was ~0.95rem */
+  font-weight: 600;
+}
+
+/* Get Started button */
+.nav-cta-button {
+  font-size: 1rem; /* ensure readable */
+  font-weight: 700;
+}
+```
+
+═══════════════════════════════════════
+RESPONSIVE SCALING
+═══════════════════════════════════════
+
+Desktop (>1200px):
+- Use the sizes listed above (full size)
+
+Tablet (768px - 1200px):
+- Scale down to 90% of desktop sizes
+
+Mobile (<768px):
+- Scale down to 85% of desktop sizes
+- BUT ensure minimum 0.95rem for body text
+```css
+@media (max-width: 768px) {
+  /* Don't make text too small on mobile */
+  p, .body-text {
+    font-size: 1rem; /* minimum */
+  }
+  
+  .card-description {
+    font-size: 0.95rem; /* minimum */
+  }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.3rem; }
+}
+```
+
+═══════════════════════════════════════
+SPECIFIC FIXES FOR YOUR REFERENCE IMAGE
+═══════════════════════════════════════
+
+Based on 2nd image (Services section):
+
+Service Card Titles:
+"Web Development", "Mobile Apps", etc.
+```css
+font-size: 1.7rem;
+font-weight: 800;
+```
+
+Service Descriptions:
+"Enterprise-grade web applications..."
+```css
+font-size: 1.05rem;
+line-height: 1.7;
+```
+
+Feature Points:
+"React & Next.js", "Performance Optimized"
+```css
+font-size: 1rem;
+color: #6b7280;
+```
+
+Section Heading:
+Already bold, but ensure subtitle is visible:
+```css
+.services-section-subtitle {
+  font-size: 1.35rem;
+  color: #6b7280;
+  margin-top: 12px;
+}
+```
+
+═══════════════════════════════════════
+GLOBAL CSS UPDATE
+═══════════════════════════════════════
+
+Add this to your global CSS file:
+```css
+/* Base font size increase */
+html {
+  font-size: 16px; /* Ensure base is not too small */
+}
+
+body {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Headings */
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1.05rem; }
+
+/* Ensure all paragraphs are readable */
+p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+/* Links */
+a {
+  font-size: inherit;
+}
+
+/* Buttons */
+button {
+  font-size: 1rem;
+  font-weight: 600;
+}
+```
+
+SUMMARY OF CHANGES:
+✅ Body text: 1rem → 1.1rem
+✅ Card descriptions: 0.9rem → 1.05rem
+✅ Card titles: 1.3rem → 1.65rem
+✅ Section subtitles: 1.1rem → 1.35rem
+✅ Tech tags: 0.7rem → 0.85rem
+✅ Small text minimum: 0.85rem
+✅ Responsive scaling maintained
+✅ ALL sections updated
+
+KEEP UNCHANGED:
+- Font families
+- Font weights
+- Colors
+- Line heights (or slightly increased for readability)
+- Letter spacing
+- All animations and effects
+
+This will make ALL text across your website more readable and visible!

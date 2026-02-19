@@ -67,7 +67,7 @@ export function Navigation() {
               offset={-100}
               duration={500}
               className={cn(
-                "text-sm font-medium cursor-pointer transition-colors relative group",
+                "nav-link text-sm font-medium cursor-pointer transition-colors relative group",
                 isScrolled ? "text-slate-600 hover:text-cyan-600" : "text-white/80 hover:text-white"
               )}
             >
@@ -123,7 +123,7 @@ export function Navigation() {
               ))}
               <div className="mt-4 px-4">
                 <Link to="contact" smooth={true} duration={500} onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-6">
+                  <Button className="nav-cta-button w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-6">
                     Start Your Project
                   </Button>
                 </Link>
