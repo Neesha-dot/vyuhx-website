@@ -394,7 +394,7 @@ const OrbitVisual = () => {
     {
       id: 1,
       title: "Cafe Twenty Twenty",
-      category: "web",
+      category: "Web",
       description: "Modern digital presence and reservation system for a premium cafe. Where coffee meets comfort with handcrafted beverages and calm ambiance.",
       tags: ["NEXT.JS", "TAILWIND", "SUPABASE"],
       image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
@@ -403,7 +403,7 @@ const OrbitVisual = () => {
     {
       id: 2,
       title: "Cafe Queue Management",
-      category: "web",
+      category: "Web",
       description: "Smart queue management system with real-time tracking, automated token generation, and seamless customer-staff communication.",
       tags: ["REACT", "SOCKET.IO", "REAL-TIME", "QUEUE SYSTEM"],
       image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=800",
@@ -412,7 +412,7 @@ const OrbitVisual = () => {
     {
       id: 3,
       title: "Shreerath Feedback System",
-      category: "dashboard",
+      category: "Web",
       description: "QR code-based feedback system where customers scan and submit reviews directly to restaurant owner's dashboard for business improvements.",
       tags: ["QR CODE", "OWNER DASHBOARD", "REAL-TIME", "CUSTOMER INSIGHTS"],
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
@@ -421,7 +421,7 @@ const OrbitVisual = () => {
     {
       id: 4,
       title: "Bomb Rolls Feedback System",
-      category: "dashboard",
+      category: "Web",
       description: "Customer QR code feedback platform with owner dashboard for tracking ratings, reviews, and actionable business insights.",
       tags: ["QR CODE", "OWNER PANEL", "DISH RATINGS", "ANALYTICS"],
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
@@ -430,7 +430,7 @@ const OrbitVisual = () => {
     {
       id: 5,
       title: "Bomb Rolls and Bowls",
-      category: "web",
+      category: "Web",
       description: "Where every bite is a flavor bomb waiting to detonate! Vibrant menu showcase with stunning food photography and easy navigation.",
       tags: ["REACT", "MENU GALLERY", "FOOD & BEVERAGE", "MODERN DESIGN"],
       image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800",
@@ -439,7 +439,7 @@ const OrbitVisual = () => {
     {
       id: 6,
       title: "SJ Interior",
-      category: "web",
+      category: "Web",
       description: "Elegant portfolio showcasing premium interior design projects with immersive visual experiences and seamless navigation.",
       tags: ["REACT", "GSAP", "PORTFOLIO", "INTERIOR DESIGN"],
       image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
@@ -448,20 +448,11 @@ const OrbitVisual = () => {
     {
       id: 7,
       title: "FRA Tool Analyser",
-      category: "dashboard",
+      category: "Software",
       description: "Advanced financial risk assessment and analysis tool designed to streamline operations, enhance decision-making, and maximize efficiency in risk management.",
       tags: ["REACT", "PYTHON", "DATA ANALYTICS", "FINANCIAL TOOLS"],
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
       link: "/case-study/fra-tool"
-    },
-    {
-      id: 8,
-      title: "FinDash Pro",
-      category: "dashboard",
-      description: "Real-time financial analytics dashboard for enterprise clients with comprehensive data visualization and business intelligence.",
-      tags: ["REACT", "D3.JS", "PYTHON"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-      link: "/case-study/findash-pro"
     }
   ];
 
@@ -1100,7 +1091,7 @@ const OrbitVisual = () => {
           <Tabs defaultValue="all" className="w-full mb-10">
             <div className="flex justify-center mb-6">
               <TabsList className="bg-white border p-1 rounded-full h-auto">
-                {["all", "web", "mobile", "dashboard"].map((tab) => (
+                {["all", "Web", "Software"].map((tab) => (
                   <TabsTrigger 
                     key={tab} 
                     value={tab}
@@ -1119,7 +1110,7 @@ const OrbitVisual = () => {
                 ))}
               </div>
             </TabsContent>
-            {["web", "mobile", "dashboard"].map((cat) => (
+            {["Web", "Software"].map((cat) => (
               <TabsContent key={cat} value={cat}>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {projects.filter(p => p.category === cat).map((project, idx) => (
@@ -1325,7 +1316,11 @@ function ProjectCard({ project }: { project: any }) {
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1" 
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
-        <Badge className="absolute top-4 left-4 bg-white/10 backdrop-blur-md border-white/20 text-white capitalize px-3 py-0.5 text-[10px]">
+        <Badge className={`absolute top-4 left-4 backdrop-blur-md border-white/20 text-white capitalize px-3 py-0.5 text-[10px] ${
+          project.category === 'Web' ? 'bg-[#00BCD4]/90' : 
+          project.category === 'Software' ? 'bg-[#8B5CF6]/90' : 
+          'bg-white/10'
+        }`}>
           {project.category}
         </Badge>
       </div>

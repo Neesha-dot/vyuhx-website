@@ -1,0 +1,249 @@
+Update the Portfolio section with filters and 7 projects total.
+
+REMOVE PROJECT:
+❌ Remove "FinDash Pro" completely (keep only 7 projects)
+
+UPDATE FILTERS:
+Change filter buttons from: [All] [Web] [Mobile] [Dashboard]
+To: [All] [Web] [Software] [Dashboard]
+
+CATEGORIZE 7 PROJECTS:
+
+WEB CATEGORY (6 projects):
+1. Cafe Twenty Twenty
+2. Cafe Queue Management
+3. Bomb Rolls and Bowls
+4. SJ Interior
+5. Shreerath Feedback System (move from Dashboard to Web)
+6. Bomb Rolls Feedback System (move from Dashboard to Web)
+
+SOFTWARE CATEGORY (1 project):
+7. FRA Tool Analyser
+
+DASHBOARD CATEGORY (0 projects):
+- Keep the filter button but no projects assigned
+- Or remove Dashboard filter entirely (your choice)
+
+COMPLETE PROJECT DATA:
+```javascript
+const projects = [
+  // WEB PROJECTS (6)
+  {
+    id: 1,
+    title: "Cafe Twenty Twenty",
+    category: "Web",
+    description: "Modern digital presence and reservation system for a premium cafe. Where coffee meets comfort with handcrafted beverages and calm ambiance.",
+    tech: ["NEXT.JS", "TAILWIND", "SUPABASE"],
+    image: "/images/projects/cafe-twenty-twenty.jpg",
+    link: "/case-study/cafe-twenty-twenty"
+  },
+  {
+    id: 2,
+    title: "Cafe Queue Management",
+    category: "Web",
+    description: "Smart queue management system with real-time tracking, automated token generation, and seamless customer-staff communication.",
+    tech: ["REACT", "SOCKET.IO", "REAL-TIME", "QUEUE SYSTEM"],
+    image: "/images/projects/queue-management.jpg",
+    link: "/case-study/queue-management"
+  },
+  {
+    id: 3,
+    title: "Shreerath Feedback System",
+    category: "Web", // Changed from Dashboard
+    description: "QR code-based feedback system where customers scan and submit reviews directly to restaurant owner's dashboard for business improvements.",
+    tech: ["QR CODE", "OWNER DASHBOARD", "REAL-TIME", "CUSTOMER INSIGHTS"],
+    image: "/images/projects/shreerath-feedback.jpg",
+    link: "/case-study/shreerath-feedback"
+  },
+  {
+    id: 4,
+    title: "Bomb Rolls Feedback System",
+    category: "Web", // Changed from Dashboard
+    description: "Customer QR code feedback platform with owner dashboard for tracking ratings, reviews, and actionable business insights.",
+    tech: ["QR CODE", "OWNER PANEL", "DISH RATINGS", "ANALYTICS"],
+    image: "/images/projects/bomb-rolls-feedback.jpg",
+    link: "/case-study/bomb-rolls-feedback"
+  },
+  {
+    id: 5,
+    title: "Bomb Rolls and Bowls",
+    category: "Web",
+    description: "Where every bite is a flavor bomb waiting to detonate! Vibrant menu showcase with stunning food photography and easy navigation.",
+    tech: ["REACT", "MENU GALLERY", "FOOD & BEVERAGE", "MODERN DESIGN"],
+    image: "/images/projects/bomb-rolls.jpg",
+    link: "/case-study/bomb-rolls"
+  },
+  {
+    id: 6,
+    title: "SJ Interior",
+    category: "Web",
+    description: "Elegant portfolio showcasing premium interior design projects with immersive visual experiences and seamless navigation.",
+    tech: ["REACT", "GSAP", "PORTFOLIO", "INTERIOR DESIGN"],
+    image: "/images/projects/sj-interior.jpg",
+    link: "/case-study/sj-interior"
+  },
+
+  // SOFTWARE PROJECT (1)
+  {
+    id: 7,
+    title: "FRA Tool Analyser",
+    category: "Software",
+    description: "Advanced financial risk assessment and analysis tool designed to streamline operations, enhance decision-making, and maximize efficiency in risk management.",
+    tech: ["REACT", "PYTHON", "DATA ANALYTICS", "FINANCIAL TOOLS"],
+    image: "/images/projects/fra-tool.jpg",
+    link: "/case-study/fra-tool"
+  }
+];
+```
+
+FILTER BUTTONS JSX:
+```jsx
+const [filter, setFilter] = useState('All');
+
+const filteredProjects = filter === 'All' 
+  ? projects 
+  : projects.filter(p => p.category === filter);
+
+// Filter Buttons
+<div className="filter-buttons">
+  <button
+    className={`filter-btn ${filter === 'All' ? 'active' : ''}`}
+    onClick={() => setFilter('All')}
+  >
+    All
+  </button>
+  <button
+    className={`filter-btn ${filter === 'Web' ? 'active' : ''}`}
+    onClick={() => setFilter('Web')}
+  >
+    Web
+  </button>
+  <button
+    className={`filter-btn ${filter === 'Software' ? 'active' : ''}`}
+    onClick={() => setFilter('Software')}
+  >
+    Software
+  </button>
+  <button
+    className={`filter-btn ${filter === 'Dashboard' ? 'active' : ''}`}
+    onClick={() => setFilter('Dashboard')}
+  >
+    Dashboard
+  </button>
+</div>
+```
+
+FILTER BEHAVIOR:
+
+When "All" is clicked:
+✅ Show all 7 projects (6 Web + 1 Software)
+
+When "Web" is clicked:
+✅ Show only 6 Web projects:
+- Cafe Twenty Twenty
+- Cafe Queue Management
+- Shreerath Feedback System
+- Bomb Rolls Feedback System
+- Bomb Rolls and Bowls
+- SJ Interior
+
+When "Software" is clicked:
+✅ Show only 1 Software project:
+- FRA Tool Analyser
+
+When "Dashboard" is clicked:
+❌ Show 0 projects (empty state)
+OR
+✅ Remove "Dashboard" filter button entirely (cleaner option)
+
+OPTION 1 - KEEP DASHBOARD FILTER (show empty state):
+```jsx
+{filteredProjects.length === 0 && (
+  <div className="empty-state">
+    <p>No projects in this category yet.</p>
+  </div>
+)}
+```
+
+OPTION 2 - REMOVE DASHBOARD FILTER (recommended):
+```jsx
+<div className="filter-buttons">
+  {['All', 'Web', 'Software'].map(f => (
+    <button
+      key={f}
+      className={`filter-btn ${filter === f ? 'active' : ''}`}
+      onClick={() => setFilter(f)}
+    >
+      {f}
+    </button>
+  ))}
+</div>
+```
+
+GRID LAYOUT:
+- First row: 3 projects
+- Second row: 3 projects
+- Third row: 1 project (FRA Tool when "All" is selected)
+
+When "Web" filter:
+- First row: 3 projects
+- Second row: 3 projects
+- Total: 6 projects
+
+When "Software" filter:
+- Only 1 project shown (FRA Tool)
+
+CATEGORY BADGE COLORS:
+```css
+.category-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+
+/* Web - Cyan */
+.category-badge.web {
+  background: rgba(0, 188, 212, 0.9);
+  color: white;
+}
+
+/* Software - Purple */
+.category-badge.software {
+  background: rgba(139, 92, 246, 0.9);
+  color: white;
+}
+
+/* Dashboard - Green (if kept) */
+.category-badge.dashboard {
+  background: rgba(16, 185, 129, 0.9);
+  color: white;
+}
+```
+
+SUMMARY OF CHANGES:
+✅ Total projects: 7 (was 8)
+✅ Removed: FinDash Pro
+✅ Web category: 6 projects
+✅ Software category: 1 project (FRA Tool)
+✅ Dashboard category: 0 projects
+✅ Moved Shreerath & Bomb Rolls Feedback from Dashboard → Web
+✅ Filter buttons: All, Web, Software, Dashboard (or remove Dashboard)
+✅ Filtering works correctly
+
+KEEP UNCHANGED:
+- Card design and layout (3 per row)
+- Card hover animations
+- Tech tag styling
+- "Case Study" link behavior
+- Section heading and subtitle
+- All other sections of website
+- Image quality and aspect ratios
+
+RECOMMENDATION:
+Remove "Dashboard" filter button entirely since no projects use it.
+This keeps the UI cleaner with just: [All] [Web] [Software]
