@@ -1,0 +1,57 @@
+"The ScrollToTop button was created but is NOT visible on the page. Debug and fix it. Search through ALL files:
+STEP 1 — VERIFY the component file exists and check for errors:
+
+Find the ScrollToTop.tsx or ScrollToTop.jsx file
+Open browser console (F12) and check if there are any React errors or TypeScript errors
+If there are errors, fix them
+
+STEP 2 — FORCE the button to be ALWAYS VISIBLE for testing:
+
+In the ScrollToTop component, temporarily REMOVE or COMMENT OUT the line if (!isVisible) return null;
+This will make the button always visible regardless of scroll position — just for debugging
+
+STEP 3 — ADD extreme styling to make button super obvious:
+Replace the button styles with these EXTREME values to make it impossible to miss:
+jsxstyle={{
+  position: 'fixed',
+  bottom: '20px',
+  right: '20px',
+  width: '80px',
+  height: '80px',
+  background: 'red',  // Temporary bright red for testing
+  border: '5px solid yellow',  // Yellow border for visibility
+  borderRadius: '50%',
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  zIndex: 999999,  // Extremely high z-index
+  fontSize: '40px',
+  color: 'white',
+}}
+And replace the SVG with simple text temporarily:
+jsx<span>↑</span>
+STEP 4 — VERIFY App.tsx import:
+
+Open App.tsx
+Make sure this line exists: import ScrollToTop from './components/ScrollToTop';
+Make sure this line exists in the JSX: <ScrollToTop />
+Check that <ScrollToTop /> is OUTSIDE all other components, at the very end before closing </div>
+
+STEP 5 — Check for CSS conflicts:
+
+Search the project for any global CSS that might have position: fixed elements hidden or overlapping
+Check if there's a global overflow: hidden on body or root div
+
+AFTER FIXING — tell me:
+
+Is the button now visible?
+What errors were in the console?
+Which files did you edit?
+Once it's visible, we'll revert to the nice cyan styling
+
+STRICT RULES:
+
+Fix whatever is preventing the button from showing
+Do not touch any other sections
+Report back all errors found"**

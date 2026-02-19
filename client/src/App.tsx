@@ -22,8 +22,8 @@ function App() {
       <TooltipProvider>
         <Router />
         <Toaster />
-        <ScrollToTop />
       </TooltipProvider>
+      <ScrollToTop />
     </QueryClientProvider>
   );
 }
