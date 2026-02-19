@@ -1,0 +1,389 @@
+Add 6 new projects to the Portfolio section with the existing card layout and styling.
+
+LAYOUT STRUCTURE (keep as is):
+- Grid: 2 rows × 3 columns (3 projects per row)
+- Card structure: Image on top + Title + Description + Tech tags + "Case Study" link
+- Filters: "All", "Web", "Mobile", "Dashboard"
+- Section heading: "Featured Projects"
+- Subtitle: "A glimpse into the diverse solutions we've crafted."
+
+═══════════════════════════════════════
+PROJECT 1 - CAFE TWENTY TWENTY
+═══════════════════════════════════════
+Category: Web
+Title: Cafe Twenty Twenty
+Description: Modern digital presence and reservation system for a premium cafe. Where coffee meets comfort with handcrafted beverages and calm ambiance.
+Technologies: [NEXT.JS] [TAILWIND] [SUPABASE]
+Image: Use coffee shop/cafe image (dark interior, modern aesthetic)
+Link: /case-study/cafe-twenty-twenty
+
+═══════════════════════════════════════
+PROJECT 2 - CAFE QUEUE MANAGEMENT
+═══════════════════════════════════════
+Category: Web
+Title: Cafe Queue Management
+Description: Smart queue management system with real-time tracking, automated token generation, and seamless customer-staff communication.
+Technologies: [REACT] [SOCKET.IO] [REAL-TIME] [QUEUE SYSTEM]
+Image: Use queue/booking form interface (beige/cream UI)
+Link: /case-study/queue-management
+
+═══════════════════════════════════════
+PROJECT 3 - SHREERATH FEEDBACK SYSTEM
+═══════════════════════════════════════
+Category: Dashboard
+Title: Shreerath Feedback System
+Description: QR code-based feedback system where customers scan and submit reviews directly to restaurant owner's dashboard for business improvements.
+Technologies: [QR CODE] [OWNER DASHBOARD] [REAL-TIME] [CUSTOMER INSIGHTS]
+Image: Use feedback form UI screenshot (light background, form fields)
+Link: /case-study/shreerath-feedback
+
+═══════════════════════════════════════
+PROJECT 4 - BOMB ROLLS FEEDBACK SYSTEM
+═══════════════════════════════════════
+Category: Dashboard
+Title: Bomb Rolls Feedback System
+Description: Customer QR code feedback platform with owner dashboard for tracking ratings, reviews, and actionable business insights.
+Technologies: [QR CODE] [OWNER PANEL] [DISH RATINGS] [ANALYTICS]
+Image: Use feedback form UI (similar to Shreerath but different colors)
+Link: /case-study/bomb-rolls-feedback
+
+═══════════════════════════════════════
+PROJECT 5 - BOMB ROLLS AND BOWLS
+═══════════════════════════════════════
+Category: Web
+Title: Bomb Rolls and Bowls
+Description: Where every bite is a flavor bomb waiting to detonate! Vibrant menu showcase with stunning food photography and easy navigation.
+Technologies: [REACT] [MENU GALLERY] [FOOD & BEVERAGE] [MODERN DESIGN]
+Image: Use food/restaurant website (red theme, food photos, "Freshly Made, Perfectly Rolled!")
+Link: /case-study/bomb-rolls
+
+═══════════════════════════════════════
+PROJECT 6 - SJ INTERIOR
+═══════════════════════════════════════
+Category: Web
+Title: SJ Interior
+Description: Elegant portfolio showcasing premium interior design projects with immersive visual experiences and seamless navigation.
+Technologies: [REACT] [GSAP] [PORTFOLIO] [INTERIOR DESIGN]
+Image: Use interior design website (luxury room, "Designing your dream home just became a reality")
+Link: /case-study/sj-interior
+
+═══════════════════════════════════════
+PROJECT 7 - FRA TOOL ANALYSER
+═══════════════════════════════════════
+Category: Dashboard
+Title: FRA Tool Analyser
+Description: Advanced financial risk assessment and analysis tool designed to streamline operations, enhance decision-making, and maximize efficiency in risk management.
+Technologies: [REACT] [PYTHON] [DATA ANALYTICS] [FINANCIAL TOOLS]
+Image: Use workspace/developer tool screenshot (dark theme, code editor/console)
+Link: /case-study/fra-tool
+
+═══════════════════════════════════════
+PROJECT 8 - FINDASH PRO
+═══════════════════════════════════════
+Category: Dashboard
+Title: FinDash Pro
+Description: Real-time financial analytics dashboard for enterprise clients with comprehensive data visualization and business intelligence.
+Technologies: [REACT] [D3.JS] [PYTHON]
+Image: Use analytics dashboard (dark theme, charts, graphs, "LAST 7 DAYS USING MEDIAN")
+Link: /case-study/findash-pro
+
+CARD STRUCTURE (keep existing):
+```jsx
+const projects = [
+  {
+    id: 1,
+    title: "Cafe Twenty Twenty",
+    category: "Web",
+    description: "Modern digital presence and reservation system for a premium cafe. Where coffee meets comfort with handcrafted beverages and calm ambiance.",
+    tech: ["NEXT.JS", "TAILWIND", "SUPABASE"],
+    image: "/images/projects/cafe-twenty-twenty.jpg",
+    link: "/case-study/cafe-twenty-twenty"
+  },
+  {
+    id: 2,
+    title: "Cafe Queue Management",
+    category: "Web",
+    description: "Smart queue management system with real-time tracking, automated token generation, and seamless customer-staff communication.",
+    tech: ["REACT", "SOCKET.IO", "REAL-TIME", "QUEUE SYSTEM"],
+    image: "/images/projects/queue-management.jpg",
+    link: "/case-study/queue-management"
+  },
+  {
+    id: 3,
+    title: "Shreerath Feedback System",
+    category: "Dashboard",
+    description: "QR code-based feedback system where customers scan and submit reviews directly to restaurant owner's dashboard for business improvements.",
+    tech: ["QR CODE", "OWNER DASHBOARD", "REAL-TIME", "CUSTOMER INSIGHTS"],
+    image: "/images/projects/shreerath-feedback.jpg",
+    link: "/case-study/shreerath-feedback"
+  },
+  {
+    id: 4,
+    title: "Bomb Rolls Feedback System",
+    category: "Dashboard",
+    description: "Customer QR code feedback platform with owner dashboard for tracking ratings, reviews, and actionable business insights.",
+    tech: ["QR CODE", "OWNER PANEL", "DISH RATINGS", "ANALYTICS"],
+    image: "/images/projects/bomb-rolls-feedback.jpg",
+    link: "/case-study/bomb-rolls-feedback"
+  },
+  {
+    id: 5,
+    title: "Bomb Rolls and Bowls",
+    category: "Web",
+    description: "Where every bite is a flavor bomb waiting to detonate! Vibrant menu showcase with stunning food photography and easy navigation.",
+    tech: ["REACT", "MENU GALLERY", "FOOD & BEVERAGE", "MODERN DESIGN"],
+    image: "/images/projects/bomb-rolls.jpg",
+    link: "/case-study/bomb-rolls"
+  },
+  {
+    id: 6,
+    title: "SJ Interior",
+    category: "Web",
+    description: "Elegant portfolio showcasing premium interior design projects with immersive visual experiences and seamless navigation.",
+    tech: ["REACT", "GSAP", "PORTFOLIO", "INTERIOR DESIGN"],
+    image: "/images/projects/sj-interior.jpg",
+    link: "/case-study/sj-interior"
+  },
+  {
+    id: 7,
+    title: "FRA Tool Analyser",
+    category: "Dashboard",
+    description: "Advanced financial risk assessment and analysis tool designed to streamline operations, enhance decision-making, and maximize efficiency in risk management.",
+    tech: ["REACT", "PYTHON", "DATA ANALYTICS", "FINANCIAL TOOLS"],
+    image: "/images/projects/fra-tool.jpg",
+    link: "/case-study/fra-tool"
+  },
+  {
+    id: 8,
+    title: "FinDash Pro",
+    category: "Dashboard",
+    description: "Real-time financial analytics dashboard for enterprise clients with comprehensive data visualization and business intelligence.",
+    tech: ["REACT", "D3.JS", "PYTHON"],
+    image: "/images/projects/findash-pro.jpg",
+    link: "/case-study/findash-pro"
+  }
+];
+```
+
+CARD JSX (keep existing structure):
+```jsx
+<div className="portfolio-grid">
+  {filteredProjects.map((project) => (
+    <div key={project.id} className="portfolio-card">
+      
+      {/* Image with category badge */}
+      <div className="project-image-wrapper">
+        <img 
+          src={project.image} 
+          alt={project.title}
+          className="project-image"
+        />
+        <span className="category-badge">{project.category}</span>
+      </div>
+
+      {/* Content */}
+      <div className="project-content">
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-description">{project.description}</p>
+
+        {/* Tech tags */}
+        <div className="tech-tags">
+          {project.tech.map((tech, i) => (
+            <span key={i} className="tech-tag">{tech}</span>
+          ))}
+        </div>
+
+        {/* Case Study link */}
+        <a href={project.link} className="case-study-link">
+          Case Study <span className="arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+  ))}
+</div>
+```
+
+KEEP EXISTING CSS (reference from images 5 & 6):
+```css
+/* Portfolio Grid - 3 columns */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+/* Portfolio Card */
+.portfolio-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 50px rgba(0, 188, 212, 0.15);
+}
+
+/* Image wrapper */
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-card:hover .project-image {
+  transform: scale(1.08);
+}
+
+/* Category badge */
+.category-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(0, 188, 212, 0.9);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  backdrop-filter: blur(8px);
+}
+
+/* Content */
+.project-content {
+  padding: 28px;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1a2b4a;
+  margin-bottom: 12px;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* Tech tags */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tech-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 0;
+}
+
+/* Case Study link */
+.case-study-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #00bcd4;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.case-study-link .arrow {
+  transition: transform 0.3s ease;
+}
+
+.case-study-link:hover {
+  gap: 12px;
+}
+
+.case-study-link:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+FILTER FUNCTIONALITY (keep existing):
+```jsx
+const [filter, setFilter] = useState('All');
+
+const filteredProjects = filter === 'All' 
+  ? projects 
+  : projects.filter(p => p.category === filter);
+
+// Filter buttons
+<div className="filter-buttons">
+  {['All', 'Web', 'Mobile', 'Dashboard'].map(f => (
+    <button
+      key={f}
+      className={`filter-btn ${filter === f ? 'active' : ''}`}
+      onClick={() => setFilter(f)}
+    >
+      {f}
+    </button>
+  ))}
+</div>
+```
+
+IMAGE PLACEHOLDERS:
+For now, use placeholder images or screenshot from the reference images provided. Later replace with actual project screenshots.
+
+Suggested placeholder approach:
+```jsx
+image: `https://images.unsplash.com/photo-${appropriateImageId}?w=800&q=80`
+```
+
+Or use the screenshots you provided directly.
+
+KEEP UNCHANGED:
+- Section heading and subtitle styling
+- Filter button styling
+- Grid layout (3 per row, 2 rows)
+- Card hover animations
+- Card structure and spacing
+- Tech tag styling
+- "Case Study" link behavior
+- Responsive breakpoints
+- All other sections of website
+
+ADD EXACTLY:
+- 8 projects total (showing 6 initially, can add 2 more later)
+- Use the exact titles, descriptions, and tech stacks provided above
+- Maintain existing card design from images 5 & 6
+- Keep filter functionality working
+
+This will create a professional portfolio showcase with all your projects!

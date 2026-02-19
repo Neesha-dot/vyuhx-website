@@ -392,32 +392,76 @@ const OrbitVisual = () => {
 
   const projects = [
     {
-      title: "Bomb Rolls",
-      category: "web",
-      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800",
-      description: "A high-performance food delivery platform with real-time tracking.",
-      tags: ["React", "Node.js", "MongoDB"]
-    },
-    {
-      title: "Shreerath",
-      category: "mobile",
-      image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80&w=800",
-      description: "Comprehensive transport management solution for logistics fleets.",
-      tags: ["Flutter", "Firebase", "Google Maps"]
-    },
-    {
+      id: 1,
       title: "Cafe Twenty Twenty",
       category: "web",
+      description: "Modern digital presence and reservation system for a premium cafe. Where coffee meets comfort with handcrafted beverages and calm ambiance.",
+      tags: ["NEXT.JS", "TAILWIND", "SUPABASE"],
       image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
-      description: "Modern digital presence and reservation system for a premium cafe.",
-      tags: ["Next.js", "Tailwind", "Supabase"]
+      link: "/case-study/cafe-twenty-twenty"
     },
     {
+      id: 2,
+      title: "Cafe Queue Management",
+      category: "web",
+      description: "Smart queue management system with real-time tracking, automated token generation, and seamless customer-staff communication.",
+      tags: ["REACT", "SOCKET.IO", "REAL-TIME", "QUEUE SYSTEM"],
+      image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=800",
+      link: "/case-study/queue-management"
+    },
+    {
+      id: 3,
+      title: "Shreerath Feedback System",
+      category: "dashboard",
+      description: "QR code-based feedback system where customers scan and submit reviews directly to restaurant owner's dashboard for business improvements.",
+      tags: ["QR CODE", "OWNER DASHBOARD", "REAL-TIME", "CUSTOMER INSIGHTS"],
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+      link: "/case-study/shreerath-feedback"
+    },
+    {
+      id: 4,
+      title: "Bomb Rolls Feedback System",
+      category: "dashboard",
+      description: "Customer QR code feedback platform with owner dashboard for tracking ratings, reviews, and actionable business insights.",
+      tags: ["QR CODE", "OWNER PANEL", "DISH RATINGS", "ANALYTICS"],
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+      link: "/case-study/bomb-rolls-feedback"
+    },
+    {
+      id: 5,
+      title: "Bomb Rolls and Bowls",
+      category: "web",
+      description: "Where every bite is a flavor bomb waiting to detonate! Vibrant menu showcase with stunning food photography and easy navigation.",
+      tags: ["REACT", "MENU GALLERY", "FOOD & BEVERAGE", "MODERN DESIGN"],
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800",
+      link: "/case-study/bomb-rolls"
+    },
+    {
+      id: 6,
+      title: "SJ Interior",
+      category: "web",
+      description: "Elegant portfolio showcasing premium interior design projects with immersive visual experiences and seamless navigation.",
+      tags: ["REACT", "GSAP", "PORTFOLIO", "INTERIOR DESIGN"],
+      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
+      link: "/case-study/sj-interior"
+    },
+    {
+      id: 7,
+      title: "FRA Tool Analyser",
+      category: "dashboard",
+      description: "Advanced financial risk assessment and analysis tool designed to streamline operations, enhance decision-making, and maximize efficiency in risk management.",
+      tags: ["REACT", "PYTHON", "DATA ANALYTICS", "FINANCIAL TOOLS"],
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+      link: "/case-study/fra-tool"
+    },
+    {
+      id: 8,
       title: "FinDash Pro",
       category: "dashboard",
+      description: "Real-time financial analytics dashboard for enterprise clients with comprehensive data visualization and business intelligence.",
+      tags: ["REACT", "D3.JS", "PYTHON"],
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-      description: "Real-time financial analytics dashboard for enterprise clients.",
-      tags: ["React", "D3.js", "Python"]
+      link: "/case-study/findash-pro"
     }
   ];
 
@@ -1069,7 +1113,7 @@ const OrbitVisual = () => {
             </div>
 
             <TabsContent value="all">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects.map((project, idx) => (
                   <ProjectCard key={idx} project={project} />
                 ))}
@@ -1077,7 +1121,7 @@ const OrbitVisual = () => {
             </TabsContent>
             {["web", "mobile", "dashboard"].map((cat) => (
               <TabsContent key={cat} value={cat}>
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {projects.filter(p => p.category === cat).map((project, idx) => (
                     <ProjectCard key={idx} project={project} />
                   ))}
