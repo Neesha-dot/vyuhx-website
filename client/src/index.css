@@ -112,6 +112,17 @@
   50% { text-shadow: 0 0 20px rgba(0, 188, 212, 0.8), 0 0 40px rgba(0, 188, 212, 0.5); }
 }
 
+/* Service Card and Global Readable Styles */
+.card-title, .service-card-title, .journey-card-title, .project-title {
+  font-family: var(--font-display);
+  @apply font-bold tracking-tight;
+}
+
+.card-description, .service-card-description, .journey-card-description, .project-description, .about-description {
+  font-family: var(--font-body);
+  @apply text-muted-foreground;
+}
+
 @layer base {
   * {
     @apply border-border;

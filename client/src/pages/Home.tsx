@@ -599,7 +599,7 @@ const OrbitVisual = () => {
                   ></motion.span>
                 </span> through code and creativity.
               </h3>
-              <p className="text-slate-600 text-lg leading-relaxed mb-6 font-light">
+              <p className="about-description text-slate-600 text-lg leading-relaxed mb-6 font-light">
                 Founded with a mission to bridge the gap between ambitious ideas and technical execution, VyuhX Technologies has grown into a powerhouse of digital innovation. We don't just write code; we architect experiences that drive growth.
               </p>
               
@@ -621,9 +621,9 @@ const OrbitVisual = () => {
                       <div className="w-5 h-5 rounded-full bg-cyan-500/10 flex items-center justify-center">
                         <CheckCircle2 className="text-cyan-500 h-3 w-3" />
                       </div>
-                      <span className="font-bold text-slate-800 text-sm">{item.text}</span>
+                      <span className="about-feature-title font-bold text-slate-800 text-sm">{item.text}</span>
                     </div>
-                    <span className="text-xs text-slate-500 ml-7">{item.desc}</span>
+                    <span className="about-feature-description text-xs text-slate-500 ml-7">{item.desc}</span>
                   </motion.div>
                 ))}
               </div>
@@ -715,15 +715,15 @@ const OrbitVisual = () => {
               viewport={{ once: true }}
               className="bg-[#1a2535] backdrop-blur-xl border border-white/10 p-10 md:p-16 rounded-[3rem] text-center md:text-left"
             >
-              <h2 className="section-main-heading !text-white !opacity-100 mb-6" style={{ color: '#FFFFFF', opacity: 1 }}>
+              <h2 className="cta-heading section-main-heading !text-white !opacity-100 mb-6" style={{ color: '#FFFFFF', opacity: 1 }}>
                 Ready to redefine <br/>
                 <span className="text-cyan-400 underline decoration-cyan-500/30 underline-offset-8">your digital limits?</span>
               </h2>
-              <p className="text-lg text-slate-300 mb-8 max-w-xl">
+              <p className="cta-subtitle text-lg text-slate-300 mb-8 max-w-xl">
                 Got a business idea? We turn it into a working digital product — fast, clean, and built to scale.
               </p>
               <Link to="contact" smooth={true} duration={500}>
-                <Button size="lg" className="h-14 px-10 text-lg rounded-full bg-white text-slate-900 hover:bg-cyan-500 hover:text-white transition-all duration-500 font-black tracking-tight">
+                <Button size="lg" className="cta-button h-14 px-10 text-lg rounded-full bg-white text-slate-900 hover:bg-cyan-500 hover:text-white transition-all duration-500 font-black tracking-tight">
                   Start Your Journey
                 </Button>
               </Link>
@@ -820,10 +820,10 @@ const OrbitVisual = () => {
                 </div>
 
                 <div className="p-8 flex flex-col flex-1">
-                  <h3 className="text-2xl font-bold text-[#1a2b4a] mb-4 group-hover:translate-y-[-5px] transition-transform duration-500 card-title">
+                  <h3 className="service-card-title text-2xl font-bold text-[#1a2b4a] mb-4 group-hover:translate-y-[-5px] transition-transform duration-500 card-title">
                     {service.title}
                   </h3>
-                  <p className="text-[#5a6c7d] text-sm leading-relaxed mb-6 flex-1">
+                  <p className="service-card-description text-[#5a6c7d] text-sm leading-relaxed mb-6 flex-1">
                     {service.desc}
                   </p>
 
@@ -834,7 +834,7 @@ const OrbitVisual = () => {
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: (idx * 0.2) + (i * 0.1) }}
-                        className="flex items-center gap-2 text-sm text-[#5a6c7d] feature-item"
+                        className="service-feature-item flex items-center gap-2 text-sm text-[#5a6c7d] feature-item"
                       >
                         <CheckCircle2 size={16} className="text-[#00bcd4] animate-pulse" />
                         {feature}
@@ -1048,10 +1048,10 @@ const OrbitVisual = () => {
                       </div>
                       <div className="flex items-center gap-2 mb-1 text-[#00BCD4] font-bold text-base">
                         <Calendar size={16} />
-                        {item.year}
+                        <span className="journey-date">{item.year}</span>
                       </div>
-                      <h4 className="text-lg font-bold text-slate-900 mb-1">{item.title}</h4>
-                      <p className="text-slate-600 text-sm relative z-10">{item.desc}</p>
+                      <h4 className="journey-card-title text-lg font-bold text-slate-900 mb-1">{item.title}</h4>
+                      <p className="journey-card-description text-slate-600 text-sm relative z-10">{item.desc}</p>
                     </Card>
                   </div>
                 </div>
@@ -1325,15 +1325,15 @@ function ProjectCard({ project }: { project: any }) {
         </Badge>
       </div>
       <div className="p-6">
-        <h4 className="text-xl font-display font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">
+        <h4 className="project-title text-xl font-display font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">
           {project.title}
         </h4>
-        <p className="text-slate-500 text-sm mb-6 leading-relaxed line-clamp-2">
+        <p className="project-description text-slate-500 text-sm mb-6 leading-relaxed line-clamp-2">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-6">
           {project.tags.map((tag: string) => (
-            <span key={tag} className="text-[10px] font-bold uppercase tracking-widest text-slate-400 border border-slate-100 px-2 py-0.5 rounded-full group-hover:border-cyan-100 group-hover:text-cyan-600 transition-colors">
+            <span key={tag} className="tech-tag text-[10px] font-bold uppercase tracking-widest text-slate-400 border border-slate-100 px-2 py-0.5 rounded-full group-hover:border-cyan-100 group-hover:text-cyan-600 transition-colors">
               {tag}
             </span>
           ))}
