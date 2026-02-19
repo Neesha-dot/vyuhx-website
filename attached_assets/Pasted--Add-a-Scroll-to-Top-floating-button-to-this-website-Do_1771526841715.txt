@@ -1,0 +1,110 @@
+"Add a 'Scroll to Top' floating button to this website. Do NOT touch any existing sections or styling.
+STEP 1 — Create the ScrollToTop component:
+Create a new file: src/components/ScrollToTop.jsx (or wherever components are stored in this project — check the project structure first and create in the correct location)
+File content:
+jsximport React, { useState, useEffect } from 'react';
+
+const ScrollToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 600) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <button
+      onClick={scrollToTop}
+      style={{
+        position: 'fixed',
+        bottom: '40px',
+        right: '40px',
+        width: '56px',
+        height: '56px',
+        background: 'linear-gradient(135deg, #00bcd4, #0ea5e9)',
+        border: 'none',
+        borderRadius: '50%',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 8px 25px rgba(0, 188, 212, 0.35), 0 4px 12px rgba(0, 0, 0, 0.15)',
+        zIndex: 9999,
+        transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-5px) scale(1.08)';
+        e.currentTarget.style.boxShadow = '0 12px 35px rgba(0, 188, 212, 0.5), 0 6px 18px rgba(0, 0, 0, 0.2)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0) scale(1)';
+        e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 188, 212, 0.35), 0 4px 12px rgba(0, 0, 0, 0.15)';
+      }}
+      aria-label="Scroll to top"
+    >
+      <svg 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path 
+          d="M12 19V5M12 5L5 12M12 5L19 12" 
+          stroke="white" 
+          strokeWidth="2.5" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  );
+};
+
+export default ScrollToTop;
+STEP 2 — Import and add to main App component:
+Find your main App.jsx or App.tsx file (or index.jsx or whatever the root component is called in this project).
+At the top, add this import:
+jsximport ScrollToTop from './components/ScrollToTop';
+Then at the VERY BOTTOM of the return statement, AFTER the Footer but BEFORE the closing div, add:
+jsx<ScrollToTop />
+Example:
+jsxfunction App() {
+  return (
+    <div className="App">
+      <Header />
+      <Hero />
+      <About />
+      <Services />
+      <Portfolio />
+      <Footer />
+      
+      <ScrollToTop />  {/* ADD THIS LINE */}
+    </div>
+  );
+}
+STEP 3 — Verify it works:
+After saving, scroll down the page past 600px and the button should appear in the bottom-right corner.
+STRICT RULES:
+
+Do not change any existing sections, components, or styling
+Only create the new ScrollToTop component and add it to the App
+Make sure the import path matches your actual project structure
+Tell me exactly which files you created/edited after completing"**
