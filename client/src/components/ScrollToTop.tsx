@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUp } from 'lucide-react';
 
 const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(true); // Forced true for debugging
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
-      console.log('Scroll position:', window.scrollY);
-      if (window.scrollY > 600) {
+      if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
-        setIsVisible(true); // Keep visible for debugging
+        setIsVisible(false);
       }
     };
 
@@ -24,33 +25,33 @@ const ScrollToTop = () => {
     });
   };
 
-  // if (!isVisible) return null; // Commented out for debugging
-
   return (
-    <button
-      onClick={scrollToTop}
-      data-testid="button-scroll-to-top"
-      style={{
-        position: 'fixed',
-        bottom: '20px',
-        right: '20px',
-        width: '80px',
-        height: '80px',
-        background: 'red',
-        border: '5px solid yellow',
-        borderRadius: '50%',
-        cursor: 'pointer',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 999999,
-        fontSize: '40px',
-        color: 'white',
-      }}
-      aria-label="Scroll to top"
-    >
-      <span>↑</span>
-    </button>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          whileHover={{ scale: 1.1, backgroundColor: '#00A8A8' }}
+          onClick={scrollToTop}
+          data-testid="button-scroll-to-top"
+          className="fixed bottom-5 right-5 z-[9999] flex items-center justify-center transition-all duration-300"
+          style={{
+            width: '44px',
+            height: '44px',
+            backgroundColor: '#00C9C8',
+            borderRadius: '50%',
+            boxShadow: '0 4px 12px rgba(0,201,200,0.4)',
+            border: 'none',
+            color: 'white',
+            cursor: 'pointer'
+          }}
+          aria-label="Scroll to top"
+        >
+          <ArrowUp size={20} strokeWidth={3} />
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 };
 
