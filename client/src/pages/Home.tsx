@@ -735,32 +735,7 @@ const OrbitVisual = () => {
 
       {/* --- SERVICES SECTION --- */}
       <section id="services" className="py-24 bg-white relative overflow-hidden">
-        {/* L-Shape Connector Line */}
-        <div className="absolute inset-0 pointer-events-none hidden lg:block">
-          <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path 
-              d="M300 250 H900 V550 H300" 
-              stroke="url(#teal-gradient)" 
-              strokeWidth="2" 
-              strokeDasharray="8 8"
-              className="animate-[dash_20s_linear_infinite]"
-            />
-            <defs>
-              <linearGradient id="teal-gradient" x1="300" y1="250" x2="300" y2="550" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#00bcd4" />
-                <stop offset="1" stopColor="#0ea5e9" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <style>{`
-            @keyframes dash {
-              to {
-                stroke-dashoffset: -1000;
-              }
-            }
-          `}</style>
-        </div>
-
+        
         <div className="container mx-auto px-6 md:px-8 relative z-10">
           <SectionHeading
             badge="Our Expertise"
@@ -805,6 +780,16 @@ const OrbitVisual = () => {
                   <p className="text-slate-600 mb-6 line-clamp-2 text-sm leading-relaxed">
                     {service.desc}
                   </p>
+
+                  {/* Features List */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                    {service.features.slice(0, 4).map((feature: string) => (
+                      <div key={feature} className="flex items-center gap-2 text-xs text-slate-600">
+                        <CheckCircle2 className="w-4 h-4 text-[#00bcd4] flex-shrink-0" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
 
                   {/* Learn More Link */}
                   <button 
