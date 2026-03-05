@@ -743,7 +743,7 @@ const OrbitVisual = () => {
             subtitle="End-to-end services tailored to your unique business needs."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[28px] mt-16 max-w-[1100px] mx-auto">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -755,38 +755,41 @@ const OrbitVisual = () => {
                   delay: index * 0.15,
                   ease: "easeOut"
                 }}
-                className="group relative bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-[0_8px_30px_rgba(0,201,200,0.3)] hover:-translate-y-2.5 transition-all duration-500 flex flex-col overflow-hidden p-6"
+                className="group relative bg-white rounded-[16px] border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col overflow-hidden"
               >
                 {/* Image Header */}
-                <div className="relative h-[200px] -mx-6 -mt-6 mb-6 overflow-visible">
+                <div className="relative h-[220px] overflow-hidden">
                   <img 
                     src={service.image} 
                     alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  {/* Service Number */}
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm w-8 h-8 rounded-full flex items-center justify-center text-[#1a2332] font-bold text-sm z-20">
+                    0{index + 1}
+                  </div>
                   
                   {/* Overlapping Icon */}
-                  <div className="absolute -bottom-7 left-6 w-14 h-14 bg-[#00bcd4] rounded-full flex items-center justify-center text-white shadow-lg border-4 border-white z-30 transform transition-transform duration-600 group-hover:rotate-[360deg]">
+                  <div className="absolute -bottom-6 left-6 w-12 h-12 bg-[#00bcd4] rounded-full flex items-center justify-center text-white shadow-lg z-30 transform transition-transform duration-500 group-hover:scale-110">
                     {service.icon}
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="flex-grow flex flex-col pt-4">
-                  <h3 className="text-xl font-bold text-[#1a2332] mb-3 group-hover:text-[#00bcd4] transition-colors font-display">
+                <div className="flex-grow flex flex-col p-8 pt-10">
+                  <h3 className="text-[24px] font-bold text-[#1a2332] mb-3 transition-colors font-display">
                     {service.title}
                   </h3>
-                  <p className="text-slate-600 mb-6 line-clamp-2 text-sm leading-relaxed font-body">
+                  <p className="text-[15px] text-gray-500 mb-6 line-clamp-2 leading-relaxed font-body">
                     {service.desc}
                   </p>
 
                   {/* Features List */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-3 mb-8">
                     {service.features.slice(0, 4).map((feature: string) => (
-                      <div key={feature} className="flex items-center gap-2 text-xs text-slate-600 font-body">
+                      <div key={feature} className="flex items-center gap-2 text-[13px] text-gray-600 font-body">
                         <CheckCircle2 className="w-4 h-4 text-[#00bcd4] flex-shrink-0" />
-                        <span>{feature}</span>
+                        <span className="truncate">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -794,9 +797,9 @@ const OrbitVisual = () => {
                   {/* Learn More Link */}
                   <button 
                     onClick={() => setSelectedService(service)}
-                    className="mt-auto inline-flex items-center text-[#00bcd4] font-bold text-base transition-all group/link font-body"
+                    className="mt-auto inline-flex items-center text-[#00bcd4] font-bold text-[16px] transition-all group/link font-body hover:gap-2"
                   >
-                    Learn More <ArrowRight className="ml-1.5 w-4 h-4 transition-transform group-hover/link:translate-x-1.5" />
+                    Learn More <ArrowRight className="ml-1.5 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                   </button>
                 </div>
               </motion.div>
