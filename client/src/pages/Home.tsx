@@ -758,7 +758,7 @@ const OrbitVisual = () => {
                 className="group relative bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-[0_8px_30px_rgba(0,201,200,0.3)] hover:-translate-y-2.5 transition-all duration-500 flex flex-col overflow-hidden p-6"
               >
                 {/* Image Header */}
-                <div className="relative h-[200px] -mx-6 -mt-6 mb-6 overflow-hidden">
+                <div className="relative h-[200px] -mx-6 -mt-6 mb-6 overflow-visible">
                   <img 
                     src={service.image} 
                     alt={service.title}
@@ -767,24 +767,24 @@ const OrbitVisual = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   
                   {/* Overlapping Icon */}
-                  <div className="absolute -bottom-6 left-6 w-12 h-12 bg-[#00bcd4] rounded-lg flex items-center justify-center text-white shadow-lg border-2 border-white z-30 transform transition-transform duration-600 group-hover:rotate-[360deg]">
+                  <div className="absolute -bottom-7 left-6 w-14 h-14 bg-[#00bcd4] rounded-full flex items-center justify-center text-white shadow-lg border-4 border-white z-30 transform transition-transform duration-600 group-hover:rotate-[360deg]">
                     {service.icon}
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="flex-grow flex flex-col pt-2">
-                  <h3 className="text-xl font-bold text-[#1a2332] mb-3 group-hover:text-[#00bcd4] transition-colors">
+                <div className="flex-grow flex flex-col pt-4">
+                  <h3 className="text-xl font-bold text-[#1a2332] mb-3 group-hover:text-[#00bcd4] transition-colors font-display">
                     {service.title}
                   </h3>
-                  <p className="text-slate-600 mb-6 line-clamp-2 text-sm leading-relaxed">
+                  <p className="text-slate-600 mb-6 line-clamp-2 text-sm leading-relaxed font-body">
                     {service.desc}
                   </p>
 
                   {/* Features List */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                     {service.features.slice(0, 4).map((feature: string) => (
-                      <div key={feature} className="flex items-center gap-2 text-xs text-slate-600">
+                      <div key={feature} className="flex items-center gap-2 text-xs text-slate-600 font-body">
                         <CheckCircle2 className="w-4 h-4 text-[#00bcd4] flex-shrink-0" />
                         <span>{feature}</span>
                       </div>
@@ -794,7 +794,7 @@ const OrbitVisual = () => {
                   {/* Learn More Link */}
                   <button 
                     onClick={() => setSelectedService(service)}
-                    className="mt-auto inline-flex items-center text-[#00bcd4] font-bold text-base transition-all group/link"
+                    className="mt-auto inline-flex items-center text-[#00bcd4] font-bold text-base transition-all group/link font-body"
                   >
                     Learn More <ArrowRight className="ml-1.5 w-4 h-4 transition-transform group-hover/link:translate-x-1.5" />
                   </button>
