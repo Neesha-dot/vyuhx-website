@@ -749,7 +749,7 @@ const OrbitVisual = () => {
                 key={service.title}
                 initial={{ 
                   opacity: 0, 
-                  x: index % 2 === 0 ? -50 : 50 
+                  x: index % 2 === 0 ? -30 : 30 
                 }}
                 whileInView={{ 
                   opacity: 1, 
@@ -757,7 +757,7 @@ const OrbitVisual = () => {
                 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ 
-                  duration: 0.7,
+                  duration: 0.4,
                   ease: "easeOut"
                 }}
                 className="group relative bg-white rounded-[16px] border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_40px_rgba(0,201,200,0.25)] hover:-translate-y-[8px] transition-all duration-300 flex flex-col overflow-visible"
