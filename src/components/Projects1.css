@@ -1,0 +1,697 @@
+/* ========================================
+   PROJECTS1 PAGE - SOFTWARE DEVELOPMENT
+   Matching Services Section Style
+   ======================================== */
+
+/* Projects1 Page */
+.projects1-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* =====================================
+   HEADER SECTION - Same as Services
+   ===================================== */
+
+.projects1-header {
+  min-height: auto;
+  padding: 30px 20px 40px 20px;
+  background: linear-gradient(
+    180deg,
+    #a8e6f5 0%,
+    #7fd4f0 100%
+  );
+  position: relative;
+  overflow: visible;
+  margin: 0;
+  z-index: 10;
+}
+
+/* Gradient overlay for smooth transition */
+.projects1-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(168, 230, 245, 0) 0%,
+    rgba(168, 230, 245, 0.2) 15%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.95) 80%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Subtle radial glow overlay */
+.projects1-header::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background: 
+    radial-gradient(circle at 25% 20%, rgba(79, 179, 217, 0.06), transparent 55%),
+    radial-gradient(circle at 75% 40%, rgba(100, 195, 232, 0.05), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.header1-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.back1-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #1a2b4a;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.back1-button:hover {
+  background: rgba(79, 179, 217, 0.15);
+  color: #4fb3d9;
+  transform: translateX(-5px);
+}
+
+.header1-content {
+  text-align: center;
+  animation: headerSlideIn1 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards;
+}
+
+@keyframes headerSlideIn1 {
+  0% {
+    opacity: 0;
+    transform: translateY(-35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Company Title - Like "Our Services" */
+.projects1-company-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #2d5a7b 0%, #4fb3d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  letter-spacing: -1.5px;
+  position: relative;
+}
+
+.projects1-company-title::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #4fb3d9, transparent);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* Section Title - Smaller */
+.projects1-section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d5a7b;
+  margin-bottom: 8px;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  letter-spacing: -0.8px;
+}
+
+/* Tagline */
+.projects1-tagline {
+  font-size: 1.15rem;
+  color: #5a6c7d;
+  font-weight: 500;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =====================================
+   PROJECTS CONTENT SECTION
+   ===================================== */
+
+.projects1-content-section {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f8fbfd 50%,
+    #f0f7fb 100%
+  );
+  padding: 40px 0 80px 0;
+}
+
+/* =====================================
+   ANIMATED BACKGROUND - Matching Hero
+   ===================================== */
+
+.projects1-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Gradient Orbs */
+.unified1-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.08;
+  animation: floatOrb1 22s ease-in-out infinite;
+}
+
+.orb1-top-right {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(79, 179, 217, 0.25) 0%, transparent 70%);
+  top: -120px;
+  right: -80px;
+  animation-delay: 0s;
+}
+
+.orb1-bottom-left {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(100, 195, 232, 0.2) 0%, transparent 70%);
+  bottom: -100px;
+  left: -90px;
+  animation-delay: 8s;
+}
+
+.orb1-center {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(79, 179, 217, 0.22) 0%, transparent 70%);
+  top: 50%;
+  right: 10%;
+  animation-delay: 15s;
+}
+
+@keyframes floatOrb1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(35px, -35px) scale(1.08);
+  }
+  50% {
+    transform: translate(-25px, 25px) scale(0.92);
+  }
+  75% {
+    transform: translate(25px, 18px) scale(1.04);
+  }
+}
+
+/* Floating Particles */
+.unified1-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.unified1-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #4fb3d9, transparent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleRise1 16s ease-in-out infinite;
+}
+
+@keyframes particleRise1 {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  8% {
+    opacity: 0.3;
+    transform: translateY(-18px) scale(1);
+  }
+  92% {
+    opacity: 0.4;
+    transform: translateY(-400px) scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-450px) scale(0);
+  }
+}
+
+/* Animated Grid */
+.unified1-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.06;
+}
+
+.unified1-grid-line {
+  position: absolute;
+  background: none;
+}
+
+.grid1-horizontal {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4fb3d9, transparent);
+  animation: waveFlowHorizontal1 4s ease-in-out infinite;
+  border-radius: 50%;
+  transform-origin: center;
+}
+
+.grid1-vertical {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #4fb3d9, transparent);
+  animation: waveFlowVertical1 4s ease-in-out infinite;
+  border-radius: 50%;
+  transform-origin: center;
+}
+
+@keyframes waveFlowHorizontal1 {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scaleX(0.9) translateY(0px);
+  }
+  25% {
+    opacity: 0.4;
+    transform: scaleX(1) translateY(-3px);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scaleX(1.05) translateY(0px);
+  }
+  75% {
+    opacity: 0.4;
+    transform: scaleX(1) translateY(3px);
+  }
+}
+
+@keyframes waveFlowVertical1 {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scaleY(0.9) translateX(0px);
+  }
+  25% {
+    opacity: 0.4;
+    transform: scaleY(1) translateX(-3px);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scaleY(1.05) translateX(0px);
+  }
+  75% {
+    opacity: 0.4;
+    transform: scaleY(1) translateX(3px);
+  }
+}
+
+/* Tech Nodes */
+.unified1-tech-nodes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.unified1-tech-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #4fb3d9;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(79, 179, 217, 0.7);
+  animation: nodePulse1 11s ease-in-out infinite;
+}
+
+.unified1-tech-node::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(79, 179, 217, 0.5);
+  border-radius: 50%;
+  animation: nodeRingExpand1 3.2s ease-in-out infinite;
+}
+
+@keyframes nodePulse1 {
+  0%, 100% {
+    opacity: 0.25;
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: translateY(-18px) scale(1.25);
+  }
+}
+
+@keyframes nodeRingExpand1 {
+  0% {
+    transform: translate(-50%, -50%) scale(0.75);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.75);
+    opacity: 0;
+  }
+}
+
+/* =====================================
+   PROJECTS GRID
+   ===================================== */
+
+.projects1-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.projects1-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* =====================================
+   PROJECT CARD
+   ===================================== */
+
+.project1-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(79, 179, 217, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  animation: slideInUp1 0.6s ease-out backwards;
+}
+
+@keyframes slideInUp1 {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project1-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(79, 179, 217, 0.3);
+}
+
+/* =====================================
+   PROJECT IMAGE/THUMBNAIL
+   ===================================== */
+
+.project1-thumbnail-wrapper {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.project1-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+.project1-card:hover .project1-image {
+  transform: scale(1.05);
+}
+
+/* Project Overlay */
+.project1-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(26, 43, 74, 0.92), rgba(79, 179, 217, 0.92));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.project1-card:hover .project1-overlay {
+  opacity: 1;
+}
+
+.view1-details-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: white;
+  color: #1a2b4a;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+  transform: translateY(20px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project1-card:hover .view1-details-btn {
+  transform: translateY(0);
+}
+
+.view1-details-btn:hover {
+  gap: 15px;
+  padding: 16px 36px;
+  background: #4fb3d9;
+  color: white;
+}
+
+/* =====================================
+   PROJECT INFO
+   ===================================== */
+
+.project1-info {
+  padding: 35px 30px;
+  background: white;
+}
+
+.project1-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #1a2b4a;
+  margin-bottom: 15px;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+  transition: color 0.3s ease;
+  line-height: 1.2;
+}
+
+.project1-card:hover .project1-title {
+  color: #4fb3d9;
+}
+
+.project1-description {
+  font-size: 1.05rem;
+  color: #5a6c7d;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  min-height: 50px;
+}
+
+.project1-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project1-tag {
+  padding: 8px 16px;
+  background: rgba(79, 179, 217, 0.1);
+  border: 1px solid rgba(79, 179, 217, 0.2);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4fb3d9;
+  transition: all 0.3s ease;
+}
+
+.project1-card:hover .project1-tag {
+  background: rgba(79, 179, 217, 0.2);
+  border-color: #4fb3d9;
+  transform: translateY(-2px);
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+   ===================================== */
+
+@media (max-width: 1024px) {
+  .projects1-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .project1-thumbnail-wrapper {
+    height: 350px;
+  }
+
+  .projects1-company-title {
+    font-size: 2.8rem;
+  }
+
+  .projects1-section-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects1-header {
+    padding: 25px 15px 35px 15px;
+  }
+
+  .projects1-company-title {
+    font-size: 2.5rem;
+  }
+
+  .projects1-section-title {
+    font-size: 1.6rem;
+  }
+
+  .projects1-tagline {
+    font-size: 1rem;
+  }
+
+  .projects1-content-section {
+    padding: 40px 0 60px 0;
+  }
+
+  .projects1-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .project1-thumbnail-wrapper {
+    height: 300px;
+  }
+
+  .project1-info {
+    padding: 30px 25px;
+  }
+
+  .project1-title {
+    font-size: 1.7rem;
+  }
+
+  .project1-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects1-header {
+    padding: 20px 15px 30px 15px;
+  }
+
+  .projects1-company-title {
+    font-size: 2rem;
+  }
+
+  .projects1-section-title {
+    font-size: 1.4rem;
+  }
+
+  .projects1-tagline {
+    font-size: 0.95rem;
+  }
+
+  .projects1-content-section {
+    padding: 30px 0 50px 0;
+  }
+
+  .projects1-container {
+    padding: 0 15px;
+  }
+
+  .project1-thumbnail-wrapper {
+    height: 250px;
+  }
+
+  .project1-info {
+    padding: 25px 20px;
+  }
+
+  .project1-title {
+    font-size: 1.5rem;
+  }
+
+  .project1-description {
+    font-size: 0.95rem;
+    min-height: auto;
+  }
+
+  .project1-tag {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .view1-details-btn {
+    font-size: 0.95rem;
+    padding: 14px 24px;
+  }
+}
